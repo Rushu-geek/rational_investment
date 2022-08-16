@@ -6,34 +6,34 @@ class BrandTwo extends Component{
             <React.Fragment>
                 <ul className="brand-style-2">
                     <li>
-                        <img src="/assets/images/brand/hdfc.png" alt="Logo Images"/>
-                    </li>
-                    <li>
-                        <img src="/assets/images/brand/uti.jpg" alt="Logo Images"/>
-                    </li>
-                    <li>
-                        <img src="/assets/images/brand/axis.jpg" alt="Logo Images"/>
-                    </li>
-                    <li>
                         <img src="/assets/images/brand/aditya.jpg" alt="Logo Images"/>
                     </li>
                     <li>
-                        <img src="/assets/images/brand/sbi.png" alt="Logo Images"/>
+                        <img src="/assets/images/brand/axis_logo.jpg" alt="Logo Images"/>
                     </li>
                     <li>
-                        <img src="/assets/images/brand/nippon.png" alt="Logo Images"/>
+                        <img src="/assets/images/brand/edel.jpg" alt="Logo Images"/>
                     </li>
                     <li>
-                        <img src="/assets/images/brand/tata.png" alt="Logo Images"/>
+                        <img src="/assets/images/brand/fti.svg" alt="Logo Images"/>
                     </li>
                     <li>
-                        <img src="/assets/images/brand/franklin.png" alt="Logo Images"/>
+                        <img src="/assets/images/brand/HDFC-AMC.jpeg" alt="Logo Images"/>
                     </li>
                     <li>
                         <img src="/assets/images/brand/icici.png" alt="Logo Images"/>
                     </li>
                     <li>
-                        <img src="/assets/images/brand/edel.jpg" alt="Logo Images"/>
+                        <img src="/assets/images/brand/nippon.png" alt="Logo Images"/>
+                    </li>
+                    <li>
+                        <img src="/assets/images/brand/sbi.png" alt="Logo Images"/>
+                    </li>
+                    <li>
+                        <img src="/assets/images/brand/tata.png" alt="Logo Images"/>
+                    </li>
+                    <li>
+                        <img src="/assets/images/brand/uti_logo.png" alt="Logo Images"/>
                     </li>
                 </ul>
             </React.Fragment>

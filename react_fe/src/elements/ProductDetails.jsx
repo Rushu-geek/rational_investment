@@ -277,7 +277,7 @@ const ProductDetails = () => {
                                         </div>
                                         <div className="col-lg-6 col-12">
                                             {title == "Health Insurance" && <div className="details mt_md--30 mt_sm--30">
-                                            <h4 style={{ lineHeight: 1.2 }} className="title">What is Health Insurance?</h4>
+                                                <h4 style={{ lineHeight: 1.2 }} className="title">What is Health Insurance?</h4>
                                                 <p>{descriptionP1}</p>
                                                 <p>{descriptionP2}</p>
                                             </div>}
@@ -492,6 +492,22 @@ const ProductDetails = () => {
                                     </div>
                                     <div className="row sercice-details-content align-items-center">
                                         <div className="col-lg-12 col-12 order-2 order-lg-1">
+
+                                            {title == "Health Insurance" && <div style={{ textAlign: 'center' }} className="details mt_md--30 mt_sm--30">
+                                                <h4 style={{ lineHeight: 1.2 }} className="title">Our Partners</h4>
+                                                <ul className="brand-style-2">
+                                                    <li>
+                                                        <img src="/assets/images/brand/bajaj_hi.png" alt="Logo Images" />
+                                                    </li>
+                                                    <li>
+                                                        <img src="/assets/images/brand/hdfc_hi.png" alt="Logo Images" />
+                                                    </li>
+                                                    <li>
+                                                        <img src="/assets/images/brand/mani_hi.png" alt="Logo Images" />
+                                                    </li>
+                                                </ul>
+                                            </div>}
+
                                             {title == "Life Insurance" && <div className="details mt_md--30 mt_sm--30">
                                                 <h4 style={{ lineHeight: 1.2 }} className="title">{title10}</h4>
                                                 <ol className="liststyle">
@@ -500,7 +516,23 @@ const ProductDetails = () => {
                                                     <li><b>{title13} </b>{li9}</li>
                                                     <li><b>{title14} </b>{li4}</li>
                                                 </ol>
+                                                <h4 style={{ lineHeight: 1.2 }} className="title">Our Partners</h4>
+                                                <div style={{ textAlign: 'center' }}>
+                                                    <ul className="brand-style-2">
+                                                        <li>
+                                                            <img src="/assets/images/brand/bajaj_cf.jpg" alt="Logo Images" />
+                                                        </li>
+                                                        <li>
+                                                            <img src="/assets/images/brand/hdfc_hi.png" alt="Logo Images" />
+                                                        </li>
+                                                        <li>
+                                                            <img src="/assets/images/brand/mani_hi.png" alt="Logo Images" />
+                                                        </li>
+                                                    </ul>
+                                                </div>
+
                                             </div>}
+
                                             {title == "Stock Broking" && <div className="details mt_md--30 mt_sm--30">
                                                 <h4 style={{ lineHeight: 1.2 }} className="title">The following guidelines offered by us, ensures to take care of the risk factor
                                                     involved:</h4>
