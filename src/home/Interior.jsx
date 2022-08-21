@@ -8,7 +8,7 @@ import FooterTwo from "../component/footer/FooterTwo";
 import Helmet from "../component/common/Helmet";
 import TeamOne from "../blocks/team/TeamOne";
 import Slider from "react-slick";
-import { slickDot , portfolioSlick2 } from "../page-demo/script";
+import { portfolioSlick2 } from "../page-demo/script";
 
 
 const SlideList = [

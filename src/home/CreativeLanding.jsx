@@ -123,13 +123,13 @@ class CreativeLanding extends Component{
                                 <Scrollspy className="mainmenu" items={['home','service', 'about', 'portfolio','team','testimonial','blog', 'contact']} currentClassName="is-current" offset={-200}>
                                     <li className="has-droupdown"><a href="#home">Home</a>
                                         <ul className="submenu">
-                                            <li className="has-droupdown"><a href="#">Home</a>
+                                            <li className="has-droupdown"><a>Home</a>
                                                 <ul className="submenu">
-                                                    <li><a href="#">Submenu</a></li>
-                                                    <li><a href="#">Submenu</a></li>
+                                                    <li><a>Submenu</a></li>
+                                                    <li><a>Submenu</a></li>
                                                 </ul>
                                             </li>
-                                            <li><a href="#">Home</a></li>
+                                            <li><a>Home</a></li>
                                         </ul>
                                     </li>
                                     <li><a href="#service">Service</a></li>

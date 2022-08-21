@@ -1,4 +1,4 @@
-import React, { Component, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import PageHelmet from "../component/common/Helmet";
 import ModalVideo from 'react-modal-video';
 import ScrollToTop from 'react-scroll-up';
@@ -199,7 +199,7 @@ const ProductDetails = () => {
 
     useEffect(() => {
         productList.forEach((product, index) => {
-            if (product.key == location.search.slice(-2)) {
+            if (product.key === location.search.slice(-2)) {
                 console.log(product);
                 setBgImage(product.bgImage);
                 setImage1(product.img1);
@@ -233,7 +233,7 @@ const ProductDetails = () => {
                 setLi9(product.li9);
             }
         })
-    }, [location]);
+    }, [location, productList]);
 
     return (
         <React.Fragment>
@@ -276,20 +276,20 @@ const ProductDetails = () => {
                                             </div>
                                         </div>
                                         <div className="col-lg-6 col-12">
-                                            {title == "Health Insurance" && <div className="details mt_md--30 mt_sm--30">
+                                            {title === "Health Insurance" && <div className="details mt_md--30 mt_sm--30">
                                                 <h4 style={{ lineHeight: 1.2 }} className="title">What is Health Insurance?</h4>
                                                 <p>{descriptionP1}</p>
                                                 <p>{descriptionP2}</p>
                                             </div>}
 
-                                            {title == "Life Insurance" && <div className="details mt_md--30 mt_sm--30">
+                                            {title === "Life Insurance" && <div className="details mt_md--30 mt_sm--30">
                                                 <h4 style={{ lineHeight: 1.2 }} className="title">{title2}</h4>
                                                 <p>{descriptionP1}</p>
                                                 <p>{descriptionP2}</p>
                                                 <p>{descriptionP3}</p>
                                             </div>}
 
-                                            {title == "Bonds" && <div className="details mt_md--30 mt_sm--30">
+                                            {title === "Bonds" && <div className="details mt_md--30 mt_sm--30">
                                                 <p>{descriptionP1}</p>
                                                 <h4 style={{ lineHeight: 1.2 }} className="title">{title2}</h4>
                                                 <p>{descriptionP2}</p>
@@ -297,7 +297,7 @@ const ProductDetails = () => {
                                                 <p>{descriptionP4}</p>
                                             </div>}
 
-                                            {title == "Mutual Funds" && <div className="details mt_md--30 mt_sm--30">
+                                            {title === "Mutual Funds" && <div className="details mt_md--30 mt_sm--30">
                                                 <h4 style={{ lineHeight: 1.2 }} className="title">WHY INVEST IN MUTUAL FUNDS?</h4>
                                                 <p style={{ textAlign: 'justify' }}>As investment goals vary from person to person – post-retirement expenses,
                                                     money for children’s education or marriage, house purchase, etc. – the
@@ -311,7 +311,7 @@ const ProductDetails = () => {
                                                     investment decisions to a professional manager.</p>
                                             </div>}
 
-                                            {title == "Corporate Fixed Deposit" && <div className="details mt_md--30 mt_sm--30">
+                                            {title === "Corporate Fixed Deposit" && <div className="details mt_md--30 mt_sm--30">
                                                 <h4 style={{ lineHeight: 1.2 }} className="title">Corporate Fixed Deposit</h4>
                                                 <p>Company Fixed Deposit (corporate FD) is a term deposit which is held over
                                                     fixed period at fixed rates of interest. Company Fixed Deposits are offered by
@@ -324,7 +324,7 @@ const ProductDetails = () => {
                                                     lower as compared to Bank FDs.</p>
                                             </div>}
 
-                                            {title == "Stock Broking" && <div className="details mt_md--30 mt_sm--30">
+                                            {title === "Stock Broking" && <div className="details mt_md--30 mt_sm--30">
                                                 <h4 style={{ lineHeight: 1.2 }} className="title">Features of Investing in equity</h4>
                                                 <p>An investor who buys a particular company&#39;s stock essentially means getting
                                                     an ownership stake in that specific company. Thus, it will give the investors a
@@ -348,7 +348,7 @@ const ProductDetails = () => {
 
                                             </div>}
 
-                                            {title == "Portfolio Management Service" && <div className="details mt_md--30 mt_sm--30">
+                                            {title === "Portfolio Management Service" && <div className="details mt_md--30 mt_sm--30">
                                                 <h4 style={{ lineHeight: 1.2 }} className="title">What are Portfolio Management Services in India?</h4>
                                                 <p>PMS or Portfolio Management Service is a professional service where qualified
                                                     and experienced portfolio managers backed by a research team manage equity
@@ -364,7 +364,7 @@ const ProductDetails = () => {
                                     {/* Start Single Area */}
                                     <div className="row sercice-details-content align-items-center">
                                         <div className="col-lg-6 col-12 order-2 order-lg-1">
-                                            {title == "Health Insurance" && <div className="details mt_md--30 mt_sm--30">
+                                            {title === "Health Insurance" && <div className="details mt_md--30 mt_sm--30">
                                                 <h4 style={{ lineHeight: 1.2 }} className="title">{title2}</h4>
                                                 <ul style={{ fontSize: '18px', lineHeight: '' }} className="liststyle">
                                                     <li><b>{title3} </b>{li1}</li>
@@ -377,7 +377,7 @@ const ProductDetails = () => {
                                                 </ul>
                                             </div>}
 
-                                            {title == "Life Insurance" && <div className="details mt_md--30 mt_sm--30">
+                                            {title === "Life Insurance" && <div className="details mt_md--30 mt_sm--30">
                                                 <h4 style={{ lineHeight: 1.2 }} className="title">{title3}</h4>
                                                 <ol className="liststyle">
                                                     <li><b>{title4} </b>{li1}</li>
@@ -389,7 +389,7 @@ const ProductDetails = () => {
                                                 </ol>
                                             </div>}
 
-                                            {title == "Bonds" && <div className="details mt_md--30 mt_sm--30">
+                                            {title === "Bonds" && <div className="details mt_md--30 mt_sm--30">
                                                 <h4 style={{ lineHeight: 1.2 }} className="title">{title3}</h4>
                                                 <p>These are bonds issued by various corporates for their financing needs and
                                                     hence carry credit risk. The holder of the bonds earns regular interest income.
@@ -404,7 +404,7 @@ const ProductDetails = () => {
                                                 <p>There will be no maximum limit for investment in the Bonds.</p>
                                             </div>}
 
-                                            {title == "Mutual Funds" && <div style={{ textAlign: 'justify' }} className="details mt_md--30 mt_sm--30">
+                                            {title === "Mutual Funds" && <div style={{ textAlign: 'justify' }} className="details mt_md--30 mt_sm--30">
                                                 {/* <h4 style={{ lineHeight: 1.2 }} className="title">{title2}</h4> */}
                                                 <ul className="liststyle">
                                                     <li><b>A Diversified Portfolio: </b>Mutual funds invest in two main asset classes -- debt and equity. Some funds
@@ -428,7 +428,7 @@ const ProductDetails = () => {
                                                 </ul>
                                             </div>}
 
-                                            {title == "Corporate Fixed Deposit" && <div className="details mt_md--30 mt_sm--30">
+                                            {title === "Corporate Fixed Deposit" && <div className="details mt_md--30 mt_sm--30">
                                                 <h4 style={{ lineHeight: 1.2 }} className="title">Benefits and features of company fixed deposits</h4>
                                                 <ol className="liststyle">
                                                     <li>Company FDs are fixed deposits that are offered by companies and financial
@@ -450,7 +450,7 @@ const ProductDetails = () => {
                                                 </ol>
                                             </div>}
 
-                                            {title == "Stock Broking" && <div className="details mt_md--30 mt_sm--30">
+                                            {title === "Stock Broking" && <div className="details mt_md--30 mt_sm--30">
                                                 <p><b>They are well protected by SEBI:</b>The stock market of India is regulated by the Security Exchange Board of India
                                                     (SEBI). Security Exchange Board of India (SEBI) is majorly responsible for
                                                     regulating the stock exchanges, their developments and mainly protecting the
@@ -467,7 +467,7 @@ const ProductDetails = () => {
 
                                             </div>}
 
-                                            {title == "Portfolio Management Service" && <div className="details mt_md--30 mt_sm--30">
+                                            {title === "Portfolio Management Service" && <div className="details mt_md--30 mt_sm--30">
                                                 <p>When
                                                     you invest in PMS, you own individual securities unlike a mutual fund investor,
                                                     who owns units of the entire fund. You have the freedom and flexibility to
@@ -493,7 +493,7 @@ const ProductDetails = () => {
                                     <div className="row sercice-details-content align-items-center">
                                         <div className="col-lg-12 col-12 order-2 order-lg-1">
 
-                                            {title == "Health Insurance" && <div style={{ textAlign: 'center' }} className="details mt_md--30 mt_sm--30">
+                                            {title === "Health Insurance" && <div style={{ textAlign: 'center' }} className="details mt_md--30 mt_sm--30">
                                                 <h4 style={{ lineHeight: 1.2 }} className="title">Our Partners</h4>
                                                 <ul className="brand-style-2">
                                                     <li>
@@ -508,7 +508,7 @@ const ProductDetails = () => {
                                                 </ul>
                                             </div>}
 
-                                            {title == "Life Insurance" && <div className="details mt_md--30 mt_sm--30">
+                                            {title === "Life Insurance" && <div className="details mt_md--30 mt_sm--30">
                                                 <h4 style={{ lineHeight: 1.2 }} className="title">{title10}</h4>
                                                 <ol className="liststyle">
                                                     <li><b>{title11} </b>{li7}</li>
@@ -533,7 +533,7 @@ const ProductDetails = () => {
 
                                             </div>}
 
-                                            {title == "Corporate Fixed Deposit" && <div style={{ textAlign: 'center' }} className="details mt_md--30 mt_sm--30">
+                                            {title === "Corporate Fixed Deposit" && <div style={{ textAlign: 'center' }} className="details mt_md--30 mt_sm--30">
                                                 <h4 style={{ lineHeight: 1.2 }} className="title">Our Partners</h4>
                                                 <ul className="brand-style-2">
                                                     <li>
@@ -551,7 +551,7 @@ const ProductDetails = () => {
                                                 </ul>
                                             </div>}
 
-                                            {title == "Stock Broking" && <div className="details mt_md--30 mt_sm--30">
+                                            {title === "Stock Broking" && <div className="details mt_md--30 mt_sm--30">
                                                 <h4 style={{ lineHeight: 1.2 }} className="title">The following guidelines offered by us, ensures to take care of the risk factor
                                                     involved:</h4>
                                                 <ol className="liststyle">

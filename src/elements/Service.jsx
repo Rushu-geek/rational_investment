@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import PageHelmet from "../component/common/Helmet";
 import Breadcrumb from "../elements/common/Breadcrumb";
 import { FiChevronUp } from "react-icons/fi";

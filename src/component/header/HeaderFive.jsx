@@ -30,7 +30,7 @@ class HeaderFive extends Component {
             }
         }
 
-        const { logo, color, headerPosition } = this.props;
+        const { color, headerPosition } = this.props;
 
         let logoUrl = <img src="/assets/images/logo/rational-investment-1.png" alt="Trydo" />;
 
@@ -52,7 +52,7 @@ class HeaderFive extends Component {
                                         <a className="rn-btn mr-3">
                                             <span>Wealth Account</span>
                                         </a>
-                                        <a href="https://www.ifaplanet.com/login.php" target="_blank" className="rn-btn">
+                                        <a href="https://www.ifaplanet.com/login.php" target={"_blank"} className="rn-btn">
                                             <span>My Portfolio</span>
                                         </a>
                                     </div>

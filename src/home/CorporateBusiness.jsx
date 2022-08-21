@@ -7,7 +7,6 @@ import BlogContent from "../elements/blog/BlogContent";
 import Header from "../component/header/HeaderFive";
 import FooterTwo from "../component/footer/FooterTwo";
 import CallAction from "../elements/callaction/CallAction";
-import Team from "../blocks/team/TeamTwo";
 import Accordion01 from "../elements/Accordion";
 import Helmet from "../component/common/Helmet";
 import { FiCast, FiLayers, FiUsers, FiChevronUp, FiCheck } from "react-icons/fi";
@@ -36,24 +35,6 @@ const SlideList = [
         buttonLink: '/contact'
     },
 
-]
-
-const ServiceListOne = [
-    {
-        icon: <FiCast />,
-        title: 'Business Stratagy',
-        description: 'I throw myself down among the tall grass by the stream as I lie close to the earth.'
-    },
-    {
-        icon: <FiLayers />,
-        title: 'Website Development',
-        description: 'I throw myself down among the tall grass by the stream as I lie close to the earth.'
-    },
-    {
-        icon: <FiUsers />,
-        title: 'Marketing & Reporting',
-        description: 'I throw myself down among the tall grass by the stream as I lie close to the earth.'
-    },
 ]
 
 const starndardService = [
