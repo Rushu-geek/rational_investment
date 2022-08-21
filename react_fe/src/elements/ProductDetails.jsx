@@ -150,7 +150,7 @@ const ProductDetails = () => {
             bgImage: 'bg_image--45',
             img1: '/assets/images/product/pm1.png',
             img2: '/assets/images/product/pm2.png',
-            title: 'PMS',
+            title: 'Portfolio Management Service',
             descriptionShort: 'I throw myself down among the tall grass by the stream as I lie close to the earth.',
             descriptionP1: "Clients can choose from a variety of financial products provided by wealth management companies. These include handling concerns related to personal finance, building wealth for their clients, and offering a way for clients to leave fortune to their children.",
             li1: "We will lead and support you so that you are aware of when, where, and how much to contribute each month.",
@@ -299,7 +299,7 @@ const ProductDetails = () => {
 
                                             {title == "Mutual Funds" && <div className="details mt_md--30 mt_sm--30">
                                                 <h4 style={{ lineHeight: 1.2 }} className="title">WHY INVEST IN MUTUAL FUNDS?</h4>
-                                                <p>As investment goals vary from person to person – post-retirement expenses,
+                                                <p style={{ textAlign: 'justify' }}>As investment goals vary from person to person – post-retirement expenses,
                                                     money for children’s education or marriage, house purchase, etc. – the
                                                     investment products required to achieve these goals too vary. Mutual funds
                                                     provide certain distinct advantages over investing in individual securities.
@@ -348,7 +348,7 @@ const ProductDetails = () => {
 
                                             </div>}
 
-                                            {title == "PMS" && <div className="details mt_md--30 mt_sm--30">
+                                            {title == "Portfolio Management Service" && <div className="details mt_md--30 mt_sm--30">
                                                 <h4 style={{ lineHeight: 1.2 }} className="title">What are Portfolio Management Services in India?</h4>
                                                 <p>PMS or Portfolio Management Service is a professional service where qualified
                                                     and experienced portfolio managers backed by a research team manage equity
@@ -404,13 +404,13 @@ const ProductDetails = () => {
                                                 <p>There will be no maximum limit for investment in the Bonds.</p>
                                             </div>}
 
-                                            {title == "Mutual Funds" && <div className="details mt_md--30 mt_sm--30">
+                                            {title == "Mutual Funds" && <div style={{ textAlign: 'justify' }} className="details mt_md--30 mt_sm--30">
                                                 {/* <h4 style={{ lineHeight: 1.2 }} className="title">{title2}</h4> */}
                                                 <ul className="liststyle">
                                                     <li><b>A Diversified Portfolio: </b>Mutual funds invest in two main asset classes -- debt and equity. Some funds
                                                         are pure debt, and some invest in just equity; others are balanced or hybrid.The primary benefit of investing in a mutual fund is that you get exposure to a
                                                         variety of shares or fixed income instruments.</li>
-                                                    <li><b>There’s a Fund for Everyone: </b>This could be one of the significant benefits of mutual funds. There are over
+                                                    <li ><b>There’s a Fund for Everyone: </b>This could be one of the significant benefits of mutual funds. There are over
                                                         2,000+ currently active schemes -- a lot to choose from. You can find funds that
                                                         match your risk appetite, investment horizons, and personal financial goals.</li>
                                                     <li><b>Benefit from High Liquidity: </b>If you invest in open-ended mutual funds (which most funds are), you can buy
@@ -467,7 +467,7 @@ const ProductDetails = () => {
 
                                             </div>}
 
-                                            {title == "PMS" && <div className="details mt_md--30 mt_sm--30">
+                                            {title == "Portfolio Management Service" && <div className="details mt_md--30 mt_sm--30">
                                                 <p>When
                                                     you invest in PMS, you own individual securities unlike a mutual fund investor,
                                                     who owns units of the entire fund. You have the freedom and flexibility to
@@ -516,21 +516,39 @@ const ProductDetails = () => {
                                                     <li><b>{title13} </b>{li9}</li>
                                                     <li><b>{title14} </b>{li4}</li>
                                                 </ol>
-                                                <h4 style={{ lineHeight: 1.2 }} className="title">Our Partners</h4>
+                                                <h4 style={{ lineHeight: 1.2, textAlign: 'center' }} className="title">Our Partners</h4>
                                                 <div style={{ textAlign: 'center' }}>
                                                     <ul className="brand-style-2">
                                                         <li>
-                                                            <img src="/assets/images/brand/bajaj_cf.jpg" alt="Logo Images" />
+                                                            <img src="/assets/images/brand/HDFC_Life_Logo.png.png" alt="Logo Images" />
                                                         </li>
                                                         <li>
-                                                            <img src="/assets/images/brand/hdfc_hi.png" alt="Logo Images" />
+                                                            <img src="/assets/images/brand/ICICI_Prudential.png.png" alt="Logo Images" />
                                                         </li>
                                                         <li>
-                                                            <img src="/assets/images/brand/mani_hi.png" alt="Logo Images" />
+                                                            <img src="/assets/images/brand/lic-logo.png" alt="Logo Images" />
                                                         </li>
                                                     </ul>
                                                 </div>
 
+                                            </div>}
+
+                                            {title == "Corporate Fixed Deposit" && <div style={{ textAlign: 'center' }} className="details mt_md--30 mt_sm--30">
+                                                <h4 style={{ lineHeight: 1.2 }} className="title">Our Partners</h4>
+                                                <ul className="brand-style-2">
+                                                    <li>
+                                                        <img src="/assets/images/brand/bajaj_cf.jpg" alt="Logo Images" />
+                                                    </li>
+                                                    <li>
+                                                        <img src="/assets/images/brand/hdfc_cf.jpg" alt="Logo Images" />
+                                                    </li>
+                                                    <li>
+                                                        <img src="/assets/images/brand/sri_cf.jpg" alt="Logo Images" />
+                                                    </li>
+                                                    <li>
+                                                        <img src="/assets/images/brand/mah_cf.jpg" alt="Logo Images" />
+                                                    </li>
+                                                </ul>
                                             </div>}
 
                                             {title == "Stock Broking" && <div className="details mt_md--30 mt_sm--30">
@@ -545,6 +563,11 @@ const ProductDetails = () => {
                                                     <li>Stay abreast with company&#39;s performance by evaluating ROE (Return on
                                                         equity)</li>
                                                 </ol>
+                                                <div style={{textAlign: 'center', marginTop: '60px'}}>
+                                                    <a href="https://angel-one.onelink.me/Wjgr/31yv7utm" target={"_blank"} className="btn btn-primary">
+                                                        <span style={{color: 'white'}}>Open Demat Account In Just 5 minutes</span>
+                                                    </a>
+                                                </div>
                                             </div>}
                                         </div>
                                     </div>

@@ -172,7 +172,7 @@ class CorporateBusiness extends Component {
                             <div className="col-lg-6 order-2 order-lg-1">
                                 <div className="about-inner inner">
                                     <div className="section-title">
-                                        <h2 className="title">About</h2>
+                                        <h2 className="title">About Us</h2>
                                         <p>Rational Investment is a rising, evolving firm with its roots in the financial
                                             product distribution services expanding into newer boundaries with great
                                             passion. We are certified Mutual Fund Distributor recognized by AMFI -
@@ -203,7 +203,7 @@ class CorporateBusiness extends Component {
                             <div className="col-lg-6 order-1 order-lg-2">
                                 <div className="thumbnail position-relative">
                                     <img className="w-100" src="/assets/images/about/about-3.png" alt="About Images" />
-                                    <ModalVideo channel='youtube' isOpen={this.state.isOpen} videoId='ZOoVOfieAF8' onClose={() => this.setState({ isOpen: false })} />
+                                    <ModalVideo channel='youtube' isOpen={this.state.isOpen} videoId='N3OB9QXcjIE' onClose={() => this.setState({ isOpen: false })} />
                                     <button className="video-popup position-top-center theme-color" onClick={this.openModal}><span className="play-icon"></span></button>
                                 </div>
                             </div>
@@ -228,11 +228,11 @@ class CorporateBusiness extends Component {
 
                             {/* Start Single Service  */}
                             <div className="col-lg-2 col-md-6 col-12 mt--30">
-                                <div className="section-title">
+                                <div className="section-title mt-5">
                                     <h3 className="title">Services</h3>
-                                    <p>There are many variations of passages of Lorem Ipsum available, but.</p>
+                                    <p>We provide various services related to investment.</p>
                                     <div className="service-btn">
-                                        <a className="btn-transparent rn-btn-dark" href="/service"><span className="text">Request Custom Service</span></a>
+                                        <a className="btn-transparent rn-btn-dark" href="/service"><span className="text">See all Services</span></a>
                                     </div>
                                 </div>
                             </div>

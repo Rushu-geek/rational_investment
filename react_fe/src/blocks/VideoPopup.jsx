@@ -35,7 +35,7 @@ class VideoPopup extends Component {
                 {/* Start Page Wrapper  */}
                 <main className="page-wrapper">
                     {/* Start Video Area  */}
-                    <div className="rn-section ptb--120 bg_color--1 line-separator">
+                    {/* <div className="rn-section ptb--120 bg_color--1 line-separator">
                         <div className="container">
                              <div className="row sercice-details-content align-items-center">
                                 <div className="col-lg-12">
@@ -47,11 +47,11 @@ class VideoPopup extends Component {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
                     {/* End Video Area  */}
 
                     {/* Start Video Area  */}
-                    <div className="rn-section ptb--120 bg_color--1 line-separator">
+                    {/* <div className="rn-section ptb--120 bg_color--1 line-separator">
                         <div className="container">
                              <div className="row sercice-details-content align-items-center">
                                 <div className="col-lg-6">
@@ -70,7 +70,7 @@ class VideoPopup extends Component {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
                     {/* End Video Area  */}
 
                     {/* Start Video Area  */}

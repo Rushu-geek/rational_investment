@@ -19,19 +19,19 @@ const ServiceList = [
         key: 'rp',
         icon: <GiPieChart />,
         title: 'Retirement Planning',
-        descriptionShort: 'I throw myself down among the tall grass by the stream as I lie close to the earth.',
+        descriptionShort: 'Retirement planning establishes desired levels of retirement income as well as the steps and choices required to get there.',
     },
     {
         key: 'gp',
         icon: <GiStairsGoal />,
         title: 'Goal planning',
-        descriptionShort: 'I throw myself down among the tall grass by the stream as I lie close to the earth.',
+        descriptionShort: 'The practise of helping clients prioritise their financial goals and choose the best strategy to support them is known as goals-based planning.',
     },
     {
         key: 'wm',
         icon: <GiReceiveMoney />,
         title: 'Wealth Management',
-        descriptionShort: 'I throw myself down among the tall grass by the stream as I lie close to the earth.',
+        descriptionShort: 'Clients can choose from a variety of financial services provided by wealth management companies.',
     }
 ]
 
@@ -55,14 +55,6 @@ const Service = () => {
                 {/* Start Service Area */}
                 <div className="service-area creative-service-wrapper pt--90 pb--120 bg_color--1">
                     <div className="container">
-                        <div className="row">
-                            <div className="col-lg-12">
-                                <div className="section-title text-center mb--30">
-                                    <h2>Investment Strategies</h2>
-                                    <p>There are many variations of passages of Lorem Ipsum available, <br /> but the majority have suffered alteration.</p>
-                                </div>
-                            </div>
-                        </div>
                         <div className="row creative-service">
                             {ServiceList.map( (val , i) => (
                                 <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12" key={i}>

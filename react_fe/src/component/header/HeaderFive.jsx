@@ -47,13 +47,13 @@ class HeaderFive extends Component {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="col-lg-8 col-md-4 col-6">
+                                <div className="col-lg-4 col-md-4 col-6">
                                     <div style={{ float: 'right', cursor: 'pointer' }} className="header-btn">
                                         <a className="rn-btn mr-3">
-                                            <span>My Portfolio</span>
-                                        </a>
-                                        <a className="rn-btn">
                                             <span>Wealth Account</span>
+                                        </a>
+                                        <a href="https://www.ifaplanet.com/login.php" target="_blank" className="rn-btn">
+                                            <span>My Portfolio</span>
                                         </a>
                                     </div>
                                 </div>
@@ -91,7 +91,7 @@ class HeaderFive extends Component {
                                                     <li><Link to="/product-details?name=pm">PMS</Link></li>
                                                 </ul>
                                             </li>
-                                            <li><Link style={{color: 'white'}} to="/about" >About</Link></li>
+                                            <li><Link style={{color: 'white'}} to="/about" >About Us</Link></li>
 
                                             <li className="has-droupdown"><Link style={{color: 'white'}} to="/blog" >Our Blog</Link>
                                             </li>
@@ -101,7 +101,7 @@ class HeaderFive extends Component {
                                                     <li><Link to="/gallery">Gallery Images</Link></li>
                                                 </ul>
                                             </li>
-                                            <li><Link style={{color: 'white'}} to="/contact" >Contact</Link></li>
+                                            <li><Link style={{color: 'white'}} to="/contact" >Connect Us</Link></li>
                                             <li><Link style={{color: 'white'}} to="/calculators" >Calculators</Link></li>
                                         </ul>
                                     </nav>

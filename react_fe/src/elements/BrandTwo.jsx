@@ -18,7 +18,7 @@ class BrandTwo extends Component{
                         <img src="/assets/images/brand/fti.svg" alt="Logo Images"/>
                     </li>
                     <li>
-                        <img src="/assets/images/brand/HDFC-AMC.jpeg" alt="Logo Images"/>
+                        <img src="/assets/images/brand/HDFC-AMC.jpg" alt="Logo Images"/>
                     </li>
                     <li>
                         <img src="/assets/images/brand/icici.png" alt="Logo Images"/>

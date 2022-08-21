@@ -9,41 +9,6 @@ import Footer from "../component/footer/FooterTwo";
 import Lightbox from 'react-image-lightbox';
 import 'react-image-lightbox/style.css';
 
-
-const PortfolioList = [
-    {
-        images: '7',
-        category: 'Freelancer',
-        title: 'The Language of Developer'
-    },
-    {
-        images: '1',
-        category: 'Freelancer',
-        title: 'The new Thinking for Design'
-    },
-    {
-        images: '2',
-        category: 'Freelancer',
-        title: 'The new Thinking for Design'
-    },
-    {
-        images: '3',
-        category: 'Freelancer',
-        title: 'Getting tickets to the big show'
-    },
-    {
-        images: '8',
-        category: 'Freelancer',
-        title: 'You can see your Portfolio'
-    },
-    {
-        images: '9',
-        category: 'Freelancer',
-        title: 'Getting tickets to the big show'
-    },
-]
-
-
 const TabOne = [
     {
         image: '01',
@@ -78,6 +43,54 @@ const TabOne = [
     {
         image: '06',
         bigImage: '/assets/images/portfolio/big/dp-big--portfolio-06.jpg',
+        category: 'Logo Design',
+        title: 'Getting tickets to the big show'
+    },
+    {
+        image: '07',
+        bigImage: '/assets/images/portfolio/big/dp-big--portfolio-07.jpg',
+        category: 'Logo Design',
+        title: 'Getting tickets to the big show'
+    },
+    {
+        image: '08',
+        bigImage: '/assets/images/portfolio/big/dp-big--portfolio-08.jpg',
+        category: 'Logo Design',
+        title: 'Getting tickets to the big show'
+    },
+    {
+        image: '09',
+        bigImage: '/assets/images/portfolio/big/dp-big--portfolio-09.jpg',
+        category: 'Logo Design',
+        title: 'Getting tickets to the big show'
+    },
+    {
+        image: '10',
+        bigImage: '/assets/images/portfolio/big/dp-big--portfolio-10.jpg',
+        category: 'Logo Design',
+        title: 'Getting tickets to the big show'
+    },
+    {
+        image: '11',
+        bigImage: '/assets/images/portfolio/big/dp-big--portfolio-11.jpg',
+        category: 'Logo Design',
+        title: 'Getting tickets to the big show'
+    },
+    {
+        image: '12',
+        bigImage: '/assets/images/portfolio/big/dp-big--portfolio-12.jpg',
+        category: 'Logo Design',
+        title: 'Getting tickets to the big show'
+    },
+    {
+        image: '13',
+        bigImage: '/assets/images/portfolio/big/dp-big--portfolio-13.jpg',
+        category: 'Logo Design',
+        title: 'Getting tickets to the big show'
+    },
+    {
+        image: '14',
+        bigImage: '/assets/images/portfolio/big/dp-big--portfolio-14.jpg',
         category: 'Logo Design',
         title: 'Getting tickets to the big show'
     },
@@ -143,12 +156,12 @@ class Gallery extends Component {
                                                             </a>
                                                         </div>
                                                     </div>
-                                                    <div className="content">
+                                                    {/* <div className="content">
                                                         <div className="inner">
                                                             <p>{value.category}</p>
                                                             <h4><a href="#portfolio-details">{value.title}</a></h4>
                                                         </div>
-                                                    </div>
+                                                    </div> */}
                                                 </div>
                                             </div>
                                         </div>
@@ -160,7 +173,7 @@ class Gallery extends Component {
                     {/* End Portfolio Area  */}
 
                     {/* Start Portfolio Area  */}
-                    <div className="creative-portfolio-wrapper ptb--120 bg_color--1">
+                    {/* <div className="creative-portfolio-wrapper ptb--120 bg_color--1">
                         <div className="container plr--10">
                             <div className="row row--5">
                                 {PortfolioList.map((value, i) => (
@@ -183,7 +196,7 @@ class Gallery extends Component {
                                 ))}
                             </div>
                         </div>
-                    </div>
+                    </div> */}
                     {/* End Portfolio Area  */}
 
                 </main>
