@@ -1,8 +1,4 @@
 import React, { Component } from "react";
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-// import "react-responsive-carousel/lib/styles/carousel.min.css";
-// import { Carousel } from "react-responsive-carousel";
-import Carousel from "react-bootstrap/Carousel";
 
 class Testimonial extends Component {
 

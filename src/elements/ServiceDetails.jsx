@@ -1,4 +1,4 @@
-import React, { Component, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import PageHelmet from "../component/common/Helmet";
 import ModalVideo from 'react-modal-video';
 import ScrollToTop from 'react-scroll-up';
@@ -119,7 +119,7 @@ const ServiceDetails = () => {
         console.log(location.state);
 
         ServiceList.forEach((service, index) => {
-            if (service.key == location.search.slice(-2)) {
+            if (service.key === location.search.slice(-2)) {
                 console.log(service);
                 setBgImage(service.bgImage);
                 setImage1(service.img1);
@@ -145,7 +145,7 @@ const ServiceDetails = () => {
             }
         })
 
-    }, [location]);
+    }, [location, ServiceList]);
 
     return (
         <React.Fragment>
@@ -188,7 +188,7 @@ const ServiceDetails = () => {
                                             </div>
                                         </div>
                                         <div className="col-lg-6 col-12">
-                                            {title == "Financial service" && <div className="details mt_md--30 mt_sm--30">
+                                            {title === "Financial service" && <div className="details mt_md--30 mt_sm--30">
                                                 <p>{descriptionP1}</p>
                                                 <p>{descriptionP2}</p>
                                                 <h4 className="title">{title2}</h4>
@@ -201,17 +201,17 @@ const ServiceDetails = () => {
                                                 </ul>
                                             </div>}
 
-                                            {title == "Retirements Plannings" && <div className="details mt_md--30 mt_sm--30">
+                                            {title === "Retirements Plannings" && <div className="details mt_md--30 mt_sm--30">
                                                 <p>{descriptionP1}</p>
                                             </div>}
 
-                                            {title == "Goal planning" && <div className="details mt_md--30 mt_sm--30">
+                                            {title === "Goal planning" && <div className="details mt_md--30 mt_sm--30">
                                                 <p>{descriptionP1}</p>
                                                 <p>{descriptionP2}</p>
                                                 <p>{descriptionP3}</p>
                                             </div>}
 
-                                            {title == "Wealth Management" && <div className="details mt_md--30 mt_sm--30">
+                                            {title === "Wealth Management" && <div className="details mt_md--30 mt_sm--30">
                                                 <p>{descriptionP1}</p>
                                             </div>}
                                         </div>
@@ -221,7 +221,7 @@ const ServiceDetails = () => {
                                     {/* Start Single Area */}
                                     <div className="row sercice-details-content align-items-center">
                                         <div className="col-lg-6 col-12 order-2 order-lg-1">
-                                            {title == "Financial service" && <div className="details mt_md--30 mt_sm--30">
+                                            {title === "Financial service" && <div className="details mt_md--30 mt_sm--30">
                                                 <h4 style={{ lineHeight: 1.2 }} className="title">{title3}</h4>
                                                 <p>{descriptionP3}</p>
                                                 <p>{descriptionP4}</p>
@@ -232,7 +232,7 @@ const ServiceDetails = () => {
                                                     </ul> */}
                                             </div>}
 
-                                            {title == "Retirements Plannings" && <div className="details mt_md--30 mt_sm--30">
+                                            {title === "Retirements Plannings" && <div className="details mt_md--30 mt_sm--30">
                                                 <h4 style={{ lineHeight: 1.2 }} className="title">{title2}</h4>
                                                 <ul className="liststyle">
                                                     <li><b>{title3} </b>{li1}</li>
@@ -241,7 +241,7 @@ const ServiceDetails = () => {
                                                 </ul>
                                             </div>}
 
-                                            {title == "Goal planning" && <div className="details mt_md--30 mt_sm--30">
+                                            {title === "Goal planning" && <div className="details mt_md--30 mt_sm--30">
                                                 <h4 style={{ lineHeight: 1.2 }} className="title">{title2}</h4>
                                                 <ul className="liststyle">
                                                     <li>{li1}</li>
@@ -257,7 +257,7 @@ const ServiceDetails = () => {
                                                 <p className="pt-4">{descriptionP4}</p>
                                             </div>}
 
-                                            {title == "Wealth Management" && <div className="details mt_md--30 mt_sm--30">
+                                            {title === "Wealth Management" && <div className="details mt_md--30 mt_sm--30">
                                                 <h4 style={{ lineHeight: 1.2 }} className="title">{title2}</h4>
                                                 <ul className="liststyle">
                                                     <li>{li1}</li>

@@ -1,6 +1,5 @@
 import React, { Component , Fragment } from "react";
 import ScrollToTop from 'react-scroll-up';
-import {Link} from "react-router-dom";
 import { FiChevronUp } from "react-icons/fi";
 import HeaderTwo from "../component/header/HeaderTwo";
 import FooterTwo from "../component/footer/FooterTwo"
