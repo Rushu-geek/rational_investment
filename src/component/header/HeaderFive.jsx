@@ -68,7 +68,7 @@ class HeaderFive extends Component {
                                 <div className="col-lg-9 col-md-8 col-6">
                                     <nav className="mainmenunav d-lg-block">
                                         <ul className="mainmenu">
-                                            <li className="has-droupdown"><Link style={{color: 'white'}} to="/corporate-business">Home</Link>
+                                            <li className="has-droupdown"><Link style={{color: 'white'}} to="/">Home</Link>
                                             </li>
                                             <li className="has-droupdown"><Link style={{color: 'white'}} to="/service" >Service</Link>
                                                 <ul className="submenu">

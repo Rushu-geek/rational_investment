@@ -9,7 +9,7 @@ import FooterTwo from "../component/footer/FooterTwo";
 import CallAction from "../elements/callaction/CallAction";
 import Accordion01 from "../elements/Accordion";
 import Helmet from "../component/common/Helmet";
-import { FiCast, FiLayers, FiUsers, FiChevronUp, FiCheck } from "react-icons/fi";
+import { FiChevronUp, FiCheck } from "react-icons/fi";
 import CounterOne from "../elements/counters/CounterOne";
 import BrandOne from "../elements/BrandTwo";
 import Testimonial from "../elements/Testimonial";
@@ -372,4 +372,5 @@ class CorporateBusiness extends Component {
         )
     }
 }
+
 export default CorporateBusiness;

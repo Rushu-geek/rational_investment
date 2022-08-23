@@ -147,7 +147,7 @@ font-family: 'Poppins', sans-serif;
 }
 
 
-@for $i from 1 through 50 {
+@for $i from 1 through 45 {
     .bg_image--#{$i} {
         background-image: url(/assets/images/bg/bg-image-#{$i}.jpg) !important;
     }
