@@ -30,7 +30,7 @@ class Blog extends Component {
                         <div className="row mt--20">
                             <div className="col-lg-12">
                                 {/* Start Pagination Area */}
-                                <Pagination />
+                                {/* <Pagination /> */}
                                 {/* End Pagination Area */}
                             </div>
                         </div>

@@ -1,8 +1,8 @@
 const BlogContent = [
     {
         images: '01',
-        title: ' Getting tickets to the big show',
-        category: 'Development'
+        title: "Why you shouldn't avoid doing SIP investments in a Volatile market?",
+        category: ''
     },
     {
         images: '02',

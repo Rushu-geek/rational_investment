@@ -20,8 +20,8 @@ const SlideList = [
         textPosition: 'text-right',
         bgImage: 'bg_image--32',
         category: '',
-        title: 'Business.',
-        description: 'There are many variations of passages but the majority have suffered alteration.',
+        title: 'Investment',
+        description: 'Successful investing is about managing risk, not avoiding it.',
         buttonText: 'Contact Us',
         buttonLink: '/contact'
     },
@@ -86,7 +86,7 @@ class CorporateBusiness extends Component {
             'We believe in work with simple &amp; steady strategies.'
         ];
 
-        const PostList = BlogContent.slice(0, 3);
+        const PostList = BlogContent.slice(0, 1);
 
         return (
             <Fragment>
@@ -226,7 +226,7 @@ class CorporateBusiness extends Component {
                                         <div className="col-lg-3 col-md-4 mt--30" key={index}>
                                             <div className="standard-service">
                                                 <div className="thumbnai">
-                                                    <img src={`/assets/images/featured/corporate-${value.image}.jpg`} alt="Corporate Images" />
+                                                    <img src={`/assets/images/featured/corporate-${value.image}.png`} alt="Corporate Images" />
                                                 </div>
                                                 <div className="content">
                                                     <h3><a href="/service-details">{value.title}</a></h3>

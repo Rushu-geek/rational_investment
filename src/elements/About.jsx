@@ -32,8 +32,8 @@ class About extends Component {
                         <div className="container">
                             <div className="row row--35 align-items-center">
                                 <div className="col-lg-5">
-                                    <div className="thumbnail">
-                                        <img className="w-100" src="/assets/images/about/about-3.jpg" alt="About Images" />
+                                    <div className="">
+                                        <img className="w-100" src="/assets/images/about/about-3.png" alt="About Images" />
                                     </div>
                                 </div>
                                 <div className="col-lg-7">
