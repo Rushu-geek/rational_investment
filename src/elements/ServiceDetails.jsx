@@ -49,6 +49,7 @@ const ServiceDetails = () => {
             li1: "Young adults may not have much money available for investing, but they do have time to wait for investments to mature, which is a crucial and priceless component of retirement savings. The idea of compound interest is to responsible for this. The longer you have, the more interest you will be able to earn thanks to compound interest. Because of the wonders of compounding, even if you can only set away 2000₹ per month, starting to invest at age 25 will increase your money's value by three times compared to starting later in life, at age 45. There is no way to make up for lost time, even if you were to invest more money in the future.",
             li2: "Financial burdens including mortgages, student loans, insurance premiums, and credit card debt frequently appear in the early middle age. At this point of retirement preparation, saving must yet continue. These are some of the best years for aggressive saving because of the increased income and the amount of time you still have to invest and earn interest.",
             li3: "Your investment portfolio should grow more conservative as you become older. There are a few benefits even though there isn't much time left to save for individuals who are in this stage of retirement planning. You may have more money available to invest if you earn more money and some of the aforementioned costs (mortgages, school loans, credit card debt, etc.) have already been paid off by this point.",
+            videoId: "N3OB9QXcjIE"
         },
         {
             key: 'gp',
@@ -71,6 +72,7 @@ const ServiceDetails = () => {
             li7: "children’s Marriage",
             li8: "Retirement planning",
             li9: "Upgrading your home",
+            videoId: "2yJ-5LpkO7Q"
         },
         {
             key: 'wm',
@@ -110,6 +112,7 @@ const ServiceDetails = () => {
     const [li7, setLi7] = useState("");
     const [li8, setLi8] = useState("");
     const [li9, setLi9] = useState("");
+    const [videoId, setVideoId] = useState("");
 
     const openModal = () => {
         setIsOpen(true);
@@ -142,6 +145,7 @@ const ServiceDetails = () => {
                 setLi7(service.li7);
                 setLi8(service.li8);
                 setLi9(service.li9);
+                setVideoId(service.videoId);
             }
         })
 
@@ -174,7 +178,7 @@ const ServiceDetails = () => {
             {/* End Breadcrump Area */}
 
             {/* Start Page Wrapper */}
-            <div className="rn-service-details ptb--120 bg_color--1">
+            <div style={{ textAlign: 'justify' }} className="rn-service-details ptb--120 bg_color--1">
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-12">
@@ -271,8 +275,8 @@ const ServiceDetails = () => {
                                         <div className="col-lg-6 col-12 order-1 order-lg-2">
                                             <div className="thumb position-relative">
                                                 <img className="w-100" src={image2} alt="Service Images" />
-                                                <ModalVideo channel='youtube' isOpen={isOpen} videoId='ZOoVOfieAF8' onClose={() => setIsOpen(false)} />
-                                                <button className="video-popup" onClick={openModal}><span className="play-icon"></span></button>
+                                                <ModalVideo channel='youtube' isOpen={isOpen} videoId={videoId} onClose={() => setIsOpen(false)} />
+                                                {(title == "Retirements Plannings" || title == "Goal planning") && <button className="video-popup" onClick={openModal}><span className="play-icon"></span></button>}
                                             </div>
                                         </div>
                                     </div>

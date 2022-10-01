@@ -1,5 +1,5 @@
 import React from 'react';
-import {FaTwitter ,FaInstagram ,FaFacebookF , FaLinkedinIn, FaYoutube, FaWhatsapp} from "react-icons/fa";
+import { FaTwitter, FaInstagram, FaFacebookF, FaLinkedinIn, FaYoutube, FaWhatsapp } from "react-icons/fa";
 
 const SocialShare = [
     { Social: <FaFacebookF />, link: 'https://www.facebook.com/Investment.rational' },
@@ -19,7 +19,7 @@ const FooterTwo = () => {
                         <div className="inner">
                             <div className="logo text-center text-sm-left mb_sm--20">
                                 <a href="/home-one">
-                                    <img style={{height: '70px'}} src="/assets/images/logo/rational-investment-2.png" alt="Logo images"/>
+                                    <img style={{ height: '70px' }} src="/assets/images/logo/rational-investment-2.png" alt="Logo images" />
                                 </a>
                             </div>
                         </div>
@@ -27,7 +27,7 @@ const FooterTwo = () => {
                     <div className="col-lg-4 col-md-6 col-sm-6 col-12">
                         <div className="inner text-center">
                             <ul className="social-share rn-lg-size d-flex justify-content-center liststyle">
-                                {SocialShare.map((val , i) => (
+                                {SocialShare.map((val, i) => (
                                     <li key={i}><a href={`${val.link}`} target="_blank">{val.Social}</a></li>
                                 ))}
                             </ul>
@@ -37,6 +37,15 @@ const FooterTwo = () => {
                         <div className="inner text-lg-right text-center mt_md--20 mt_sm--20">
                             <div className="text">
                                 <p>Copyright © 2022 All Rights Reserved.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="row mt-5">
+                    <div className="col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div className="inner text-center mt_md--20 mt_sm--20">
+                            <div className="text">
+                                <p style={{fontWeight: 'bold', fontSize: '16px'}}>Disclaimer: www.rationalinvestments.in is an online website of rational Investments who is registered vide ARN- 94466 as a AMFI Registered Mutual Fund Distributor. The said website is intends to provide educative and informative details related to investments and also provide online transaction facility in Mutual Funds.  The website does not guarantee any returns or financial goal success by any means.</p>
                             </div>
                         </div>
                     </div>

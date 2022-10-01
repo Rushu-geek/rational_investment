@@ -66,13 +66,14 @@ const ProductDetails = () => {
             li1: "Term life insurance is a type of life insurance that provides a death benefit to the beneficiary only if the insured dies during a specified period. If the policyholder survives until the end of the period, or term, the insurance coverage ceases without value and a payout or death claim cannot be made.",
             li2: "Whole life insurance is an insurance plan that provides you coverage throughout your lifetime provided the policy is in force. Whole life insurance policies also contain a cash value component that increases over time.",
             li3: "An endowment policy is defined as a types of life insurance policies that is payable to the insured if he/she is still living on the policy's maturity date, or to a beneficiary otherwise. Endowment life insurance plans provide you with a dual combination of protection and savings.",
-            li4: "Savings & Investment Plans are the types of insurance plans that provide you the assurance of lump sum funds for you and your family&#39;s future expenses. While providing an excellent savings tool for your short term and long term financial goals, these plans also assure your family a certain sum by way of an insurance cover. This is a broad categorization that covers both the traditional and unit linked plans.",
+            li4: "Savings & Investment Plans are the types of insurance plans that provide you the assurance of lump sum funds for you and your family's future expenses. While providing an excellent savings tool for your short term and long term financial goals, these plans also assure your family a certain sum by way of an insurance cover. This is a broad categorization that covers both the traditional and unit linked plans.",
             li5: "These plans provide you with income during retirement is called the Retirement Plan. These plans are offered by life insurance companies in India and help you to build a retirement corpus.",
             li6: "LIPs are a type of life insurance plan that provide you with a dual advantage of protection and flexibility in investment. It is a type of life insurance where the cash value of a policy varies according to the current net asset value of the underlying investment assets. The premium paid by ULIPs is used to purchase units in investment assets chosen by the policyholder.",
             li7: "Since uncertainties are unpredictable and may cause problems to an individual and his/her family at any time, availing a life insurance policy will ensure that your family and dependents continue their lifestyle in case of your unforeseen and accidental death.",
             li8: "Not only does life insurance offer financial support in case of the policyholders unforeseen and accidental death, but also serves as a long-term investment in the sense that it encourages you to lay down your objectives, such as traditional endowment plans, provide specific maturity benefits and built-in guarantees via a number of product options like Guaranteed Maturity Values, Guaranteed Cash Values, Money Back, etc.",
             li9: "One can opt for loans against their policy. This can be done without affecting the policy and its terms and conditions at all. This ensures that you can easily meet the sudden and unexpected events in your life.",
-            li10: "When it comes to planning for retirement, there are few instruments as effective as life insurance policies. Since you will be saving money over a period of time, life insurance policies will help in providing a steady source of income after you have retired from professional life."
+            li10: "When it comes to planning for retirement, there are few instruments as effective as life insurance policies. Since you will be saving money over a period of time, life insurance policies will help in providing a steady source of income after you have retired from professional life.",
+            videoId: "yhumqMrm3Kg"
         },
         {
             key: 'bo',
@@ -116,6 +117,7 @@ const ProductDetails = () => {
             li3: "The three keys to long-term wealth security are when to buy, how much to invest, and where to invest.",
             li4: "We'll also make recommendations for ways to get out from under your current debts.",
             li5: "We prioritise your whole development over emphasising just one area of it.",
+            videoId: "vEN_kqo_TNQ"
         },
         {
             key: 'cf',
@@ -192,6 +194,7 @@ const ProductDetails = () => {
     const [li7, setLi7] = useState("");
     const [li8, setLi8] = useState("");
     const [li9, setLi9] = useState("");
+    const [videoId, setVideoId] = useState("");
 
     const openModal = () => {
         setIsOpen(true);
@@ -231,6 +234,7 @@ const ProductDetails = () => {
                 setLi7(product.li7);
                 setLi8(product.li8);
                 setLi9(product.li9);
+                setVideoId(product.videoId)
             }
         })
     }, [location, productList]);
@@ -262,7 +266,7 @@ const ProductDetails = () => {
             {/* End Breadcrump Area */}
 
             {/* Start Page Wrapper */}
-            <div className="rn-product-details ptb--120 bg_color--1">
+            <div style={{ textAlign: 'justify' }} className="rn-product-details ptb--120 bg_color--1">
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-12">
@@ -485,8 +489,8 @@ const ProductDetails = () => {
                                         <div className="col-lg-6 col-12 order-1 order-lg-2">
                                             <div className="thumb position-relative">
                                                 <img className="w-100" src={image2} alt="product Images" />
-                                                <ModalVideo channel='youtube' isOpen={isOpen} videoId='ZOoVOfieAF8' onClose={() => setIsOpen(false)} />
-                                                <button className="video-popup" onClick={openModal}><span className="play-icon"></span></button>
+                                                <ModalVideo channel='youtube' isOpen={isOpen} videoId={videoId} onClose={() => setIsOpen(false)} />
+                                                {(title == "Life Insurance" || title == "Mutual Funds") && <button className="video-popup" onClick={openModal}><span className="play-icon"></span></button>}
                                             </div>
                                         </div>
                                     </div>
@@ -563,9 +567,9 @@ const ProductDetails = () => {
                                                     <li>Stay abreast with company&#39;s performance by evaluating ROE (Return on
                                                         equity)</li>
                                                 </ol>
-                                                <div style={{textAlign: 'center', marginTop: '60px'}}>
+                                                <div style={{ textAlign: 'center', marginTop: '60px' }}>
                                                     <a href="https://angel-one.onelink.me/Wjgr/1wbz6j68" target={"_blank"} className="btn btn-primary">
-                                                        <span style={{color: 'white'}}>Open Demat Account In Just 5 minutes</span>
+                                                        <span style={{ color: 'white' }}>Open Demat Account In Just 5 minutes</span>
                                                     </a>
                                                 </div>
                                             </div>}

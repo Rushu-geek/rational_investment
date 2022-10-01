@@ -49,7 +49,7 @@ class BlogDetails extends Component {
                 {/* End Breadcrump Area */}
 
                 {/* Start Blog Details */}
-                <div className="rn-blog-details pt--110 pb--70 bg_color--1">
+                <div style={{textAlign: 'justify'}} className="rn-blog-details pt--110 pb--70 bg_color--1">
                     <div className="container">
                         <div className="row">
                             <div className="col-lg-12">

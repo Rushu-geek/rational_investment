@@ -27,7 +27,7 @@ class About extends Component {
                 {/* End Breadcrump Area */}
 
                 {/* Start About Area  */}
-                <div className="rn-about-area ptb--120 bg_color--1">
+                <div style={{textAlign: 'justify'}} className="rn-about-area ptb--120 bg_color--1">
                     <div className="rn-about-wrapper">
                         <div className="container">
                             <div className="row row--35 align-items-center">
@@ -122,8 +122,8 @@ class About extends Component {
                                         <img className="w-100" src="/assets/images/team/team-01.jpg" alt="Blog Images" />
                                     </div>
                                     <div className="content">
-                                        <h4 className="title">Jone Due</h4>
-                                        <p className="designation">Sr. Web Developer</p>
+                                        <h4 className="title">Nimit H Shah</h4>
+                                        <p className="designation">Founder</p>
                                     </div>
                                     <ul className="social-icon" >
                                         <li><a href="https://www.facebook.com/"><FaFacebookF /></a></li>
@@ -135,7 +135,7 @@ class About extends Component {
                             {/* End Single Team  */}
 
                             {/* Start Single Team  */}
-                            <div className="col-lg-4 col-md-6 col-sm-6 col-12">
+                            {/* <div className="col-lg-4 col-md-6 col-sm-6 col-12">
                                 <div className="team">
                                     <div className="thumbnail">
                                         <img className="w-100" src="/assets/images/team/team-02.jpg" alt="Blog Images" />
@@ -150,11 +150,11 @@ class About extends Component {
                                         <li><a href="https://twitter.com/"><FaTwitter /></a></li>
                                     </ul>
                                 </div>
-                            </div>
+                            </div> */}
                             {/* End Single Team  */}
 
                             {/* Start Single Team  */}
-                            <div className="col-lg-4 col-md-6 col-sm-6 col-12">
+                            {/* <div className="col-lg-4 col-md-6 col-sm-6 col-12">
                                 <div className="team">
                                     <div className="thumbnail">
                                         <img className="w-100" src="/assets/images/team/team-03.jpg" alt="Blog Images" />
@@ -169,7 +169,7 @@ class About extends Component {
                                         <li><a href="https://twitter.com/"><FaTwitter /></a></li>
                                     </ul>
                                 </div>
-                            </div>
+                            </div> */}
                             {/* End Single Team  */}
 
                         </div>

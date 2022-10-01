@@ -6,6 +6,7 @@ const ContactThree = () => {
     const [expectedReturn, setExpectedReturn] = useState('');
     const [sipDurationMonths, setSipDurationMonths] = useState('');
     const [sipCalcAmount, setSipCalcAmount] = useState('');
+    const [investedAmount, setInvestedAmount] = useState('');
 
     const calculateSip = () => {
         var investment = monthlySipAmount; //principal amount
@@ -19,6 +20,7 @@ const ContactThree = () => {
 
         console.log("future value >>> ", futureValue);
         setSipCalcAmount(futureValue);
+        setInvestedAmount(investment * months);
 
     }
 
@@ -66,15 +68,16 @@ const ContactThree = () => {
                                     </label>
                                 </form>
                                 <button className="rn-button-style--2 btn-solid" onClick={calculateSip}>Calculate</button>
+                                <h5 className="title mt-3">Total Invested Amount: {Number(investedAmount).toFixed(0)} </h5>
                                 <h5 className="title mt-3">SIP Calculated Amount: {Number(sipCalcAmount).toFixed(0)} </h5>
                             </div>
                         </div>
                         <div className="col-lg-6 order-1 order-lg-2">
                             <div className="thumbnail mb_md--30 mb_sm--30">
                                 <button className="col-lg-12 rn-button-style--2 btn-solid mb-3" type="submit" id="mc-embedded-subscribe">SIP Calculator</button>
-                                <button className="col-lg-12 rn-button-style--2 btn-solid mb-3" type="submit" id="mc-embedded-subscribe">Retirement Calculator</button>
+                                {/* <button className="col-lg-12 rn-button-style--2 btn-solid mb-3" type="submit" id="mc-embedded-subscribe">Retirement Calculator</button>
                                 <button className="col-lg-12 rn-button-style--2 btn-solid mb-3" type="submit" id="mc-embedded-subscribe">Marriage Planner</button>
-                                <button className="col-lg-12 rn-button-style--2 btn-solid mb-3" type="submit" id="mc-embedded-subscribe">Education Planner</button>
+                                <button className="col-lg-12 rn-button-style--2 btn-solid mb-3" type="submit" id="mc-embedded-subscribe">Education Planner</button> */}
                             </div>
                         </div>
                     </div>

@@ -149,7 +149,7 @@ class CorporateBusiness extends Component {
                     <div className="container">
                         <div className="row row--35 align-items-center">
                             <div className="col-lg-6 order-2 order-lg-1">
-                                <div className="about-inner inner">
+                                <div style={{ textAlign: 'justify' }} className="about-inner inner">
                                     <div className="section-title">
                                         <h2 className="title">About Us</h2>
                                         <p>Rational Investment is a rising, evolving firm with its roots in the financial
@@ -183,7 +183,7 @@ class CorporateBusiness extends Component {
                                 <div className="thumbnail position-relative">
                                     <img className="w-100" src="/assets/images/about/about-3.png" alt="About Images" />
                                     <ModalVideo channel='youtube' isOpen={this.state.isOpen} videoId='N3OB9QXcjIE' onClose={() => this.setState({ isOpen: false })} />
-                                    <button className="video-popup position-top-center theme-color" onClick={this.openModal}><span className="play-icon"></span></button>
+                                    {/* <button className="video-popup position-top-center theme-color" onClick={this.openModal}><span className="play-icon"></span></button> */}
                                 </div>
                             </div>
                         </div>
