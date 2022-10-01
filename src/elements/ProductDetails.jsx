@@ -29,7 +29,7 @@ const ProductDetails = () => {
             title7: "Avail Cashless Hospitalization Facility",
             title8: "Get Tax Benefits",
             title9: "Ensure Peace of Mind",
-            descriptionP1: "Health Insurance or medical insurance is a contract between the insurer and policyholder, where the insurance company offers medical coverage to the insured up to the sum insured limit. Multiple benefits on health plans are available, like coverage for hospitalization, pre &amp; post hospitalization, medical check-ups, room rent coverage, cashless facility, etc.",
+            descriptionP1: "Health Insurance or medical insurance is a contract between the insurer and policyholder, where the insurance company offers medical coverage to the insured up to the sum insured limit. Multiple benefits on health plans are available, like coverage for hospitalization, pre & post hospitalization, medical check-ups, room rent coverage, cashless facility, etc.",
             descriptionP2: "Medical inflation is increasing every day making treatments expensive. If you get hospitalized for a critical illness or lifestyle disease, you may end up losing all your savings. The only way to afford quality medical treatment during a health emergency is by buying a health insurance policy. Take a look at some of the top reasons to buy a health insurance plan below:",
             descriptionShort: "A financial plan is a comprehensive picture of your current finances, your financial goals and any strategies you have set to achieve those goals.",
             li1: "- A health insurance policy can help you pay your medical bills, including pre and post-hospitalization expenses, today as well as in future despite the rising medical costs.",
@@ -51,7 +51,7 @@ const ProductDetails = () => {
             title4: "Term Life Insurance:",
             title5: "Whole Life Insurance:",
             title6: "Endowment Policy:",
-            title7: "Savings &amp; Investment Plans:",
+            title7: "Savings & Investment Plans:",
             title8: "Pension Plans:",
             title9: "Unit Linked Insurance Plans - ULIPs",
             title10: "Benefits of Life Insurance",
@@ -66,7 +66,7 @@ const ProductDetails = () => {
             li1: "Term life insurance is a type of life insurance that provides a death benefit to the beneficiary only if the insured dies during a specified period. If the policyholder survives until the end of the period, or term, the insurance coverage ceases without value and a payout or death claim cannot be made.",
             li2: "Whole life insurance is an insurance plan that provides you coverage throughout your lifetime provided the policy is in force. Whole life insurance policies also contain a cash value component that increases over time.",
             li3: "An endowment policy is defined as a types of life insurance policies that is payable to the insured if he/she is still living on the policy's maturity date, or to a beneficiary otherwise. Endowment life insurance plans provide you with a dual combination of protection and savings.",
-            li4: "Savings &amp; Investment Plans are the types of insurance plans that provide you the assurance of lump sum funds for you and your family&#39;s future expenses. While providing an excellent savings tool for your short term and long term financial goals, these plans also assure your family a certain sum by way of an insurance cover. This is a broad categorization that covers both the traditional and unit linked plans.",
+            li4: "Savings & Investment Plans are the types of insurance plans that provide you the assurance of lump sum funds for you and your family&#39;s future expenses. While providing an excellent savings tool for your short term and long term financial goals, these plans also assure your family a certain sum by way of an insurance cover. This is a broad categorization that covers both the traditional and unit linked plans.",
             li5: "These plans provide you with income during retirement is called the Retirement Plan. These plans are offered by life insurance companies in India and help you to build a retirement corpus.",
             li6: "LIPs are a type of life insurance plan that provide you with a dual advantage of protection and flexibility in investment. It is a type of life insurance where the cash value of a policy varies according to the current net asset value of the underlying investment assets. The premium paid by ULIPs is used to purchase units in investment assets chosen by the policyholder.",
             li7: "Since uncertainties are unpredictable and may cause problems to an individual and his/her family at any time, availing a life insurance policy will ensure that your family and dependents continue their lifestyle in case of your unforeseen and accidental death.",
@@ -114,7 +114,7 @@ const ProductDetails = () => {
             li1: "We will lead and support you so that you are aware of when, where, and how much to contribute each month.",
             li2: "For you, we will create a complete investment strategy that takes into account all market segments.",
             li3: "The three keys to long-term wealth security are when to buy, how much to invest, and where to invest.",
-            li4: "We&#39;ll also make recommendations for ways to get out from under your current debts.",
+            li4: "We'll also make recommendations for ways to get out from under your current debts.",
             li5: "We prioritise your whole development over emphasising just one area of it.",
         },
         {
@@ -128,7 +128,7 @@ const ProductDetails = () => {
             li1: "We will lead and support you so that you are aware of when, where, and how much to contribute each month.",
             li2: "For you, we will create a complete investment strategy that takes into account all market segments.",
             li3: "The three keys to long-term wealth security are when to buy, how much to invest, and where to invest.",
-            li4: "We&#39;ll also make recommendations for ways to get out from under your current debts.",
+            li4: "We'll also make recommendations for ways to get out from under your current debts.",
             li5: "We prioritise your whole development over emphasising just one area of it.",
         },
         {
@@ -142,7 +142,7 @@ const ProductDetails = () => {
             li1: "We will lead and support you so that you are aware of when, where, and how much to contribute each month.",
             li2: "For you, we will create a complete investment strategy that takes into account all market segments.",
             li3: "The three keys to long-term wealth security are when to buy, how much to invest, and where to invest.",
-            li4: "We&#39;ll also make recommendations for ways to get out from under your current debts.",
+            li4: "We'll also make recommendations for ways to get out from under your current debts.",
             li5: "We prioritise your whole development over emphasising just one area of it.",
         },
         {
@@ -156,7 +156,7 @@ const ProductDetails = () => {
             li1: "We will lead and support you so that you are aware of when, where, and how much to contribute each month.",
             li2: "For you, we will create a complete investment strategy that takes into account all market segments.",
             li3: "The three keys to long-term wealth security are when to buy, how much to invest, and where to invest.",
-            li4: "We&#39;ll also make recommendations for ways to get out from under your current debts.",
+            li4: "We'll also make recommendations for ways to get out from under your current debts.",
             li5: "We prioritise your whole development over emphasising just one area of it.",
         }
     ]
@@ -479,7 +479,7 @@ const ProductDetails = () => {
                                                     guidelines, the minimum investment required to open a PMS account is Rs. 50
                                                     Lakhs. However, different providers have different minimum balance
                                                     requirements for different products. In India, Portfolio Management Services
-                                                    are also provided by equity broking firms &amp; Asset management Companies.</p>
+                                                    are also provided by equity broking firms & Asset management Companies.</p>
                                             </div>}
                                         </div>
                                         <div className="col-lg-6 col-12 order-1 order-lg-2">
@@ -564,7 +564,7 @@ const ProductDetails = () => {
                                                         equity)</li>
                                                 </ol>
                                                 <div style={{textAlign: 'center', marginTop: '60px'}}>
-                                                    <a href="https://angel-one.onelink.me/Wjgr/31yv7utm" target={"_blank"} className="btn btn-primary">
+                                                    <a href="https://angel-one.onelink.me/Wjgr/1wbz6j68" target={"_blank"} className="btn btn-primary">
                                                         <span style={{color: 'white'}}>Open Demat Account In Just 5 minutes</span>
                                                     </a>
                                                 </div>

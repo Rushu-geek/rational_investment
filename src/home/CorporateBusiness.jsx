@@ -14,7 +14,6 @@ import CounterOne from "../elements/counters/CounterOne";
 import BrandOne from "../elements/BrandTwo";
 import Testimonial from "../elements/Testimonial";
 
-
 const SlideList = [
     {
         textPosition: 'text-right',
@@ -29,8 +28,8 @@ const SlideList = [
         textPosition: 'text-left',
         bgImage: 'bg_image--31',
         category: '',
-        title: 'Agency.',
-        description: 'There are many variations of passages but the majority have suffered alteration.',
+        title: 'Investment',
+        description: 'Never depend on asing;e income. Make an investment to create a second income.',
         buttonText: 'Contact Us',
         buttonLink: '/contact'
     },
@@ -60,7 +59,6 @@ const starndardService = [
     }
 
 ]
-
 class CorporateBusiness extends Component {
     constructor() {
         super()
@@ -83,7 +81,7 @@ class CorporateBusiness extends Component {
             'Better hand holding.',
             'Scientific perspective to achieve financial well-being of our customers.',
             'Trusted by 200+ families.',
-            'We believe in work with simple &amp; steady strategies.'
+            'We believe in work with simple & steady strategies.'
         ];
 
         const PostList = BlogContent.slice(0, 1);
@@ -157,10 +155,10 @@ class CorporateBusiness extends Component {
                                         <p>Rational Investment is a rising, evolving firm with its roots in the financial
                                             product distribution services expanding into newer boundaries with great
                                             passion. We are certified Mutual Fund Distributor recognized by AMFI -
-                                            Association of Mutual Fund in India. Insurance consultants (Life &amp; Health).</p>
+                                            Association of Mutual Fund in India. Insurance consultants (Life & Health).</p>
                                         <p>
-                                            Established in the year 2014 by Mr Nimit H Shah &amp; now Rational Investment is
-                                            one of the leading financial service providers &amp; distributors.
+                                            Established in the year 2014 by Mr Nimit H Shah & now Rational Investment is
+                                            one of the leading financial service providers & distributors.
                                         </p>
                                     </div>
                                     <div className="mt--30">

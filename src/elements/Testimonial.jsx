@@ -53,7 +53,7 @@ class Testimonial extends Component {
                                         for many of our finance related decisions and we have been extremely pleased
                                         with his services. With him and Rational Investments, we are always assured of the fact that are
                                         finances are in safe hands and are always assured of swift and good returns.</p>
-                                    <p class="overview"><b>Ayushi Shrivastav</b></p>
+                                    <p class="overview"><b>Ayushi Shrivastava</b></p>
                                 </div>
                                 <div class="carousel-item">
                                     <div class="img-box"><img src="/assets/images/client/testimonial-2.jpg" alt="" /></div>

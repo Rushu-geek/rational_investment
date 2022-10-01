@@ -43,11 +43,11 @@ class About extends Component {
                                             <p>Rational Investment is a rising, evolving firm with its roots in the financial
                                                 product distribution services expanding into newer boundaries with great
                                                 passion. We are certified Mutual Fund Distributor recognized by AMFI -
-                                                Association of Mutual Fund in India. Insurance consultants (Life &amp; Health).</p>
-                                            <p>Established in the year 2014 by Mr Nimit H Shah &amp; now Rational Investment is
-                                                one of the leading financial service providers &amp; distributors.</p>
+                                                Association of Mutual Fund in India. Insurance consultants (Life & Health).</p>
+                                            <p>Established in the year 2014 by Mr Nimit H Shah & now Rational Investment is
+                                                one of the leading financial service providers & distributors.</p>
                                             <p>We help people to achieve their financial goals with effective and better
-                                                investment plans &amp; Assets Allocation.</p>
+                                                investment plans & Assets Allocation.</p>
                                             <p>We use our complete knowledge of mutual funds, stock market, Corporate
                                                 FDs, insurance to suggest investment options to the clients, as per their
                                                 requirements.</p>
@@ -58,7 +58,7 @@ class About extends Component {
                                             <div className="col-lg-6 col-md-12 col-sm-12 col-12">
                                                 <div className="about-us-list">
                                                     <h3 className="title">Our Vision</h3>
-                                                    <p>To be known as a company that has always focused on achieving the client&#39;s
+                                                    <p style={{fontSize: '18px'}} className="listitems">To be known as a company that has always focused on achieving the client's
                                                         financial goals by providing unique financial products managed by the best in
                                                         the business. To be the most trusted organization for all our clients when it
                                                         comes to managing their finance.</p>
@@ -67,7 +67,7 @@ class About extends Component {
                                             <div className="col-lg-6 col-md-12 col-sm-12 col-12">
                                                 <div className="about-us-list">
                                                     <h3 className="title">Our Mission</h3>
-                                                    <ul style={{fontSize: '18px'}} className="listitems">
+                                                    <ul style={{fontSize: '18px', fontWeight: 'lighter'}} className="listitems">
                                                         <li>To give customers the best value for their money through customized
                                                             service, innovative products, and the best trading and investment
                                                             modern techniques.</li>

@@ -1,11 +1,13 @@
 import React from 'react';
-import {FaTwitter ,FaInstagram ,FaFacebookF , FaLinkedinIn} from "react-icons/fa";
+import {FaTwitter ,FaInstagram ,FaFacebookF , FaLinkedinIn, FaYoutube, FaWhatsapp} from "react-icons/fa";
 
 const SocialShare = [
-    {Social: <FaFacebookF /> , link: 'https://www.facebook.com/'},
-    {Social: <FaLinkedinIn /> , link: 'https://www.linkedin.com/'},
-    {Social: <FaInstagram /> , link: 'https://www.instagram.com/'},
-    {Social: <FaTwitter /> , link: 'https://twitter.com/'},
+    { Social: <FaFacebookF />, link: 'https://www.facebook.com/Investment.rational' },
+    { Social: <FaLinkedinIn />, link: 'https://www.linkedin.com/company/rational-investment/' },
+    { Social: <FaInstagram />, link: 'https://www.instagram.com/' },
+    { Social: <FaTwitter />, link: 'https://twitter.com/' },
+    { Social: <FaYoutube />, link: 'https://youtube.com/channel/UCQ8M6uzgAZa2FqoAlCwW-Ng' },
+    { Social: <FaWhatsapp />, link: 'https://api.whatsapp.com/send?phone=+919925853065&text=Hello%2C%20I%20am%20Intrested%20in%20some%20Goal%20Planning%20and%20Wealth%20Creation%2C%20Guide%20me%20for%20the%20same.' },
 ]
 
 const FooterTwo = () => {
@@ -26,7 +28,7 @@ const FooterTwo = () => {
                         <div className="inner text-center">
                             <ul className="social-share rn-lg-size d-flex justify-content-center liststyle">
                                 {SocialShare.map((val , i) => (
-                                    <li key={i}><a href={`${val.link}`}>{val.Social}</a></li>
+                                    <li key={i}><a href={`${val.link}`} target="_blank">{val.Social}</a></li>
                                 ))}
                             </ul>
                         </div>

@@ -25,7 +25,7 @@ class CounterOne extends Component{
                 countTitle: 'Happy Clients.',
             },
             {
-                countNum : 100,
+                countNum : 80,
                 countTitle: 'Wealth Accounts.',
             },
         ];

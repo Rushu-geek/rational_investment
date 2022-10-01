@@ -29,17 +29,17 @@ class BlogDetails extends Component {
                 {/* End Header Area  */}
 
                 {/* Start Breadcrump Area */}
-                <div className="rn-page-title-area pt--120 pb--190 bg_image bg_image--7" data-black-overlay="7">
+                <div className="rn-page-title-area pt--120 pb--190 bg_image bg_image--1" data-black-overlay="7">
                     <div className="container">
                         <div className="row">
                             <div className="col-lg-12">
                                 <div className="blog-single-page-title text-center pt--100">
                                     <h2 className="title theme-gradient">Why you shouldn't avoid doing SIP investments in a Volatile market?</h2>
                                     <ul className="blog-meta d-flex justify-content-center align-items-center">
-                                        <li><FiClock />May 18, 2020</li>
-                                        <li><FiUser />NipaBali</li>
-                                        <li><FiMessageCircle />15 Comments</li>
-                                        <li><FiHeart />Like</li>
+                                        <li><FiClock />October 1st, 2022</li>
+                                        <li><FiUser />Admin</li>
+                                        {/* <li><FiMessageCircle />15 Comments</li>
+                                        <li><FiHeart />Like</li> */}
                                     </ul>
                                 </div>
                             </div>
@@ -63,9 +63,9 @@ class BlogDetails extends Component {
                                             think it is a safer option. Financial planners and consultants to mutual funds, however,
                                             recommend the opposite. During difficult times, intelligent investors are more likely to stick
                                             to equities investing.</p>
-                                        <div className="thumbnail">
+                                        {/* <div className="thumbnail">
                                             <img src="/assets/images/blog/bl-big-01.jpg" alt="Blog Images" />
-                                        </div>
+                                        </div> */}
 
 
                                         <div className="col-lg-12 d-flex flex-wrap mt-5">
