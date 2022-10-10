@@ -29,7 +29,7 @@ const SlideList = [
         bgImage: 'bg_image--31',
         category: '',
         title: 'Investment',
-        description: 'Never depend on asing;e income. Make an investment to create a second income.',
+        description: 'Never depend on a single income. Make an investment to create a second income.',
         buttonText: 'Contact Us',
         buttonLink: '/contact'
     },
@@ -88,7 +88,7 @@ class CorporateBusiness extends Component {
 
         return (
             <Fragment>
-                <Helmet pageTitle="Corporate Business" />
+                <Helmet pageTitle="Home" />
 
                 {/* Start Header Area  */}
                 <Header headerPosition="header--static logoresize" logo="all-dark" color="color-black" />
