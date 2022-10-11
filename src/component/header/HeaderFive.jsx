@@ -22,13 +22,18 @@ class HeaderFive extends Component {
         //  this.subMetuTrigger = this.subMetuTrigger.bind(this);
         window.addEventListener('load', function () {
             console.log('All assets are loaded')
-        })
+        });
+        this.state = {
+            colorFlag: false
+        }
     }
     menuTrigger() {
-        document.querySelector('.header-wrapper').classList.toggle('menu-open')
+        document.querySelector('.header-wrapper').classList.toggle('menu-open');
+        this.setState({ colorFlag: true });
     }
     CLoseMenuTrigger() {
         document.querySelector('.header-wrapper').classList.remove('menu-open');
+        this.setState({ colorFlag: false });
     }
     render() {
         var elements = document.querySelectorAll('.has-droupdown > a');
@@ -60,21 +65,26 @@ class HeaderFive extends Component {
             console.log("You are using Desktop");
         }
 
-        let logoUrl = <img src="/assets/images/logo/rational-investment-1.png" alt="Trydo" />;
+        let logoUrl = <img height={'80px'} width={'300px'} src="/assets/images/logo/rational-investment-1.png" alt="Trydo" />;
 
         return (
             <>
                 <div className="header-wrapper1" id="header-wrapper1">
                     <div className="container">
                         <div className="row align-items-center">
-                            <div className="col-lg-4 col-md-4 col-6">
+                            {isMobileDevice && <div className="col-lg-12 col-md-12 col-12">
+                                <div style={{ padding: '10px' }} className="logo">
+                                    {logoUrl}
+                                </div>
+                            </div>}
+                            {!isMobileDevice && <div className="col-lg-4 col-md-4 col-6">
                                 <div className="header-left">
                                     <div style={{ padding: '10px' }} className="logo">
                                         {logoUrl}
                                     </div>
                                 </div>
-                            </div>
-                            <div className="col-lg-4 col-md-4 col-6">
+                            </div>}
+                            {!isMobileDevice && <div className="col-lg-4 col-md-4 col-6">
                                 <div style={{ float: 'right', cursor: 'pointer' }} className="header-btn">
                                     <a className="rn-btn mr-3">
                                         <span>Wealth Account</span>
@@ -83,29 +93,32 @@ class HeaderFive extends Component {
                                         <span>My Portfolio</span>
                                     </a>
                                 </div>
-                            </div>
-                            <div className="col-lg-4 col-md-6 col-sm-6 col-12">
+                            </div>}
+                            {!isMobileDevice && <div className="col-lg-4 col-md-6 col-sm-6 col-12">
                                 <div className="inner text-center">
                                     <ul className="social-share rn-lg-size d-flex justify-content-center liststyle">
                                         {SocialShare.map((val, i) => (
-                                            <li key={i}><a style={{border: "2px solid rgba(28, 116, 203)"}} href={`${val.link}`} target="_blank">{val.Social}</a></li>
+                                            <li key={i}><a style={{ border: "2px solid rgba(28, 116, 203)" }} href={`${val.link}`} target="_blank">{val.Social}</a></li>
                                         ))}
                                     </ul>
                                 </div>
-                            </div>
+                            </div>}
                         </div>
                     </div>
                 </div>
                 <header style={{ backgroundColor: '#1C74CB', width: '100%' }} className={`header-area formobile-menu ${headerPosition} ${color}`}>
                     <div className="header-wrapper" id="header-wrapper">
+                        <div className="humberger-menu d-block d-lg-none">
+                            <span onClick={this.menuTrigger} className="menutrigger text-white"><FiMenu /></span>
+                        </div>
                         <div className="container">
                             <div className="row">
                                 <div className="col-lg-9 col-md-8 col-6">
                                     <nav className="mainmenunav d-lg-block">
-                                        <ul className="mainmenu">
-                                            <li className="has-droupdown"><Link style={{ color: 'white' }} to="/">Home</Link>
+                                        <ul className="mainmenu" style={{ backgroundColor: isMobileDevice ? '#d3d7db' : '' }}>
+                                            <li style={{ color: isMobileDevice ? 'black' : 'white' }}><Link style={{ color: this.state.colorFlag ? 'black' : 'white' }} to="/">Home</Link>
                                             </li>
-                                            <li className="has-droupdown"><Link style={{ color: 'white' }} to="/service" >Service</Link>
+                                            <li className="has-droupdown"><Link style={{ color: isMobileDevice ? 'black' : 'white' }} to={isMobileDevice ? '#' : '/service'} >Service</Link>
                                                 <ul className="submenu">
                                                     <li><Link to="/service">All Services</Link></li>
                                                     <li><Link to="/service-details?name=fs">Financial service</Link></li>
@@ -114,7 +127,7 @@ class HeaderFive extends Component {
                                                     <li><Link to="/service-details?name=wm">Wealth Management</Link></li>
                                                 </ul>
                                             </li>
-                                            <li className="has-droupdown"><Link style={{ color: 'white' }} to="/product" >Products</Link>
+                                            <li className="has-droupdown"><Link style={{ color: isMobileDevice ? 'black' : 'white' }} to={isMobileDevice ? '#' : '/product'} >Products</Link>
                                                 <ul className="submenu">
                                                     <li><Link to="/product">All Products</Link></li>
                                                     <li><Link to="/product-details?name=hi">Health Insurance</Link></li>
@@ -126,27 +139,50 @@ class HeaderFive extends Component {
                                                     <li><Link to="/product-details?name=pm">PMS</Link></li>
                                                 </ul>
                                             </li>
-                                            <li><Link style={{ color: 'white' }} to="/about" >About Us</Link></li>
+                                            <li><Link style={{ color: isMobileDevice ? 'black' : 'white' }} to="/about" >About Us</Link></li>
 
-                                            <li className="has-droupdown"><Link style={{ color: 'white' }} to="/blog" >Our Blog</Link>
+                                            <li><Link style={{ color: isMobileDevice ? 'black' : 'white' }} to="/blog" >Our Blog</Link>
                                             </li>
-                                            <li className="has-droupdown"><Link style={{ color: 'white' }} to="#" >Gallery</Link>
+                                            <li className="has-droupdown"><Link style={{ color: isMobileDevice ? 'black' : 'white' }} to="#" >Gallery</Link>
                                                 <ul className="submenu">
                                                     <li><Link to="/video-popup">Gallery Videos</Link></li>
                                                     <li><Link to="/gallery">Gallery Images</Link></li>
                                                 </ul>
                                             </li>
-                                            <li><Link style={{ color: 'white' }} to="/contact" >Connect Us</Link></li>
-                                            <li><Link style={{ color: 'white' }} to="/calculators" >Calculators</Link></li>
+                                            <li><Link style={{ color: isMobileDevice ? 'black' : 'white' }} to="/contact" >Connect Us</Link></li>
+                                            <li><Link style={{ color: isMobileDevice ? 'black' : 'white' }} to="/calculators" >Calculators</Link></li>
+
+                                            {isMobileDevice && <div style={{ alignItems: 'center', justifyContent: 'center' }} className="row">
+                                                {SocialShare.map((val, i) => (
+                                                    <li key={i}>
+                                                        <a style={{
+                                                            // border: "2px solid rgba(28, 116, 203)",
+                                                            // borderRadius: '20px',
+                                                            fontSize: '35px',
+                                                            padding: '7px'
+                                                        }}
+                                                            href={`${val.link}`}
+                                                            target="_blank"
+                                                        >
+                                                            {val.Social}</a></li>
+                                                ))}
+                                            </div>}
+
+                                            <div style={{ alignItems: 'center', justifyContent: 'center' }} className="row">
+                                                {isMobileDevice && <button style={{ width: '80%' }} className="btn btn-secondary">Wealth Account</button>}
+                                            </div>
+                                            <div style={{ alignItems: 'center', justifyContent: 'center', marginTop: '10px' }} className="row">
+                                                {isMobileDevice && <button onClick={() => window.open("https://www.ifaplanet.com/login.php", "_blank")} style={{ width: '80%' }} className="btn btn-secondary">My Portfolio</button>}
+                                            </div>
                                         </ul>
                                     </nav>
                                     {/* Start Humberger Menu  */}
-                                    <div className="humberger-menu d-block d-lg-none pl--20">
+                                    {/* <div className="humberger-menu d-block d-lg-none pl--20">
                                         <span onClick={this.menuTrigger} className="menutrigger text-white"><FiMenu /></span>
-                                    </div>
+                                    </div> */}
                                     {/* End Humberger Menu  */}
                                     <div className="close-menu d-block d-lg-none">
-                                        <span onClick={this.CLoseMenuTrigger} className="closeTrigger"><FiX /></span>
+                                        <span style={{ backgroundColor: 'darkgray', borderRadius: '27px' }} onClick={this.CLoseMenuTrigger} className="closeTrigger"><FiX /></span>
                                     </div>
                                 </div>
                             </div>
