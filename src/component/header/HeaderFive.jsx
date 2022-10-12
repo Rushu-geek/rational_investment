@@ -65,7 +65,7 @@ class HeaderFive extends Component {
             console.log("You are using Desktop");
         }
 
-        let logoUrl = <img height={'80px'} width={'300px'} src="/assets/images/logo/rational-investment-1.png" alt="Trydo" />;
+        let logoUrl = <img src="/assets/images/logo/rational-investment-1.png" alt="Trydo" />;
 
         return (
             <>
