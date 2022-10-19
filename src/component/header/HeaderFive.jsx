@@ -118,6 +118,20 @@ class HeaderFive extends Component {
                                         <ul className="mainmenu" style={{ backgroundColor: isMobileDevice ? '#d3d7db' : '' }}>
                                             <li style={{ color: isMobileDevice ? 'black' : 'white' }}><Link style={{ color: this.state.colorFlag ? 'black' : 'white' }} to="/">Home</Link>
                                             </li>
+                                            
+                                            <li><Link style={{ color: isMobileDevice ? 'black' : 'white' }} to="/about" >About Us</Link></li>
+                                            <li className="has-droupdown"><Link style={{ color: isMobileDevice ? 'black' : 'white' }} to={isMobileDevice ? '#' : '/product'} >Products</Link>
+                                                <ul className="submenu">
+                                                    <li><Link to="/product">All Products</Link></li>
+                                                    <li><Link to="/product-details?name=mf">Mutual Funds</Link></li>
+                                                    <li><Link to="/product-details?name=sb">Stock Broking</Link></li>
+                                                    <li><Link to="/product-details?name=pm">PMS</Link></li>
+                                                    <li><Link to="/product-details?name=li">Life Insurance</Link></li>
+                                                    <li><Link to="/product-details?name=hi">Health Insurance</Link></li>
+                                                    <li><Link to="/product-details?name=cf">Corporate Fixed Deposit</Link></li>
+                                                    <li><Link to="/product-details?name=bo">Bonds</Link></li>
+                                                </ul>
+                                            </li>
                                             <li className="has-droupdown"><Link style={{ color: isMobileDevice ? 'black' : 'white' }} to={isMobileDevice ? '#' : '/service'} >Service</Link>
                                                 <ul className="submenu">
                                                     <li><Link to="/service">All Services</Link></li>
@@ -127,19 +141,6 @@ class HeaderFive extends Component {
                                                     <li><Link to="/service-details?name=wm">Wealth Management</Link></li>
                                                 </ul>
                                             </li>
-                                            <li className="has-droupdown"><Link style={{ color: isMobileDevice ? 'black' : 'white' }} to={isMobileDevice ? '#' : '/product'} >Products</Link>
-                                                <ul className="submenu">
-                                                    <li><Link to="/product">All Products</Link></li>
-                                                    <li><Link to="/product-details?name=hi">Health Insurance</Link></li>
-                                                    <li><Link to="/product-details?name=li">Life Insurance</Link></li>
-                                                    <li><Link to="/product-details?name=bo">Bonds</Link></li>
-                                                    <li><Link to="/product-details?name=mf">Mutual Funds</Link></li>
-                                                    <li><Link to="/product-details?name=cf">Corporate Fixed Deposit</Link></li>
-                                                    <li><Link to="/product-details?name=sb">Stock Broking</Link></li>
-                                                    <li><Link to="/product-details?name=pm">PMS</Link></li>
-                                                </ul>
-                                            </li>
-                                            <li><Link style={{ color: isMobileDevice ? 'black' : 'white' }} to="/about" >About Us</Link></li>
 
                                             <li><Link style={{ color: isMobileDevice ? 'black' : 'white' }} to="/blog" >Our Blog</Link>
                                             </li>
@@ -151,6 +152,7 @@ class HeaderFive extends Component {
                                             </li>
                                             <li><Link style={{ color: isMobileDevice ? 'black' : 'white' }} to="/contact" >Connect Us</Link></li>
                                             <li><Link style={{ color: isMobileDevice ? 'black' : 'white' }} to="/calculators" >Calculators</Link></li>
+                                            <li><Link style={{ color: isMobileDevice ? 'black' : 'white' }} to="/downloads" >Downloads</Link></li>
 
                                             {isMobileDevice && <div style={{ alignItems: 'center', justifyContent: 'center' }} className="row">
                                                 {SocialShare.map((val, i) => (

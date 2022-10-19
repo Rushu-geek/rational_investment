@@ -28,6 +28,7 @@ import * as serviceWorker from './serviceWorker';
 import Calculators from './elements/Calculators';
 import Product from './elements/Products';
 import ProductDetails from './elements/ProductDetails';
+import Downloads from './elements/Downloads';
 
 class Root extends Component{
     render(){
@@ -44,6 +45,7 @@ class Root extends Component{
                         <Route exact path={`/product-details`} component={ProductDetails}/>
                         <Route exact path={`/contact`} component={Contact}/>
                         <Route exact path={`/calculators`} component={Calculators}/>
+                        <Route exact path={`/downloads`} component={Downloads}/>
                         <Route exact path={`/about`} component={About}/>
                         <Route exact path={`/blog`} component={Blog}/>
                         <Route exact path={`/blog-details`} component={BlogDetails}/>

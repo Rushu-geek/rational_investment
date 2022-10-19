@@ -12,39 +12,11 @@ import { useHistory } from 'react-router-dom';
 
 const ServiceList = [
     {
-        key: 'hi',
-        icon: <GiHealthPotion />,
-        bgImage: 'bg_image--34',
-        title: 'Health Insurance',
-        descriptionShort: "Health Insurance or medical insurance is a contract between the insurer and policyholder, where the insurance company offers medical coverage to the insured up to the sum insured limit.",
-    },
-    {
-        key: 'li',
-        icon: <GiLifeSupport />,
-        bgImage: 'bg_image--36',
-        title: 'Life Insurance',
-        descriptionShort: 'A life insurance policy is something that provides a dedicated sum of money on the demise of the policyholder or after a certain period of time.',
-    },
-    {
-        key: 'bo',
-        icon: <GrMoney />,
-        bgImage: 'bg_image--35',
-        title: 'Bonds',
-        descriptionShort: 'A bond is a debt instrument in which an investor loans money to an entity (typically corporate or government) which borrows the funds for a defined period of time at a variable or fixed interest rate.',
-    },
-    {
         key: 'mf',
         icon: <FcMoneyTransfer />,
         bgImage: 'bg_image--37',
         title: 'Mutual Funds',
         descriptionShort: 'As investment goals vary from person to person post-retirement expenses, money for children’s education or marriage, house purchase, etc.',
-    },
-    {
-        key: 'cf',
-        icon: <GiTakeMyMoney />,
-        bgImage: 'bg_image--37',
-        title: 'Corporate Fixed Deposit',
-        descriptionShort: 'Company Fixed Deposit (corporate FD) is a term deposit which is held over fixed period at fixed rates of interest.',
     },
     {
         key: 'sb',
@@ -59,7 +31,35 @@ const ServiceList = [
         bgImage: 'bg_image--37',
         title: 'PMS',
         descriptionShort: 'PMS or Portfolio Management Service is a professional service where qualified and experienced portfolio managers backed by a research team manage equity portfolios on behalf of clients instead of clients managing themselves.',
-    }
+    },
+    {
+        key: 'li',
+        icon: <GiLifeSupport />,
+        bgImage: 'bg_image--36',
+        title: 'Life Insurance',
+        descriptionShort: 'A life insurance policy is something that provides a dedicated sum of money on the demise of the policyholder or after a certain period of time.',
+    },
+    {
+        key: 'hi',
+        icon: <GiHealthPotion />,
+        bgImage: 'bg_image--34',
+        title: 'Health Insurance',
+        descriptionShort: "Health Insurance or medical insurance is a contract between the insurer and policyholder, where the insurance company offers medical coverage to the insured up to the sum insured limit.",
+    },
+    {
+        key: 'cf',
+        icon: <GiTakeMyMoney />,
+        bgImage: 'bg_image--37',
+        title: 'Corporate Fixed Deposit',
+        descriptionShort: 'Company Fixed Deposit (corporate FD) is a term deposit which is held over fixed period at fixed rates of interest.',
+    },
+    {
+        key: 'bo',
+        icon: <GrMoney />,
+        bgImage: 'bg_image--35',
+        title: 'Bonds',
+        descriptionShort: 'A bond is a debt instrument in which an investor loans money to an entity (typically corporate or government) which borrows the funds for a defined period of time at a variable or fixed interest rate.',
+    },
 ]
 
 
@@ -69,7 +69,7 @@ const Product = () => {
 
         return(
             <React.Fragment>
-                <PageHelmet pageTitle='Service' />
+                <PageHelmet pageTitle='Products' />
 
                 {/* Start Header Area  */}
                 <Header headerPosition="header--static logoresize" logo="all-dark" color="color-black"/>
