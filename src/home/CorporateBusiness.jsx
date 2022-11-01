@@ -231,7 +231,7 @@ class CorporateBusiness extends Component {
                                                     <img src={`/assets/images/featured/corporate-${value.image}.png`} alt="Corporate Images" />
                                                 </div>
                                                 <div className="content">
-                                                    <h3><a href="/service-details">{value.title}</a></h3>
+                                                    <h3><a href={`/service-details?name=${value.name}`}>{value.title}</a></h3>
                                                     <p>{value.description}</p>
                                                     <a className="btn-transparent rn-btn-dark" href={`/service-details?name=${value.name}`}><span className="text">Read More</span></a>
                                                 </div>
