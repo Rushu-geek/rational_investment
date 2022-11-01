@@ -41,21 +41,25 @@ const starndardService = [
         image: '01',
         title: 'Financial service',
         description: 'Financial service Description',
+        name: 'fs'
     },
     {
         image: '02',
         title: 'Retirements Plannings',
         description: 'Retirements Plannings Description',
+        name: 'rp'
     },
     {
         image: '03',
         title: 'Goal planning',
         description: 'Goal planning Description',
+        name: 'gp'
     },
     {
         image: '04',
         title: 'Wealth Management',
         description: 'Wealth Management Description',
+        name: 'wm'
     }
 
 ]
@@ -229,7 +233,7 @@ class CorporateBusiness extends Component {
                                                 <div className="content">
                                                     <h3><a href="/service-details">{value.title}</a></h3>
                                                     <p>{value.description}</p>
-                                                    <a className="btn-transparent rn-btn-dark" href="/service-details"><span className="text">Read More</span></a>
+                                                    <a className="btn-transparent rn-btn-dark" href={`/service-details?name=${value.name}`}><span className="text">Read More</span></a>
                                                 </div>
                                             </div>
                                         </div>
