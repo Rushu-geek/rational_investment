@@ -16,6 +16,7 @@ class Footer extends Component {
         return (
             <React.Fragment>
                 <footer className="footer-area">
+
                     <div className="footer-wrapper">
                         <div className="row align-items-end row--0">
                             <div className="col-lg-6">
@@ -27,7 +28,9 @@ class Footer extends Component {
                                             <span>Contact Us</span>
                                         </a>
                                     </div>
+
                                 </div>
+
                             </div>
                             <div className="col-lg-6">
                                 <div className="footer-right" data-black-overlay="6">
@@ -65,9 +68,11 @@ class Footer extends Component {
 
                                         <div className="col-lg-12">
                                             <div className="copyright-text">
+                                                <p style={{fontWeight: 'bold', fontSize: '10px', lineHeight: '12px'}}>Disclaimer: www.rationalinvestments.in is an online website of rational Investments who is registered vide ARN- 94466 as a AMFI Registered Mutual Fund Distributor. The said website is intends to provide educative and informative details related to investments and also provide online transaction facility in Mutual Funds.  The website does not guarantee any returns or financial goal success by any means.</p>
                                                 <p>Copyright © 2022. All Rights Reserved.</p>
                                             </div>
                                         </div>
+
                                     </div>
                                     {/* <div className="row">
                                         <div className="col-lg-12">

@@ -86,7 +86,7 @@ class HeaderFive extends Component {
                             </div>}
                             {!isMobileDevice && <div className="col-lg-4 col-md-4 col-6">
                                 <div style={{ float: 'right', cursor: 'pointer' }} className="header-btn">
-                                    <a className="rn-btn mr-3">
+                                    <a href="https://my-planner.in/login" target={"_blank"} className="rn-btn mr-3">
                                         <span>Wealth Account</span>
                                     </a>
                                     <a href="https://www.ifaplanet.com/login.php" target={"_blank"} className="rn-btn">
@@ -171,7 +171,7 @@ class HeaderFive extends Component {
                                             </div>}
 
                                             <div style={{ alignItems: 'center', justifyContent: 'center' }} className="row">
-                                                {isMobileDevice && <button style={{ width: '80%' }} className="btn btn-secondary">Wealth Account</button>}
+                                                {isMobileDevice && <button onClick={() => window.open("https://my-planner.in/login", "_blank")} style={{ width: '80%' }} className="btn btn-secondary">Wealth Account</button>}
                                             </div>
                                             <div style={{ alignItems: 'center', justifyContent: 'center', marginTop: '10px' }} className="row">
                                                 {isMobileDevice && <button onClick={() => window.open("https://www.ifaplanet.com/login.php", "_blank")} style={{ width: '80%' }} className="btn btn-secondary">My Portfolio</button>}

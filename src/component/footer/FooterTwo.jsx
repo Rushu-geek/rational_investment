@@ -43,9 +43,9 @@ const FooterTwo = () => {
                 </div>
                 <div className="row mt-5">
                     <div className="col-lg-12 col-md-12 col-sm-12 col-12">
-                        <div className="inner text-center mt_md--20 mt_sm--20">
+                        <div className="inner text-center mt_sm--20">
                             <div className="text">
-                                <p style={{fontWeight: 'bold', fontSize: '16px'}}>Disclaimer: www.rationalinvestments.in is an online website of rational Investments who is registered vide ARN- 94466 as a AMFI Registered Mutual Fund Distributor. The said website is intends to provide educative and informative details related to investments and also provide online transaction facility in Mutual Funds.  The website does not guarantee any returns or financial goal success by any means.</p>
+                                <p style={{fontWeight: 'bold', fontSize: '10px', lineHeight: '12px'}}>Disclaimer: www.rationalinvestments.in is an online website of rational Investments who is registered vide ARN- 94466 as a AMFI Registered Mutual Fund Distributor. The said website is intends to provide educative and informative details related to investments and also provide online transaction facility in Mutual Funds.  The website does not guarantee any returns or financial goal success by any means.</p>
                             </div>
                         </div>
                     </div>
