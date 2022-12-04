@@ -5,211 +5,210 @@ import ScrollToTop from 'react-scroll-up';
 import { FiChevronUp } from "react-icons/fi";
 import Header from "../component/header/HeaderFive";
 import Footer from "../component/footer/FooterTwo";
+import { useState } from 'react';
+import Modal from '../component/Modal';
 
-import Lightbox from 'react-image-lightbox';
-import 'react-image-lightbox/style.css';
 
 const TabOne = [
     {
-        image: '01',
-        bigImage: '/assets/images/portfolio/big/dp-big--portfolio-01.jpg',
+        image: 'https://rationalinvestments.in/assets/images/portfolio/dp-portfolio-01.jpg',
+        bigImage: 'https://rationalinvestments.in/assets/images/portfolio/dp-portfolio-01.jpg',
         category: 'Web Design',
         title: 'Design is a creative part'
     },
     {
-        image: '02',
-        bigImage: '/assets/images/portfolio/big/dp-big--portfolio-02.jpg',
+        image: 'https://rationalinvestments.in/assets/images/portfolio/dp-portfolio-02.jpg',
+        bigImage: 'https://rationalinvestments.in/assets/images/portfolio/dp-portfolio-02.jpg',
         category: 'Mobile App',
         title: 'The service provide for designer'
     },
     {
-        image: '03',
+        image: '/assets/images/portfolio/big/dp-big--portfolio-03.jpg',
         bigImage: '/assets/images/portfolio/big/dp-big--portfolio-03.jpg',
         category: 'Web Design',
         title: 'Mobile App landing Design'
     },
     {
-        image: '04',
+        image: '/assets/images/portfolio/big/dp-big--portfolio-04.jpg',
         bigImage: '/assets/images/portfolio/big/dp-big--portfolio-04.jpg',
         category: 'Mobile App',
         title: 'Logo Design creativity'
     },
     {
-        image: '05',
+        image: '/assets/images/portfolio/big/dp-big--portfolio-05.jpg',
         bigImage: '/assets/images/portfolio/big/dp-big--portfolio-05.jpg',
         category: 'Web Design',
         title: 'T-shirt design is the part of design'
     },
     {
-        image: '06',
+        image: '/assets/images/portfolio/big/dp-big--portfolio-06.jpg',
         bigImage: '/assets/images/portfolio/big/dp-big--portfolio-06.jpg',
         category: 'Logo Design',
         title: 'Getting tickets to the big show'
     },
     {
-        image: '07',
+        image: '/assets/images/portfolio/big/dp-big--portfolio-07.jpg',
         bigImage: '/assets/images/portfolio/big/dp-big--portfolio-07.jpg',
         category: 'Logo Design',
         title: 'Getting tickets to the big show'
     },
     {
-        image: '08',
+        image: '/assets/images/portfolio/big/dp-big--portfolio-08.jpg',
         bigImage: '/assets/images/portfolio/big/dp-big--portfolio-08.jpg',
         category: 'Logo Design',
         title: 'Getting tickets to the big show'
     },
     {
-        image: '09',
+        image: '/assets/images/portfolio/big/dp-big--portfolio-09.jpg',
         bigImage: '/assets/images/portfolio/big/dp-big--portfolio-09.jpg',
         category: 'Logo Design',
         title: 'Getting tickets to the big show'
     },
     {
-        image: '10',
+        image: '/assets/images/portfolio/big/dp-big--portfolio-10.jpg',
         bigImage: '/assets/images/portfolio/big/dp-big--portfolio-10.jpg',
         category: 'Logo Design',
         title: 'Getting tickets to the big show'
     },
     {
-        image: '11',
+        image: '/assets/images/portfolio/big/dp-big--portfolio-11.jpg',
         bigImage: '/assets/images/portfolio/big/dp-big--portfolio-11.jpg',
         category: 'Logo Design',
         title: 'Getting tickets to the big show'
     },
     {
-        image: '12',
+        image: '/assets/images/portfolio/big/dp-big--portfolio-12.jpg',
         bigImage: '/assets/images/portfolio/big/dp-big--portfolio-12.jpg',
         category: 'Logo Design',
         title: 'Getting tickets to the big show'
     },
     {
-        image: '13',
+        image: '/assets/images/portfolio/big/dp-big--portfolio-13.jpg',
         bigImage: '/assets/images/portfolio/big/dp-big--portfolio-13.jpg',
         category: 'Logo Design',
         title: 'Getting tickets to the big show'
     },
     {
-        image: '14',
+        image: '/assets/images/portfolio/big/dp-big--portfolio-14.jpg',
         bigImage: '/assets/images/portfolio/big/dp-big--portfolio-14.jpg',
+        category: 'Logo Design',
+        title: 'Getting tickets to the big show'
+    },
+
+    {
+        image: '/assets/images/portfolio/big/dp-small--portfolio-15.jpg',
+        bigImage: '/assets/images/portfolio/big/dp-big--portfolio-15.jpg',
         category: 'Logo Design',
         title: 'Getting tickets to the big show'
     },
 ]
 
-class Gallery extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            tab1: 0,
-            isOpen: false,
-        };
-    }
-    render() {
-        const { tab1, isOpen } = this.state;
-        return (
-            <div>
+function Gallery() {
 
-                <PageHelmet pageTitle='Gallery' />
+    const [clickedImg, setClickedImg] = useState(null);
+    const [currentIndex, setCurrentIndex] = useState(null);
 
-                {/* Start Header Area  */}
-                <Header headerPosition="header--static logoresize" logo="all-dark" color="color-black" />
-                {/* End Header Area  */}
+    const handleClick = (item, index) => {
+        setCurrentIndex(index);
+        setClickedImg(item.bigImage);
+    };
 
-                {/* Start Breadcrump Area */}
-                <Breadcrumb title={'Gallery'} />
-                {/* End Breadcrump Area */}
+    const handelRotationRight = () => {
+        const totalLength = TabOne.length;
+        if (currentIndex + 1 >= totalLength) {
+            setCurrentIndex(0);
+            const newUrl = TabOne[0].bigImage;
+            setClickedImg(newUrl);
+            return;
+        }
+        const newIndex = currentIndex + 1;
+        const newUrl = TabOne.filter((item) => {
+            return TabOne.indexOf(item) === newIndex;
+        });
+        const newItem = newUrl[0].bigImage;
+        setClickedImg(newItem);
+        setCurrentIndex(newIndex);
+    };
 
-                {/* Start Page Wrapper  */}
-                <main className="page-wrapper">
+    const handelRotationLeft = () => {
+        const totalLength = TabOne.length;
+        if (currentIndex === 0) {
+            setCurrentIndex(totalLength - 1);
+            const newUrl = TabOne[totalLength - 1].bigImage;
+            setClickedImg(newUrl);
+            return;
+        }
+        const newIndex = currentIndex - 1;
+        const newUrl = TabOne.filter((item) => {
+            return TabOne.indexOf(item) === newIndex;
+        });
+        const newItem = newUrl[0].bigImage;
+        setClickedImg(newItem);
+        setCurrentIndex(newIndex);
+    };
 
-                    {/* Start Portfolio Area  */}
-                    <div className="rn-portfolio-area ptb--120 bg_color--1 line-separator">
-                        <div className="container">
-                            <div className="row">
-                                {TabOne.map((value, index) => (
-                                    <div className="col-lg-6" key={index}>
-                                        {isOpen && (
-                                            <Lightbox
-                                                mainSrc={TabOne[tab1].bigImage}
-                                                nextSrc={TabOne[(tab1 + 1) % TabOne.length]}
-                                                prevSrc={TabOne[(tab1 + TabOne.length - 1) % TabOne.length]}
-                                                onCloseRequest={() => this.setState({ isOpen: false })}
-                                                onMovePrevRequest={() =>
-                                                    this.setState({
-                                                        tab1: (tab1 + TabOne.length - 1) % TabOne.length,
-                                                    })
-                                                }
-                                                onMoveNextRequest={() =>
-                                                    this.setState({
-                                                        tab1: (tab1 + 1) % TabOne.length,
-                                                    })
-                                                }
-                                            />
-                                        )}
-                                        <div className="item-portfolio-static">
-                                            <div onClick={() => this.setState({ isOpen: true, tab1: index })}>
-                                                <div className="portfolio-static">
-                                                    <div className="thumbnail-inner">
-                                                        <div className="thumbnail">
-                                                            <a href="#portfolio-details">
-                                                                <img src={`/assets/images/portfolio/dp-portfolio-${value.image}.jpg`} alt="Portfolio Images" />
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+    return (
+        <div>
+
+            <PageHelmet pageTitle='Gallery' />
+
+            {/* Start Header Area  */}
+            <Header headerPosition="header--static logoresize" logo="all-dark" color="color-black" />
+            {/* End Header Area  */}
+
+            {/* Start Breadcrump Area */}
+            <Breadcrumb title={'Gallery'} />
+            {/* End Breadcrump Area */}
+
+            {/* Start Page Wrapper  */}
+            <main className="page-wrapper">
+
+                {/* Start Portfolio Area  */}
+                <div className="rn-portfolio-area ptb--120 bg_color--1 line-separator">
+                    <div className="container">
+                        <div className="row">
+                            <div className="wrapper" style={{ padding: 0, margin: 0, justifyContent: 'center', }}>
+                                {TabOne.map((item, index) => (
+                                    <div key={index} className="col-lg-3" style={{ padding: 0, margin: 0, borderRadius: 15 }}>
+                                        <img
+                                            src={item.image}
+                                            alt={item.category}
+                                            height={'200px'}
+                                            onClick={() => handleClick(item, index)}
+                                        />
                                     </div>
                                 ))}
                             </div>
+                        </div>
+                        <div>
+                            {clickedImg && (
+                                <Modal
+                                    clickedImg={clickedImg}
+                                    handelRotationRight={handelRotationRight}
+                                    setClickedImg={setClickedImg}
+                                    handelRotationLeft={handelRotationLeft}
+                                />
+                            )}
                         </div>
                     </div>
-                    {/* End Portfolio Area  */}
-
-                    {/* Start Portfolio Area  */}
-                    {/* <div className="creative-portfolio-wrapper ptb--120 bg_color--1">
-                        <div className="container plr--10">
-                            <div className="row row--5">
-                                {PortfolioList.map((value, i) => (
-                                    <div className="col-lg-4 col-md-6 col-12" key={i}>
-                                        <div className="portfolio-style--3">
-                                            <div className="thumbnail">
-                                                <a href="/portfolio-details">
-                                                    <img className="w-100" src={`/assets/images/portfolio/portfolio-${value.images}.jpg`} alt="Portfolio Images" />
-                                                </a>
-                                            </div>
-                                            <div className="content">
-                                                <p className="portfoliotype">{value.category}</p>
-                                                <h4 className="title"><a href="/portfolio-details">{value.title}</a></h4>
-                                                <div className="portfolio-btn">
-                                                    <a className="rn-btn text-white" href="/portfolio-details">Read More</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    </div> */}
-                    {/* End Portfolio Area  */}
-
-                </main>
-                {/* End Page Wrapper  */}
-
-                {/* Start Back To Top */}
-                <div className="backto-top">
-                    <ScrollToTop showUnder={160}>
-                        <FiChevronUp />
-                    </ScrollToTop>
                 </div>
-                {/* End Back To Top */}
 
-                {/* Start Footer Area  */}
-                <Footer />
-                {/* End Footer Area  */}
+            </main>
+            {/* End Page Wrapper  */}
+
+            {/* Start Back To Top */}
+            <div className="backto-top">
+                <ScrollToTop showUnder={160}>
+                    <FiChevronUp />
+                </ScrollToTop>
             </div>
-        )
-    }
+            {/* End Back To Top */}
+
+            {/* Start Footer Area  */}
+            <Footer />
+            {/* End Footer Area  */}
+        </div>
+    )
 }
 
 
