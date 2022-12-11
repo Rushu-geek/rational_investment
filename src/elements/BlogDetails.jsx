@@ -20,6 +20,9 @@ class BlogDetails extends Component {
         this.setState({ isOpen: true })
     }
     render() {
+        const scroll = () => {
+            window.scrollTo(0, 700)
+        }
         return (
             <React.Fragment>
                 <PageHelmet pageTitle='Blog Details' />
@@ -33,7 +36,7 @@ class BlogDetails extends Component {
                     <div className="container">
                         <div className="row">
                             <div className="col-lg-12">
-                                <div className="blog-single-page-title text-center pt--100">
+                                <div style={{cursor: 'pointer'}} onClick={() => scroll()} className="blog-single-page-title text-center pt--100">
                                     <h2 className="title theme-gradient">Why you shouldn't avoid doing SIP investments in a Volatile market?</h2>
                                     <ul className="blog-meta d-flex justify-content-center align-items-center">
                                         <li><FiClock />October 1st, 2022</li>

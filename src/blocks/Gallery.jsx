@@ -147,6 +147,10 @@ function Gallery() {
         setCurrentIndex(newIndex);
     };
 
+    const scroll = () => {
+        window.scrollTo(0, 700)
+    }
+
     return (
         <div>
 
@@ -157,7 +161,7 @@ function Gallery() {
             {/* End Header Area  */}
 
             {/* Start Breadcrump Area */}
-            <Breadcrumb title={'Gallery'} />
+            <Breadcrumb title={'Gallery'} onClick={() => scroll()} />
             {/* End Breadcrump Area */}
 
             {/* Start Page Wrapper  */}

@@ -4,6 +4,11 @@ import BlogContent from "./BlogContent";
 class BLogList extends Component{
     render() {
         const PostList = BlogContent.slice(0 , 1);
+
+        const scroll = () => {
+            window.scrollTo(0, 700)
+        }
+
         return (
              <Fragment>
                  <div className="row">

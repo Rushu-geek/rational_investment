@@ -118,6 +118,10 @@ const ServiceDetails = () => {
         setIsOpen(true);
     }
 
+    const scroll = () => {
+        window.scrollTo(0, 700)
+    }
+
     useEffect(() => {
         console.log(location.state);
 
@@ -167,7 +171,7 @@ const ServiceDetails = () => {
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-12">
-                            <div className="rn-page-title text-center pt--100">
+                            <div style={{cursor: 'pointer'}} onClick={() => scroll()} className="rn-page-title text-center pt--100">
                                 <h2 className="title theme-gradient">{title}</h2>
                                 {/* <p>Fresh From The Press Discription</p> */}
                             </div>

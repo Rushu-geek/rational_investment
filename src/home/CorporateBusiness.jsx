@@ -90,6 +90,10 @@ class CorporateBusiness extends Component {
 
         const PostList = BlogContent.slice(0, 1);
 
+        const scroll = () => {
+            window.scrollTo(0, 700)
+        }
+
         return (
             <Fragment>
                 <Helmet pageTitle="Home" />
@@ -108,7 +112,7 @@ class CorporateBusiness extends Component {
                                     <div className="container">
                                         <div className="row">
                                             <div className="col-lg-12">
-                                                <div className={`inner ${value.textPosition}`}>
+                                                <div style={{cursor: 'pointer'}} onClick={() => scroll()} className={`inner ${value.textPosition}`}>
                                                     {value.category ? <span>{value.category}</span> : ''}
                                                     {value.title ? <h1 style={{ color: 'white' }} className="title">{value.title}</h1> : ''}
                                                     {value.description ? <p style={{ color: 'white' }} className="description">{value.description}</p> : ''}

@@ -9,6 +9,10 @@ import Footer from "../component/footer/Footer";
 
 const Calculators = () => {
 
+    const scroll = () => {
+        window.scrollTo(0, 700)
+    }
+
 
     return (
         <React.Fragment>
@@ -22,7 +26,7 @@ const Calculators = () => {
             <div className="rn-page-title-area pt--120 pb--190 bg_image bg_image--38" data-black-overlay="6">
                 <div className="container">
                     <div className="row">
-                        <div className="col-lg-12">
+                        <div style={{cursor: 'pointer'}} onClick={() => scroll()} className="col-lg-12">
                             <div className="rn-page-title text-center pt--100">
                                 <h2 className="title theme-gradient">Calculators</h2>
                                 {/* <p>Contrary to popular belief, Lorem Ipsum is not simply random text. </p> */}

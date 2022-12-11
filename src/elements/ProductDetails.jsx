@@ -239,6 +239,10 @@ const ProductDetails = () => {
         })
     }, [location, productList]);
 
+    const scroll = () => {
+        window.scrollTo(0, 700)
+    }
+
     return (
         <React.Fragment>
 
@@ -255,7 +259,7 @@ const ProductDetails = () => {
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-12">
-                            <div className="rn-page-title text-center pt--100">
+                            <div style={{cursor: 'pointer'}} onClick={() => scroll()} className="rn-page-title text-center pt--100">
                                 <h2 className="title theme-gradient">{title}</h2>
                                 {/* <p>Fresh From The Press Discription</p> */}
                             </div>

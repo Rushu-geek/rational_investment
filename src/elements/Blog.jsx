@@ -10,6 +10,9 @@ import Footer from "../component/footer/Footer";
 
 class Blog extends Component {
     render() {
+        const scroll = () => {
+            window.scrollTo(0, 700)
+        }
         return (
             <React.Fragment>
                 <PageHelmet pageTitle='Blog' />
@@ -19,7 +22,7 @@ class Blog extends Component {
                 {/* End Header Area  */}
 
                 {/* Start Breadcrump Area */}
-                <Breadcrumb title={'Blog List'} />
+                <Breadcrumb title={'Blog List'} onClick={() => scroll()} />
                 {/* End Breadcrump Area */}
 
 

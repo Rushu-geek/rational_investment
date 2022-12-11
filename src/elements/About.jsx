@@ -13,7 +13,13 @@ import Footer from "../component/footer/Footer";
 
 class About extends Component {
     render() {
-        let title = 'About Us'
+        let title = 'About Us';
+
+        const scroll = () => {
+            console.log("scrolling");
+            window.scrollTo(0, 700);
+        }
+
         return (
             <React.Fragment>
                 <PageHelmet pageTitle='About' />
@@ -23,7 +29,7 @@ class About extends Component {
                 {/* End Header Area  */}
 
                 {/* Start Breadcrump Area */}
-                <Breadcrumb title={'About'} />
+                <Breadcrumb title={'About'} onClick={() => scroll()} />
                 {/* End Breadcrump Area */}
 
                 {/* Start About Area  */}

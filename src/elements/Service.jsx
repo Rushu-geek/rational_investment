@@ -40,6 +40,10 @@ const Service = () => {
     
         const history = useHistory();
 
+        const scroll = () => {
+            window.scrollTo(0, 700)
+        }
+
         return(
             <React.Fragment>
                 <PageHelmet pageTitle='Service' />
@@ -49,7 +53,7 @@ const Service = () => {
                 {/* End Header Area  */}
 
                 {/* Start Breadcrump Area */}
-                <Breadcrumb title={'Our Services'}   />
+                <Breadcrumb title={'Our Services'} onClick={() => scroll()}  />
                 {/* End Breadcrump Area */}
 
                 {/* Start Service Area */}

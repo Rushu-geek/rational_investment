@@ -20,6 +20,9 @@ class VideoPopup extends Component {
         this.setState({isOpen: true})
     }
     render() {
+        const scroll = () => {
+            window.scrollTo(0, 700)
+        }
         return (
             <>
                 <PageHelmet pageTitle='Video Popup' />
@@ -29,7 +32,7 @@ class VideoPopup extends Component {
                 {/* End Header Area  */}
 
                 {/* Start Breadcrump Area */}
-                <Breadcrumb title={'Video Popup'}   />
+                <Breadcrumb title={'Video Popup'} onClick={() => scroll()}   />
                 {/* End Breadcrump Area */}
 
                 {/* Start Page Wrapper  */}

@@ -67,6 +67,10 @@ const Product = () => {
     
         const history = useHistory();
 
+        const scroll = () => {
+            window.scrollTo(0, 700)
+        }
+
         return(
             <React.Fragment>
                 <PageHelmet pageTitle='Products' />
@@ -76,7 +80,7 @@ const Product = () => {
                 {/* End Header Area  */}
 
                 {/* Start Breadcrump Area */}
-                <Breadcrumb title={'Our Products'}   />
+                <Breadcrumb title={'Our Products'} onClick={() => scroll()}  />
                 {/* End Breadcrump Area */}
 
                 {/* Start Service Area */}
