@@ -69,11 +69,16 @@ class CorporateBusiness extends Component {
         this.state = {
             isOpen: false
         }
-        this.openModal = this.openModal.bind(this)
+        this.openModal = this.openModal.bind(this);
     }
     openModal() {
         this.setState({ isOpen: true })
     }
+
+    componentDidMount() {
+        $("#myModal").modal('show');
+    }
+
     render() {
 
         var namesItemOne = [
@@ -102,6 +107,19 @@ class CorporateBusiness extends Component {
                 <Header headerPosition="header--static logoresize" logo="all-dark" color="color-black" />
                 {/* End Header Area  */}
 
+                {/* <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Popup image</button> */}
+
+                <div id="myModal" style={{ maxWidth: '150%' }} class="modal fade" tabindex="-1" role="dialog">
+                    <div style={{ maxWidth: '60%' }} class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-body" style={{textAlign: 'center'}}>
+                                <img src="/assets/images/popup.jpg" class="img-responsive" />
+                                <button type="button" class="btn btn-primary" onClick={() => window.open('https://cams.co.in/16WPskWMhuX', '_blank')}>Invest Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 {/* Start Slider Area   */}
                 <div className="slider-wrapper">
                     <div className="slider-activation">
@@ -112,7 +130,7 @@ class CorporateBusiness extends Component {
                                     <div className="container">
                                         <div className="row">
                                             <div className="col-lg-12">
-                                                <div style={{cursor: 'pointer'}} onClick={() => scroll()} className={`inner ${value.textPosition}`}>
+                                                <div style={{ cursor: 'pointer' }} onClick={() => scroll()} className={`inner ${value.textPosition}`}>
                                                     {value.category ? <span>{value.category}</span> : ''}
                                                     {value.title ? <h1 style={{ color: 'white' }} className="title">{value.title}</h1> : ''}
                                                     {value.description ? <p style={{ color: 'white' }} className="description">{value.description}</p> : ''}
