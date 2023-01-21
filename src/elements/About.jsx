@@ -29,7 +29,7 @@ class About extends Component {
                 {/* End Header Area  */}
 
                 {/* Start Breadcrump Area */}
-                <Breadcrumb title={'About'} onClick={() => scroll()} />
+                <Breadcrumb title={'About'} onClick={() => scroll()} bgImage="bg_image--49" />
                 {/* End Breadcrump Area */}
 
                 {/* Start About Area  */}

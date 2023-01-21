@@ -2,23 +2,24 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import ScrollToTop from "react-scroll-up";
 
-class Breadcrumb extends Component{
+class Breadcrumb extends Component {
 
-    render(){
-        const { title , parent, onClick} = this.props;
-        return(
+    render() {
+        const { title, parent, onClick, bgImage } = this.props;
+
+        return (
             <React.Fragment>
-                <div className="breadcrumb-area rn-bg-color ptb--120 bg_image bg_image--1" data-black-overlay="6">
+                <div className={`breadcrumb-area rn-bg-color ptb--120 bg_image ${bgImage}`} data-black-overlay="6">
                     <div className="container">
                         <div className="row">
                             <div className="col-lg-12">
-                                <div style={{cursor: 'pointer'}} onClick={() => onClick()} className="breadcrumb-inner pt--100">
+                                <div style={{ cursor: 'pointer' }} onClick={() => onClick()} className="breadcrumb-inner pt--100">
                                     {/* <ScrollToTop showUnder={200}> */}
-                                        <h2 className="title">{title}</h2>
+                                    <h2 className="title">{title}</h2>
                                     {/* </ScrollToTop> */}
                                     <ul className="page-list">
                                         <li className="breadcrumb-item"><Link to={`/`}>Home</Link></li>
-                                        {parent? <li className="breadcrumb-item">{parent}</li>:''}
+                                        {parent ? <li className="breadcrumb-item">{parent}</li> : ''}
                                         <li className="breadcrumb-item active">{title}</li>
                                     </ul>
                                 </div>

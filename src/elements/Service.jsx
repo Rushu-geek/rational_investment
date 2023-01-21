@@ -53,7 +53,7 @@ const Service = () => {
                 {/* End Header Area  */}
 
                 {/* Start Breadcrump Area */}
-                <Breadcrumb title={'Our Services'} onClick={() => scroll()}  />
+                <Breadcrumb title={'Our Services'} onClick={() => scroll()} bgImage="bg_image--50" />
                 {/* End Breadcrump Area */}
 
                 {/* Start Service Area */}

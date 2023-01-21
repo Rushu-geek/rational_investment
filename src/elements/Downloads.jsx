@@ -13,7 +13,7 @@ const Downloads = () => {
 
     return (
         <React.Fragment>
-            <PageHelmet pageTitle='Contact' />
+            <PageHelmet pageTitle='Download' />
 
             {/* Start Header Area  */}
             <Header headerPosition="header--static logoresize" logo="all-dark" color="color-black" />

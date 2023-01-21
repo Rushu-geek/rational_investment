@@ -16,7 +16,7 @@ const Calculators = () => {
 
     return (
         <React.Fragment>
-            <PageHelmet pageTitle='Contact' />
+            <PageHelmet pageTitle='Calculator' />
 
             {/* Start Header Area  */}
             <Header headerPosition="header--static logoresize" logo="all-dark" color="color-black" />

@@ -22,7 +22,7 @@ class Blog extends Component {
                 {/* End Header Area  */}
 
                 {/* Start Breadcrump Area */}
-                <Breadcrumb title={'Blog List'} onClick={() => scroll()} />
+                <Breadcrumb title={'Blog List'} onClick={() => scroll()} bgImage="bg_image--46" />
                 {/* End Breadcrump Area */}
 
 

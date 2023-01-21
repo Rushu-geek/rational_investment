@@ -154,14 +154,14 @@ function Gallery() {
     return (
         <div>
 
-            <PageHelmet pageTitle='Gallery' />
+            <PageHelmet pageTitle='Image Gallery' />
 
             {/* Start Header Area  */}
             <Header headerPosition="header--static logoresize" logo="all-dark" color="color-black" />
             {/* End Header Area  */}
 
             {/* Start Breadcrump Area */}
-            <Breadcrumb title={'Gallery'} onClick={() => scroll()} />
+            <Breadcrumb title={'Image Gallery'} onClick={() => scroll()} bgImage="bg_image--47" />
             {/* End Breadcrump Area */}
 
             {/* Start Page Wrapper  */}

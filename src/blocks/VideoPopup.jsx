@@ -25,14 +25,14 @@ class VideoPopup extends Component {
         }
         return (
             <>
-                <PageHelmet pageTitle='Video Popup' />
+                <PageHelmet pageTitle='Video Gallery' />
 
                 {/* Start Header Area  */}
                 <Header headerPosition="header--static logoresize" logo="all-dark" color="color-black" />
                 {/* End Header Area  */}
 
                 {/* Start Breadcrump Area */}
-                <Breadcrumb title={'Video Popup'} onClick={() => scroll()}   />
+                <Breadcrumb title={'Video Gallery'} onClick={() => scroll()} bgImage="bg_image--47"  />
                 {/* End Breadcrump Area */}
 
                 {/* Start Page Wrapper  */}

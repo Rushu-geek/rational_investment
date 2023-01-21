@@ -80,7 +80,7 @@ const Product = () => {
                 {/* End Header Area  */}
 
                 {/* Start Breadcrump Area */}
-                <Breadcrumb title={'Our Products'} onClick={() => scroll()}  />
+                <Breadcrumb title={'Our Products'} onClick={() => scroll()} bgImage="bg_image--48" />
                 {/* End Breadcrump Area */}
 
                 {/* Start Service Area */}
