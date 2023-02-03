@@ -109,7 +109,7 @@ class CorporateBusiness extends Component {
 
                 {/* <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Popup image</button> */}
 
-                <div id="myModal" style={{ maxWidth: '150%' }} class="modal fade" tabindex="-1" role="dialog">
+                {/* <div id="myModal" style={{ maxWidth: '150%' }} class="modal fade" tabindex="-1" role="dialog">
                     <div style={{ maxWidth: '60%' }} class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-body" style={{textAlign: 'center'}}>
@@ -118,7 +118,7 @@ class CorporateBusiness extends Component {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> */}
 
                 {/* Start Slider Area   */}
                 <div className="slider-wrapper">
