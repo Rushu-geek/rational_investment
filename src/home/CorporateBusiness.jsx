@@ -99,6 +99,17 @@ class CorporateBusiness extends Component {
             window.scrollTo(0, 700)
         }
 
+        let details = navigator.userAgent;
+
+        /* Creating a regular expression 
+        containing some mobile devices keywords 
+        to search it in details string*/
+        let regexp = /android|iphone|kindle|ipad/i;
+
+        /* Using test() method to search regexp in details
+        it returns boolean value*/
+        let isMobileDevice = regexp.test(details);
+
         return (
             <Fragment>
                 <Helmet pageTitle="Home" />
@@ -109,16 +120,16 @@ class CorporateBusiness extends Component {
 
                 {/* <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Popup image</button> */}
 
-                {/* <div id="myModal" style={{ maxWidth: '150%' }} class="modal fade" tabindex="-1" role="dialog">
-                    <div style={{ maxWidth: '60%' }} class="modal-dialog">
+                <div id="myModal" style={{ maxWidth: !isMobileDevice ? '150%' : '', top: 69 }} class="modal fade" tabindex="-1" role="dialog">
+                    <div style={{ maxWidth: !isMobileDevice ? '40%' : '' }} class="modal-dialog vertical-align-center">
                         <div class="modal-content">
                             <div class="modal-body" style={{textAlign: 'center'}}>
-                                <img src="/assets/images/popup.jpg" class="img-responsive" />
-                                <button type="button" class="btn btn-primary" onClick={() => window.open('https://cams.co.in/16WPskWMhuX', '_blank')}>Invest Now</button>
+                                <img src="/assets/images/popup.jpeg" class="img-responsive" />
+                                {/* <button type="button" class="btn btn-primary" onClick={() => window.open('https://cams.co.in/16WPskWMhuX', '_blank')}>Invest Now</button> */}
                             </div>
                         </div>
                     </div>
-                </div> */}
+                </div>
 
                 {/* Start Slider Area   */}
                 <div className="slider-wrapper">
