@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, useEffect } from 'react'
 import PageHelmet from "../component/common/Helmet";
 import Breadcrumb from "../elements/common/Breadcrumb";
 import ScrollToTop from 'react-scroll-up';
@@ -7,6 +7,10 @@ import Header from "../component/header/HeaderFive";
 import Footer from "../component/footer/FooterTwo";
 import { useState } from 'react';
 import Modal from '../component/Modal';
+
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { storage } from '../firebase';
+import DataService from '../dbService';
 
 
 const TabOne = [
@@ -108,6 +112,10 @@ function Gallery() {
     const [clickedImg, setClickedImg] = useState(null);
     const [currentIndex, setCurrentIndex] = useState(null);
 
+    const [imageUpload, setImageUpload] = useState();
+
+    const [images, setImages] = useState([]);
+
     const handleClick = (item, index) => {
         setCurrentIndex(index);
         setClickedImg(item.bigImage);
@@ -151,6 +159,48 @@ function Gallery() {
         window.scrollTo(0, 700)
     }
 
+    const uploadFile = () => {
+        if (!imageUpload) {
+            return;
+        }
+        const imageRef = ref(storage, `/rationalImages/${imageUpload.name}`);
+
+        uploadBytes(imageRef, imageUpload).then((snapshot) => {
+            getDownloadURL(snapshot.ref).then(async(url) => {
+                console.log(url);
+                // store url in firebase collection
+
+                const dbService = new DataService()
+                let image = { url }
+
+                const pushImage = await dbService.addImage(image);
+
+                console.log(pushImage);
+            })
+        })
+    }
+
+    useEffect(async () => {
+        const dbService = new DataService();
+
+        const images = await dbService.getAllImages();
+
+        console.log(images);
+
+        let imageArray = [];
+
+        images.forEach((doc) => {
+            console.log(doc.data());
+            let obj = {
+                image: doc.data().url,
+                bigImage: doc.data().url
+            }
+            imageArray.push(obj);
+        })
+
+        setImages(imageArray)
+    }, []);
+
     return (
         <div>
 
@@ -169,10 +219,11 @@ function Gallery() {
 
                 {/* Start Portfolio Area  */}
                 <div className="rn-portfolio-area ptb--120 bg_color--1 line-separator">
+
                     <div className="container">
                         <div className="row">
                             <div className="wrapper" style={{ padding: 0, margin: 0, justifyContent: 'center', }}>
-                                {TabOne.map((item, index) => (
+                                {images.map((item, index) => (
                                     <div key={index} className="col-lg-3" style={{ padding: 0, margin: 0, borderRadius: 15 }}>
                                         <img
                                             src={item.image}

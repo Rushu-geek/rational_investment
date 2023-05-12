@@ -29,6 +29,7 @@ import Calculators from './elements/Calculators';
 import Product from './elements/Products';
 import ProductDetails from './elements/ProductDetails';
 import Downloads from './elements/Downloads';
+import Admin from './home/Admin';
 
 class Root extends Component{
     render(){
@@ -40,6 +41,7 @@ class Root extends Component{
 
                         {/* Element Layot */}
                         <Route exact path={`/service`} component={Service}/>
+                        <Route exact path={`/admin`} component={Admin}/>
                         <Route exact path={`/product`} component={Product}/>
                         <Route exact path={`/service-details`} component={ServiceDetails}/>
                         <Route exact path={`/product-details`} component={ProductDetails}/>
