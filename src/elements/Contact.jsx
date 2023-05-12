@@ -50,7 +50,7 @@ class Contact extends Component {
                         <div className="row">
                             {/* Start Single Address  */}
                             <div className="col-lg-4 col-md-6 col-sm-6 col-12">
-                                <div style={{height: "300px"}} className="rn-address">
+                                <div style={{height: "240px"}} className="rn-address">
                                     <div className="icon">
                                         <FiHeadphones />
                                     </div>
@@ -65,7 +65,7 @@ class Contact extends Component {
 
                             {/* Start Single Address  */}
                             <div className="col-lg-4 col-md-6 col-sm-6 col-12 mt_mobile--50">
-                                <div style={{height: "300px"}} className="rn-address">
+                                <div style={{height: "240px"}} className="rn-address">
                                     <div className="icon">
                                         <FiMail />
                                     </div>
@@ -86,11 +86,7 @@ class Contact extends Component {
                                     </div>
                                     <div className="inner">
                                         <h4 className="title">Location</h4>
-                                        <p>9, Arrajun Business Hub,
-                                            Ground Floor, Anand Mangal-2,
-                                            B/H Omkar House, Swastik cross Road,
-                                            Navrangpura, Ahmedabad -380009,
-                                            Gujarat</p>
+                                        <p>514, Shilp Zaveri, Shyamal Cross Road, Satellite, Ahmedabad, 380015</p>
                                     </div>
                                 </div>
                             </div>
