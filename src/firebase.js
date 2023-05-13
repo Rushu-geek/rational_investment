@@ -5,7 +5,7 @@ import { initializeApp } from "firebase/app";
 import { getFirestore } from "@firebase/firestore";
 import { getStorage } from "firebase/storage";
 import "firebase/storage";
-// Your web app's Firebase configuration
+// Your web app's Firebase configura  tion
 const firebaseConfig = {
   apiKey: "AIzaSyBc0M0xkbYdP3Vrt_rkPW7kDfh5eAR_bcY",
   authDomain: "phoneauth-7a05a.firebaseapp.com",

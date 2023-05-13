@@ -7,6 +7,8 @@ import Modal from '../component/Modal';
 import ScrollToTop from 'react-scroll-up';
 import { FiChevronUp } from 'react-icons/fi';
 import FooterTwo from '../component/footer/FooterTwo';
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { storage } from '../firebase';
 
 function Admin() {
 
@@ -16,8 +18,8 @@ function Admin() {
     const [imageUpload, setImageUpload] = useState();
     const [images, setImages] = useState([]);
 
+    const showImages = async () => {
 
-    useEffect(async () => {
         const dbService = new DataService();
 
         const images = await dbService.getAllImages();
@@ -30,33 +32,62 @@ function Admin() {
             console.log(doc.data());
             let obj = {
                 image: doc.data().url,
-                bigImage: doc.data().url
+                bigImage: doc.data().url,
+                imageId: doc.id
             }
             imageArray.push(obj);
         })
 
-        setImages(imageArray)
+        setImages(imageArray);
+    }
+
+    const showForms = async () => {
+
+        const dbService = new DataService();
+        const forms = await dbService.getAllForms();
+        console.log(forms);
+
+        let formsArray = [];
+
+        forms.forEach((doc) => {
+            console.log(doc.data());
+            let obj = {
+                form: doc.data().url,
+                // bigImage: doc.data().url,
+                // imageId: doc.id
+            }
+            formsArray.push(obj);
+        })
+    }
+
+
+    useEffect(async () => {
+        showImages();
+        showForms();
     }, []);
 
     const uploadFile = () => {
         if (!imageUpload) {
             return;
         }
-        const imageRef = ref(storage, `/rationalImages/${imageUpload.name}`);
 
-        uploadBytes(imageRef, imageUpload).then((snapshot) => {
-            getDownloadURL(snapshot.ref).then(async(url) => {
-                console.log(url);
-                // store url in firebase collection
+        const imagesArr = Object.values(imageUpload);
+        console.log(Object.values(imageUpload));
 
-                const dbService = new DataService()
-                let image = { url }
-
-                const pushImage = await dbService.addImage(image);
-
-                console.log(pushImage);
+        imagesArr.map((image) => {
+            const imageRef = ref(storage, `/rationalImages/${image.name}`);
+            uploadBytes(imageRef, image).then((snapshot) => {
+                getDownloadURL(snapshot.ref).then(async (url) => {
+                    console.log(url);
+                    const dbService = new DataService()
+                    let image = { url }
+                    const pushImage = await dbService.addImage(image);
+                    console.log(pushImage);
+                    showImages();
+                })
             })
         })
+        showImages();
     }
 
     const handleClick = (item, index) => {
@@ -102,69 +133,78 @@ function Admin() {
         window.scrollTo(0, 700)
     }
 
-    return(
+    const deleteImg = async (imgId) => {
+        const dbService = new DataService();
+        const images = await dbService.deleteImage(imgId);
+        console.log(images);
+        showImages();
+        // alert(images)
+    }
+
+    return (
         <div>
 
-        <PageHelmet pageTitle='Image Gallery' />
+            <PageHelmet pageTitle='Image Gallery' />
 
-        {/* Start Header Area  */}
-        <HeaderFive headerPosition="header--static logoresize" logo="all-dark" color="color-black" />
-        {/* End Header Area  */}
+            {/* Start Header Area  */}
+            <HeaderFive headerPosition="header--static logoresize" logo="all-dark" color="color-black" />
+            {/* End Header Area  */}
 
-        {/* Start Page Wrapper  */}
-        <main className="page-wrapper">
+            {/* Start Page Wrapper  */}
+            <main className="page-wrapper">
 
-            {/* Start Portfolio Area  */}
-            <div className="rn-portfolio-area ptb--120 bg_color--1 line-separator">
+                {/* Start Portfolio Area  */}
+                <div className="rn-portfolio-area ptb--120 bg_color--1 line-separator">
 
-                <div className="container">
-                    <input type='file' onChange={(e) => setImageUpload(e.target.files[0])} />
-                    <button onClick={uploadFile}>Save</button>
-                </div>
+                    <div className="container">
+                        <input type='file' multiple onChange={(e) => setImageUpload(e.target.files)} />
+                        <button onClick={uploadFile}>Save</button>
+                    </div>
 
-                <div className="container">
-                    <div className="row">
-                        <div className="wrapper" style={{ padding: 0, margin: 0, justifyContent: 'center', }}>
-                            {images.map((item, index) => (
-                                <div key={index} className="col-lg-3" style={{ padding: 0, margin: 0, borderRadius: 15 }}>
-                                    <img
-                                        src={item.image}
-                                        alt={item.category}
-                                        height={'200px'}
-                                        onClick={() => handleClick(item, index)}
-                                    />
-                                </div>
-                            ))}
+                    <div className="container">
+                        <div className="row">
+                            <div className="wrapper" style={{ padding: 0, margin: 0, justifyContent: 'center', }}>
+                                {images.map((item, index) => (
+                                    <div key={index} className="col-lg-3" style={{ padding: 0, margin: 0, borderRadius: 15 }}>
+                                        <img
+                                            src={item.image}
+                                            alt={item.category}
+                                            height={'200px'}
+                                            onClick={() => handleClick(item, index)}
+                                        />
+                                        <button onClick={() => { deleteImg(item.imageId) }}>Delete</button>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                        <div>
+                            {clickedImg && (
+                                <Modal
+                                    clickedImg={clickedImg}
+                                    handelRotationRight={handelRotationRight}
+                                    setClickedImg={setClickedImg}
+                                    handelRotationLeft={handelRotationLeft}
+                                />
+                            )}
                         </div>
                     </div>
-                    <div>
-                        {clickedImg && (
-                            <Modal
-                                clickedImg={clickedImg}
-                                handelRotationRight={handelRotationRight}
-                                setClickedImg={setClickedImg}
-                                handelRotationLeft={handelRotationLeft}
-                            />
-                        )}
-                    </div>
                 </div>
+
+            </main>
+            {/* End Page Wrapper  */}
+
+            {/* Start Back To Top */}
+            <div className="backto-top">
+                <ScrollToTop showUnder={160}>
+                    <FiChevronUp />
+                </ScrollToTop>
             </div>
+            {/* End Back To Top */}
 
-        </main>
-        {/* End Page Wrapper  */}
-
-        {/* Start Back To Top */}
-        <div className="backto-top">
-            <ScrollToTop showUnder={160}>
-                <FiChevronUp />
-            </ScrollToTop>
+            {/* Start Footer Area  */}
+            <FooterTwo />
+            {/* End Footer Area  */}
         </div>
-        {/* End Back To Top */}
-
-        {/* Start Footer Area  */}
-        <FooterTwo />
-        {/* End Footer Area  */}
-    </div>
     )
 
 }
