@@ -41,26 +41,6 @@ function Admin() {
         setImages(imageArray);
     }
 
-    const showForms = async () => {
-
-        const dbService = new DataService();
-        const forms = await dbService.getAllForms();
-        console.log(forms);
-
-        let formsArray = [];
-
-        forms.forEach((doc) => {
-            console.log(doc.data());
-            let obj = {
-                form: doc.data().url,
-                // bigImage: doc.data().url,
-                // imageId: doc.id
-            }
-            formsArray.push(obj);
-        })
-    }
-
-
     useEffect(async () => {
         showImages();
         showForms();
