@@ -24,6 +24,11 @@ class DataService {
     addForm = (formObj) => {
         return addDoc(formsCollectionRef, formObj);
     }
+
+    updateForm = (formId, updatedForm) => {
+        const form = doc(db, 'forms', formId);
+        return updateDoc(form, updatedForm);
+    }
 }
 
 export default DataService;
