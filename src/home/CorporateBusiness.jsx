@@ -120,15 +120,16 @@ class CorporateBusiness extends Component {
 
                 {/* <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Popup image</button> */}
 
-                {/* <div id="myModal" style={{ maxWidth: !isMobileDevice ? '150%' : '', top: 69 }} class="modal fade" tabindex="-1" role="dialog">
+                <div id="myModal" style={{ maxWidth: !isMobileDevice ? '150%' : '', top: 150 }} class="modal fade" tabindex="-1" role="dialog">
                     <div style={{ maxWidth: !isMobileDevice ? '40%' : '' }} class="modal-dialog vertical-align-center">
                         <div class="modal-content">
                             <div class="modal-body" style={{textAlign: 'center'}}>
-                                <img src="/assets/images/popup.jpeg" class="img-responsive" />
+                                <img src="/assets/images/popupp.jpeg" class="img-responsive" />
+                                <a type="button" href="https://mfs.kfintech.com/nfodit/investorservices/onlinepurchase/mobilepurchaseconfirmation1.aspx?Mob=TkZP&qparam=MjUwNDE5&InvDistflag=VwAA" target="_blank" class="btn btn-primary mt-2">Invest Now</a>
                             </div>
                         </div>
                     </div>
-                </div> */}
+                </div>
 
                 {/* Start Slider Area   */}
                 <div className="slider-wrapper">
