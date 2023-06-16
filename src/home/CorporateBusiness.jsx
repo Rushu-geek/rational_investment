@@ -120,7 +120,7 @@ class CorporateBusiness extends Component {
 
                 {/* <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Popup image</button> */}
 
-                <div id="myModal" style={{ maxWidth: !isMobileDevice ? '150%' : '', top: 150 }} class="modal fade" tabindex="-1" role="dialog">
+                {/* <div id="myModal" style={{ maxWidth: !isMobileDevice ? '150%' : '', top: 150 }} class="modal fade" tabindex="-1" role="dialog">
                     <div style={{ maxWidth: !isMobileDevice ? '40%' : '' }} class="modal-dialog vertical-align-center">
                         <div class="modal-content">
                             <div class="modal-body" style={{textAlign: 'center'}}>
@@ -129,7 +129,7 @@ class CorporateBusiness extends Component {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> */}
 
                 {/* Start Slider Area   */}
                 <div className="slider-wrapper">
