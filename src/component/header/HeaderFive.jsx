@@ -153,6 +153,7 @@ class HeaderFive extends Component {
                                             <li><Link style={{ color: isMobileDevice ? 'black' : 'white' }} to="/contact" >Connect Us</Link></li>
                                             <li><Link style={{ color: isMobileDevice ? 'black' : 'white' }} to="/calculators" >Calculators</Link></li>
                                             <li><Link style={{ color: isMobileDevice ? 'black' : 'white' }} to="/downloads" >Downloads</Link></li>
+                                            {/* <li><Link style={{ color: isMobileDevice ? 'black' : 'white' }} to="/downloads" >Career</Link></li> */}
 
                                             {isMobileDevice && <div style={{ alignItems: 'center', justifyContent: 'center' }} className="row">
                                                 {SocialShare.map((val, i) => (

@@ -15,6 +15,7 @@ const AdminForms = () => {
 
     const [formData, setFormData] = useState([]);
     const [formLinkArr, setFormLinkArr] = useState([]);
+    const [companyLogo, setCompanyLogo] = useState("");
     const [newFormData, setNewFormData] = useState({
         id: "",
         companyName: "",
@@ -22,6 +23,7 @@ const AdminForms = () => {
         formTitle2: "",
         formTitle3: ""
     })
+
     useEffect(() => {
         showForms();
     }, [])
@@ -55,7 +57,7 @@ const AdminForms = () => {
         setFormData(formsArray);
     }
 
-    const getFormLink = (file) => {
+    const getFormLink = (file, index) => {
 
         if (!file) {
             return;
@@ -65,7 +67,8 @@ const AdminForms = () => {
         uploadBytes(formRef, file).then((snapshot) => {
             getDownloadURL(snapshot.ref).then(async (url) => {
                 console.log(url);
-                setFormLinkArr((curr) => [...curr, url])
+                formLinkArr[index] = url;
+                setFormLinkArr(formLinkArr)
             })
         })
     }
@@ -75,7 +78,15 @@ const AdminForms = () => {
 
         let tmpFormLinksArr = [];
 
-        formLinkArr.map((link, index) => {
+        let array;
+
+        array = formLinkArr.filter(function( element ) {
+            return element !== undefined;
+         });
+
+        console.log("formLinkArr >>> ", array);
+
+        array.map((link, index) => {
             if (index + 1 == 1) {
                 let formObj = {
                     link: link,
@@ -101,6 +112,7 @@ const AdminForms = () => {
 
         let formDataObj = {
             companyName: newFormData.companyName,
+            companyLogo: companyLogo,
             forms: tmpFormLinksArr
         }
         console.log(formDataObj)
@@ -151,8 +163,21 @@ const AdminForms = () => {
         tmpFormLinks.push(form?.forms[2]?.link);
 
         setFormLinkArr(tmpFormLinks);
-    }
+    }   
 
+    const uploadLogo = (file) => {
+        if (!file) {
+            return;
+        }
+
+        const formRef = ref(storage, `/rationalForms/${file.name}`);
+        uploadBytes(formRef, file).then((snapshot) => {
+            getDownloadURL(snapshot.ref).then(async (url) => {
+                console.log(url);
+                setCompanyLogo(url);
+            })
+        })
+    }
 
     return (
         <>
@@ -170,7 +195,7 @@ const AdminForms = () => {
                     <div className="container">
                         <div className="row creative-service">
                             {formData.map((val, i) => (
-                                <div onClick={() => { updateForm(val) }} className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12" key={i}>
+                                <div onClick={() => { updateForm(val) }} className="col-4" key={i}>
                                     <div className="text-center">
                                         <div className="service service__style--2">
                                             <div className="icon">
@@ -180,7 +205,7 @@ const AdminForms = () => {
                                                 <h3 className="title">{"Forms"}</h3>
                                                 {val.forms.map((form) => {
                                                     return (
-                                                        <a style={{ "color": "#1F1F25", }} href={form.link}>{form.title} </a>
+                                                        <a className='mb-3' style={{ "color": "#1F1F25", }} href={form.link}>{form.title} </a>
                                                     )
                                                 })}
                                             </div>
@@ -214,6 +239,16 @@ const AdminForms = () => {
                                             />
                                         </label>
 
+                                        <label htmlFor="item18">
+                                            Company Logo
+                                            <input
+                                                type="file"
+                                                required
+                                                name="logo"
+                                                onChange={(e) => uploadLogo(e.target.files[0])}
+                                            />
+                                        </label>
+
                                         <label htmlFor="item02">
                                             <input
                                                 type="text"
@@ -230,7 +265,7 @@ const AdminForms = () => {
                                                 required
                                                 accept='application/pdf'
                                                 name="form1"
-                                                onChange={(e) => { getFormLink(e.target.files[0]) }}
+                                                onChange={(e) => { getFormLink(e.target.files[0], 0) }}
                                             />
                                         </label>
 
@@ -246,7 +281,7 @@ const AdminForms = () => {
                                             <input
                                                 type="file"
                                                 name="form2"
-                                                onChange={(e) => { getFormLink(e.target.files[0]) }}
+                                                onChange={(e) => { getFormLink(e.target.files[0], 1) }}
                                             />
                                         </label>
 
@@ -262,11 +297,11 @@ const AdminForms = () => {
                                             <input
                                                 type="file"
                                                 name="form3"
-                                                onChange={(e) => { getFormLink(e.target.files[0]) }}
+                                                onChange={(e) => { getFormLink(e.target.files[0], 2) }}
                                             />
                                         </label>
 
-                                        <button type='submit' className="rn-button-style--2 btn-solid" onClick={addNewForm}>Add Form</button>
+                                        <button type='submit' className="rn-button-style--2 btn-solid mb-5" onClick={addNewForm}>Add Form</button>
                                     </form>
                                 </div>
                             </div>
