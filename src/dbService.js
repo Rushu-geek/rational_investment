@@ -13,10 +13,17 @@ class DataService {
     getAllImages = () => {
         return getDocs(imagesCollectionRef);
     }
+
+    updateImage = (imgId, updatedImage) => {
+        const image = doc(db, 'images', imgId);
+        return updateDoc(image, updatedImage);
+    }
+
     deleteImage = (imageId) => {
         const image = doc(db, 'images', imageId);
         return deleteDoc(image);
     }
+    
     getAllForms = () => {
         return getDocs(formsCollectionRef);
     }
