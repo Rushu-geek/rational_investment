@@ -124,7 +124,6 @@ function Admin() {
         const images = await dbService.deleteImage(imgId);
         console.log(images);
         showImages();
-        // alert(images)
     }
 
     const showCategories = async () => {
@@ -151,14 +150,18 @@ function Admin() {
 
     const addNewCategory = async () => {
 
+        if (!category) {
+            return;
+        }
+
         const dbService = new DataService();
         let categoryData = { categoryName: category, images: [] };
         const pushCategory = await dbService.addImage(categoryData);
+        setCategory('')
         showCategories();
     }
 
     const deleteCategory = async (categoryId) => {
-        alert("Hi");
         const dbService = new DataService();
         const cat = await dbService.deleteImage(categoryId);
         console.log(cat);
@@ -166,8 +169,6 @@ function Admin() {
     }
 
     const showCategoryImages = (category) => {
-
-        // alert(category.categoryName);
         setShowCategoryImage(true);
         setActiveCategory(category);
     }
@@ -177,20 +178,17 @@ function Admin() {
         console.log(obj)
         const dbService = new DataService();
         dbService.updateImage(obj.categoryId, obj);
-        setActiveCategory(obj)
+        setActiveCategory(obj);
+        showCategories();
     }
 
     const addCategoryImage = async () => {
-        alert(activeCategory.categoryId);
         if (!categoryImageUpload) {
             return;
         }
 
         const imagesArr = Object.values(categoryImageUpload);
         console.log(Object.values(categoryImageUpload));
-
-        // let tmpCategoryImages = [];
-        // tmpCategoryImages = activeCategory.images;
 
         let obj = {
             categoryId: activeCategory.categoryId,
@@ -203,17 +201,8 @@ function Admin() {
             uploadBytes(imageRef, image).then((snapshot) => {
                 getDownloadURL(snapshot.ref).then(async (url) => {
                     console.log(url);
-                    // tmpCategoryImages.push(url);
-                    // dbService.updateImage()
-                    // let image = { url }
-                    // const pushImage = await dbService.addImage(image);
-                    // console.log(pushImage);
-                    // showImages();
-                    // activeCategory.images = tmpCategoryImages;
                     obj.images.push(url);
-                    // setActiveCategory(curr => ({ ...curr, images: [...curr.images, url] }));
                     setTimeout(addImagesinFirebase(obj), 15000);
-
                 })
             })
         })
@@ -233,7 +222,6 @@ function Admin() {
 
     return (
         <div>
-
             <PageHelmet pageTitle='Image Gallery' />
 
             {/* Start Header Area  */}
@@ -250,7 +238,7 @@ function Admin() {
                         <>
                             <div className="container">
 
-                                <input placeholder='Add New Category' type='text' multiple onChange={(e) => setCategory(e.target.value)} />
+                                <input placeholder='Add New Category' value={category} type='text' multiple onChange={(e) => setCategory(e.target.value)} />
                                 <button onClick={addNewCategory}>Add Category</button>
                                 <br />
                                 <br />
@@ -266,26 +254,30 @@ function Admin() {
                                     <div className="row">
                                         <div className="wrapper" style={{ padding: 0, margin: 0, justifyContent: 'center', }}>
                                             {categories.map((category, index) => (
-                                                <div className="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12" key={index}>
 
-                                                    <div onClick={() => { showCategoryImages(category) }} className="text-center">
-                                                        <div className="service service__style--2">
-                                                            <div className="icon">
-                                                                {category.categoryName}
-                                                            </div>
-                                                            <div className="content">
-                                                                <h3 className="title">{"Category"}</h3>
+                                                category.categoryName && <>
+
+                                                    <div className="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12" key={index}>
+
+                                                        <div onClick={() => { showCategoryImages(category) }} className="text-center">
+                                                            <div className="service service__style--2">
+                                                                <div className="icon">
+                                                                    {category.categoryName}
+                                                                </div>
+                                                                <div className="content">
+                                                                    <h3 className="title">{"Category"}</h3>
+                                                                </div>
                                                             </div>
                                                         </div>
+                                                        <button onClick={() => { deleteCategory(category.categoryId) }} className="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12" key={index}>Delete Category </button>
                                                     </div>
-                                                    <button onClick={() => { deleteCategory(category.categoryId) }} className="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12" key={index}>Delete Category </button>
-                                                </div>
+                                                </>
                                             ))}
                                         </div>
                                     </div>
                                 </div>
 
-                                <div className="row">
+                                {/* <div className="row">
                                     <div className="wrapper" style={{ padding: 0, margin: 0, justifyContent: 'center', }}>
                                         {images.map((item, index) => (
                                             <div key={index} className="col-lg-3" style={{ padding: 0, margin: 0, borderRadius: 15 }}>
@@ -299,8 +291,8 @@ function Admin() {
                                             </div>
                                         ))}
                                     </div>
-                                </div>
-                                <div>
+                                </div> */}
+                                {/* <div>
                                     {clickedImg && (
                                         <Modal
                                             clickedImg={clickedImg}
@@ -309,7 +301,7 @@ function Admin() {
                                             handelRotationLeft={handelRotationLeft}
                                         />
                                     )}
-                                </div>
+                                </div> */}
                             </div>
                         </>
                     )}
@@ -321,7 +313,7 @@ function Admin() {
                             {/* <input type='file' multiple onChange={(e) => setImageUpload(e.target.files)} /> */}
 
                             {/* <label  htmlFor="Add Image">Add Image</label> */}
-                            <input type='file' multiple onChange={(e) => setCategoryImageUpload(e.target.files)} />
+                            <input type='file' accept="image/png, image/jpg, image/jpeg" multiple onChange={(e) => setCategoryImageUpload(e.target.files)} />
 
                             <br />
 

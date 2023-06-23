@@ -255,42 +255,57 @@ function Gallery() {
                     <div className="container">
                         <div className="row">
                             <div className="wrapper" style={{ padding: 0, margin: 0, justifyContent: 'center', }}>
-                                {/* {images.map((item, index) => (
-                                    <div key={index} className="col-lg-3" style={{ padding: 0, margin: 0, borderRadius: 15 }}>
-                                        <img
-                                            src={item.image}
-                                            alt={item.category}
-                                            height={'200px'}
-                                            onClick={() => handleClick(item, index)}
-                                        />
-                                    </div>
-                                ))} */}
 
                                 <div className="row creative-service">
 
                                     {/* Categories List */}
                                     <div className="row">
                                         <div className="wrapper" style={{ padding: 0, margin: 0, justifyContent: 'center', }}>
-                                            {categories.map((category, index) => (
+                                            {!showCategoryImage && <>
+                                                {categories.map((category, index) => (
+                                                    <>
 
+                                                        {category.categoryName && <>
+                                                            <div className="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12" key={index}>
 
-                                                category.categoryName && <>
-                                                    <div className="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12" key={index}>
-
-                                                        <div onClick={() => { showCategoryImages(category) }} className="text-center">
-                                                            <div className="service service__style--2">
-                                                                <div className="icon">
-                                                                    {category.categoryName}
-                                                                </div>
-                                                                <div className="content">
-                                                                    <h3 className="title">{"Category"}</h3>
+                                                                <div onClick={() => { showCategoryImages(category) }} className="text-center">
+                                                                    <div className="service service__style--2">
+                                                                        <div className="icon">
+                                                                            {category.categoryName}
+                                                                        </div>
+                                                                        <div className="content">
+                                                                            <h3 className="title">{"Category"}</h3>
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
                                                             </div>
+                                                        </>}
+
+                                                    </>
+                                                ))}
+                                            </>}
+
+                                            {showCategoryImage && <>
+                                                <div className="container">
+                                                    <button className='m-5' onClick={() => { setShowCategoryImage(false) }}>Back</button>
+
+                                                    <div className="row">
+                                                        <div className="wrapper" style={{ padding: 0, margin: 0, justifyContent: 'center', }}>
+                                                            {activeCategory.images.map((item, index) => (
+                                                                <div key={index} className="col-lg-4" style={{ padding: 0, margin: 0, borderRadius: 15 }}>
+                                                                    <img
+                                                                        src={item}
+                                                                        alt={activeCategory.categoryName}
+                                                                        height={'200px'}
+                                                                        onClick={() => handleClick(item, index)}
+                                                                    />
+                                                                </div>
+                                                            ))}
                                                         </div>
                                                     </div>
-                                                </>
+                                                </div>
 
-                                            ))}
+                                            </>}
                                         </div>
                                     </div>
                                 </div>
