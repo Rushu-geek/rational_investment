@@ -111,10 +111,11 @@ function Gallery() {
 
     const [clickedImg, setClickedImg] = useState(null);
     const [currentIndex, setCurrentIndex] = useState(null);
-
     const [imageUpload, setImageUpload] = useState();
-
     const [images, setImages] = useState([]);
+    const [categories, setCategories] = useState([]);
+    const [showCategoryImage, setShowCategoryImage] = useState(false);
+    const [activeCategory, setActiveCategory] = useState({});
 
     const handleClick = (item, index) => {
         setCurrentIndex(index);
@@ -166,7 +167,7 @@ function Gallery() {
         const imageRef = ref(storage, `/rationalImages/${imageUpload.name}`);
 
         uploadBytes(imageRef, imageUpload).then((snapshot) => {
-            getDownloadURL(snapshot.ref).then(async(url) => {
+            getDownloadURL(snapshot.ref).then(async (url) => {
                 console.log(url);
                 // store url in firebase collection
 
@@ -198,8 +199,39 @@ function Gallery() {
             imageArray.push(obj);
         })
 
-        setImages(imageArray)
+        setImages(imageArray);
+
+        showCategories();
+
     }, []);
+
+    const showCategories = async () => {
+
+        const dbService = new DataService();
+
+        const categories = await dbService.getAllImages();
+
+        console.log(categories);
+
+        let categoriesArray = [];
+
+        categories.forEach((doc) => {
+            console.log(doc.data());
+            let obj = {
+                categoryName: doc.data().categoryName,
+                images: doc.data().images,
+                categoryId: doc.id
+            }
+            categoriesArray.push(obj);
+        })
+        setCategories(categoriesArray);
+    }
+
+    const showCategoryImages = (category) => {
+
+        setShowCategoryImage(true);
+        setActiveCategory(category);
+    }
 
     return (
         <div>
@@ -223,7 +255,7 @@ function Gallery() {
                     <div className="container">
                         <div className="row">
                             <div className="wrapper" style={{ padding: 0, margin: 0, justifyContent: 'center', }}>
-                                {images.map((item, index) => (
+                                {/* {images.map((item, index) => (
                                     <div key={index} className="col-lg-3" style={{ padding: 0, margin: 0, borderRadius: 15 }}>
                                         <img
                                             src={item.image}
@@ -232,7 +264,39 @@ function Gallery() {
                                             onClick={() => handleClick(item, index)}
                                         />
                                     </div>
-                                ))}
+                                ))} */}
+
+                                <div className="row creative-service">
+
+                                    {/* Categories List */}
+                                    <div className="row">
+                                        <div className="wrapper" style={{ padding: 0, margin: 0, justifyContent: 'center', }}>
+                                            {categories.map((category, index) => (
+
+
+                                                category.categoryName && <>
+                                                    <div className="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12" key={index}>
+
+                                                        <div onClick={() => { showCategoryImages(category) }} className="text-center">
+                                                            <div className="service service__style--2">
+                                                                <div className="icon">
+                                                                    {category.categoryName}
+                                                                </div>
+                                                                <div className="content">
+                                                                    <h3 className="title">{"Category"}</h3>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </>
+
+                                            ))}
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
                             </div>
                         </div>
                         <div>

@@ -21,6 +21,7 @@ function Admin() {
     const [categories, setCategories] = useState([]);
     const [showCategoryImage, setShowCategoryImage] = useState(false);
     const [activeCategory, setActiveCategory] = useState({});
+    const [categoryImageUpload, setCategoryImageUpload] = useState();
 
     const showImages = async () => {
 
@@ -156,6 +157,14 @@ function Admin() {
         showCategories();
     }
 
+    const deleteCategory = async (categoryId) => {
+        alert("Hi");
+        const dbService = new DataService();
+        const cat = await dbService.deleteImage(categoryId);
+        console.log(cat);
+        showCategories();
+    }
+
     const showCategoryImages = (category) => {
 
         // alert(category.categoryName);
@@ -163,8 +172,62 @@ function Admin() {
         setActiveCategory(category);
     }
 
+
+    const addImagesinFirebase = (obj) => {
+        console.log(obj)
+        const dbService = new DataService();
+        dbService.updateImage(obj.categoryId, obj);
+        setActiveCategory(obj)
+    }
+
     const addCategoryImage = async () => {
         alert(activeCategory.categoryId);
+        if (!categoryImageUpload) {
+            return;
+        }
+
+        const imagesArr = Object.values(categoryImageUpload);
+        console.log(Object.values(categoryImageUpload));
+
+        // let tmpCategoryImages = [];
+        // tmpCategoryImages = activeCategory.images;
+
+        let obj = {
+            categoryId: activeCategory.categoryId,
+            categoryName: activeCategory.categoryName,
+            images: activeCategory.images
+        }
+
+        imagesArr.map((image) => {
+            const imageRef = ref(storage, `/rationalImages/${image.name}`);
+            uploadBytes(imageRef, image).then((snapshot) => {
+                getDownloadURL(snapshot.ref).then(async (url) => {
+                    console.log(url);
+                    // tmpCategoryImages.push(url);
+                    // dbService.updateImage()
+                    // let image = { url }
+                    // const pushImage = await dbService.addImage(image);
+                    // console.log(pushImage);
+                    // showImages();
+                    // activeCategory.images = tmpCategoryImages;
+                    obj.images.push(url);
+                    // setActiveCategory(curr => ({ ...curr, images: [...curr.images, url] }));
+                    setTimeout(addImagesinFirebase(obj), 15000);
+
+                })
+            })
+        })
+    }
+
+    const deleteCategoryImg = async (imageIndex) => {
+        let obj = {
+            categoryId: activeCategory.categoryId,
+            categoryName: activeCategory.categoryName,
+            images: activeCategory.images
+        }
+        obj.images.splice(imageIndex, 1);
+        console.log(obj)
+        addImagesinFirebase(obj);
     }
 
 
@@ -203,35 +266,19 @@ function Admin() {
                                     <div className="row">
                                         <div className="wrapper" style={{ padding: 0, margin: 0, justifyContent: 'center', }}>
                                             {categories.map((category, index) => (
-                                                <div onClick={() => { showCategoryImages(category) }} className="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12" key={index}>
+                                                <div className="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12" key={index}>
 
-                                                    <div className="text-center">
+                                                    <div onClick={() => { showCategoryImages(category) }} className="text-center">
                                                         <div className="service service__style--2">
                                                             <div className="icon">
                                                                 {category.categoryName}
                                                             </div>
                                                             <div className="content">
                                                                 <h3 className="title">{"Category"}</h3>
-                                                                {/* {val.forms.map((form) => {
-                                                            return (
-                                                                <a style={{ "color": "#1F1F25", }} href={form.link}>{form.title} </a>
-                                                            )
-                                                        })} */}
                                                             </div>
                                                         </div>
-                                                        <button onClick={() => { }}>Delete</button>
-
                                                     </div>
-
-
-
-                                                    {/* <div key={index} className="col-lg-3" style={{ padding: 0, margin: 0, borderRadius: 15 }}> */}
-                                                    {/* <img
-                                            src={item.image}
-                                            alt={item.category}
-                                            height={'200px'}
-                                            onClick={() => handleClick(item, index)}
-                                        /> */}
+                                                    <button onClick={() => { deleteCategory(category.categoryId) }} className="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12" key={index}>Delete Category </button>
                                                 </div>
                                             ))}
                                         </div>
@@ -270,6 +317,14 @@ function Admin() {
                     {showCategoryImage && (
                         <div className="container">
                             <button className='m-5' onClick={() => { setShowCategoryImage(false) }}>Back</button>
+
+                            {/* <input type='file' multiple onChange={(e) => setImageUpload(e.target.files)} /> */}
+
+                            {/* <label  htmlFor="Add Image">Add Image</label> */}
+                            <input type='file' multiple onChange={(e) => setCategoryImageUpload(e.target.files)} />
+
+                            <br />
+
                             <button className='m-5' onClick={() => { addCategoryImage() }}>Add Image</button>
                             <br />
                             <h4>{activeCategory.categoryName}</h4>
@@ -281,12 +336,12 @@ function Admin() {
                                         {activeCategory.images.map((item, index) => (
                                             <div key={index} className="col-lg-3" style={{ padding: 0, margin: 0, borderRadius: 15 }}>
                                                 <img
-                                                    src={item.image}
-                                                    alt={item.category}
+                                                    src={item}
+                                                    alt={activeCategory.categoryName}
                                                     height={'200px'}
                                                     onClick={() => handleClick(item, index)}
                                                 />
-                                                <button onClick={() => { deleteImg(item.imageId) }}>Delete</button>
+                                                <button onClick={() => { deleteCategoryImg(index) }}>Delete</button>
                                             </div>
                                         ))}
                                     </div>
