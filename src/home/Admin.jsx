@@ -77,8 +77,9 @@ function Admin() {
     }
 
     const handleClick = (item, index) => {
+        alert(item)
         setCurrentIndex(index);
-        setClickedImg(item.bigImage);
+        setClickedImg(item);
     };
 
     const handelRotationRight = () => {
@@ -331,7 +332,7 @@ function Admin() {
                                                     src={item}
                                                     alt={activeCategory.categoryName}
                                                     height={'200px'}
-                                                    onClick={() => handleClick(item, index)}
+                                                    // onClick={() => handleClick(item, index)}
                                                 />
                                                 <button onClick={() => { deleteCategoryImg(index) }}>Delete</button>
                                             </div>

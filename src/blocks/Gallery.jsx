@@ -13,99 +13,100 @@ import { storage } from '../firebase';
 import DataService from '../dbService';
 
 
-const TabOne = [
-    {
-        image: 'https://rationalinvestments.in/assets/images/portfolio/dp-portfolio-01.jpg',
-        bigImage: 'https://rationalinvestments.in/assets/images/portfolio/dp-portfolio-01.jpg',
-        category: 'Web Design',
-        title: 'Design is a creative part'
-    },
-    {
-        image: 'https://rationalinvestments.in/assets/images/portfolio/dp-portfolio-02.jpg',
-        bigImage: 'https://rationalinvestments.in/assets/images/portfolio/dp-portfolio-02.jpg',
-        category: 'Mobile App',
-        title: 'The service provide for designer'
-    },
-    {
-        image: '/assets/images/portfolio/big/dp-big--portfolio-03.jpg',
-        bigImage: '/assets/images/portfolio/big/dp-big--portfolio-03.jpg',
-        category: 'Web Design',
-        title: 'Mobile App landing Design'
-    },
-    {
-        image: '/assets/images/portfolio/big/dp-big--portfolio-04.jpg',
-        bigImage: '/assets/images/portfolio/big/dp-big--portfolio-04.jpg',
-        category: 'Mobile App',
-        title: 'Logo Design creativity'
-    },
-    {
-        image: '/assets/images/portfolio/big/dp-big--portfolio-05.jpg',
-        bigImage: '/assets/images/portfolio/big/dp-big--portfolio-05.jpg',
-        category: 'Web Design',
-        title: 'T-shirt design is the part of design'
-    },
-    {
-        image: '/assets/images/portfolio/big/dp-big--portfolio-06.jpg',
-        bigImage: '/assets/images/portfolio/big/dp-big--portfolio-06.jpg',
-        category: 'Logo Design',
-        title: 'Getting tickets to the big show'
-    },
-    {
-        image: '/assets/images/portfolio/big/dp-big--portfolio-07.jpg',
-        bigImage: '/assets/images/portfolio/big/dp-big--portfolio-07.jpg',
-        category: 'Logo Design',
-        title: 'Getting tickets to the big show'
-    },
-    {
-        image: '/assets/images/portfolio/big/dp-big--portfolio-08.jpg',
-        bigImage: '/assets/images/portfolio/big/dp-big--portfolio-08.jpg',
-        category: 'Logo Design',
-        title: 'Getting tickets to the big show'
-    },
-    {
-        image: '/assets/images/portfolio/big/dp-big--portfolio-09.jpg',
-        bigImage: '/assets/images/portfolio/big/dp-big--portfolio-09.jpg',
-        category: 'Logo Design',
-        title: 'Getting tickets to the big show'
-    },
-    {
-        image: '/assets/images/portfolio/big/dp-big--portfolio-10.jpg',
-        bigImage: '/assets/images/portfolio/big/dp-big--portfolio-10.jpg',
-        category: 'Logo Design',
-        title: 'Getting tickets to the big show'
-    },
-    {
-        image: '/assets/images/portfolio/big/dp-big--portfolio-11.jpg',
-        bigImage: '/assets/images/portfolio/big/dp-big--portfolio-11.jpg',
-        category: 'Logo Design',
-        title: 'Getting tickets to the big show'
-    },
-    {
-        image: '/assets/images/portfolio/big/dp-big--portfolio-12.jpg',
-        bigImage: '/assets/images/portfolio/big/dp-big--portfolio-12.jpg',
-        category: 'Logo Design',
-        title: 'Getting tickets to the big show'
-    },
-    {
-        image: '/assets/images/portfolio/big/dp-big--portfolio-13.jpg',
-        bigImage: '/assets/images/portfolio/big/dp-big--portfolio-13.jpg',
-        category: 'Logo Design',
-        title: 'Getting tickets to the big show'
-    },
-    {
-        image: '/assets/images/portfolio/big/dp-big--portfolio-14.jpg',
-        bigImage: '/assets/images/portfolio/big/dp-big--portfolio-14.jpg',
-        category: 'Logo Design',
-        title: 'Getting tickets to the big show'
-    },
 
-    {
-        image: '/assets/images/portfolio/big/dp-small--portfolio-15.jpg',
-        bigImage: '/assets/images/portfolio/big/dp-big--portfolio-15.jpg',
-        category: 'Logo Design',
-        title: 'Getting tickets to the big show'
-    },
-]
+// const TabOne = [
+//     {
+//         image: 'https://rationalinvestments.in/assets/images/portfolio/dp-portfolio-01.jpg',
+//         bigImage: 'https://rationalinvestments.in/assets/images/portfolio/dp-portfolio-01.jpg',
+//         category: 'Web Design',
+//         title: 'Design is a creative part'
+//     },
+//     {
+//         image: 'https://rationalinvestments.in/assets/images/portfolio/dp-portfolio-02.jpg',
+//         bigImage: 'https://rationalinvestments.in/assets/images/portfolio/dp-portfolio-02.jpg',
+//         category: 'Mobile App',
+//         title: 'The service provide for designer'
+//     },
+//     {
+//         image: '/assets/images/portfolio/big/dp-big--portfolio-03.jpg',
+//         bigImage: '/assets/images/portfolio/big/dp-big--portfolio-03.jpg',
+//         category: 'Web Design',
+//         title: 'Mobile App landing Design'
+//     },
+//     {
+//         image: '/assets/images/portfolio/big/dp-big--portfolio-04.jpg',
+//         bigImage: '/assets/images/portfolio/big/dp-big--portfolio-04.jpg',
+//         category: 'Mobile App',
+//         title: 'Logo Design creativity'
+//     },
+//     {
+//         image: '/assets/images/portfolio/big/dp-big--portfolio-05.jpg',
+//         bigImage: '/assets/images/portfolio/big/dp-big--portfolio-05.jpg',
+//         category: 'Web Design',
+//         title: 'T-shirt design is the part of design'
+//     },
+//     {
+//         image: '/assets/images/portfolio/big/dp-big--portfolio-06.jpg',
+//         bigImage: '/assets/images/portfolio/big/dp-big--portfolio-06.jpg',
+//         category: 'Logo Design',
+//         title: 'Getting tickets to the big show'
+//     },
+//     {
+//         image: '/assets/images/portfolio/big/dp-big--portfolio-07.jpg',
+//         bigImage: '/assets/images/portfolio/big/dp-big--portfolio-07.jpg',
+//         category: 'Logo Design',
+//         title: 'Getting tickets to the big show'
+//     },
+//     {
+//         image: '/assets/images/portfolio/big/dp-big--portfolio-08.jpg',
+//         bigImage: '/assets/images/portfolio/big/dp-big--portfolio-08.jpg',
+//         category: 'Logo Design',
+//         title: 'Getting tickets to the big show'
+//     },
+//     {
+//         image: '/assets/images/portfolio/big/dp-big--portfolio-09.jpg',
+//         bigImage: '/assets/images/portfolio/big/dp-big--portfolio-09.jpg',
+//         category: 'Logo Design',
+//         title: 'Getting tickets to the big show'
+//     },
+//     {
+//         image: '/assets/images/portfolio/big/dp-big--portfolio-10.jpg',
+//         bigImage: '/assets/images/portfolio/big/dp-big--portfolio-10.jpg',
+//         category: 'Logo Design',
+//         title: 'Getting tickets to the big show'
+//     },
+//     {
+//         image: '/assets/images/portfolio/big/dp-big--portfolio-11.jpg',
+//         bigImage: '/assets/images/portfolio/big/dp-big--portfolio-11.jpg',
+//         category: 'Logo Design',
+//         title: 'Getting tickets to the big show'
+//     },
+//     {
+//         image: '/assets/images/portfolio/big/dp-big--portfolio-12.jpg',
+//         bigImage: '/assets/images/portfolio/big/dp-big--portfolio-12.jpg',
+//         category: 'Logo Design',
+//         title: 'Getting tickets to the big show'
+//     },
+//     {
+//         image: '/assets/images/portfolio/big/dp-big--portfolio-13.jpg',
+//         bigImage: '/assets/images/portfolio/big/dp-big--portfolio-13.jpg',
+//         category: 'Logo Design',
+//         title: 'Getting tickets to the big show'
+//     },
+//     {
+//         image: '/assets/images/portfolio/big/dp-big--portfolio-14.jpg',
+//         bigImage: '/assets/images/portfolio/big/dp-big--portfolio-14.jpg',
+//         category: 'Logo Design',
+//         title: 'Getting tickets to the big show'
+//     },
+
+//     {
+//         image: '/assets/images/portfolio/big/dp-small--portfolio-15.jpg',
+//         bigImage: '/assets/images/portfolio/big/dp-big--portfolio-15.jpg',
+//         category: 'Logo Design',
+//         title: 'Getting tickets to the big show'
+//     },
+// ]
 
 function Gallery() {
 
@@ -116,34 +117,44 @@ function Gallery() {
     const [categories, setCategories] = useState([]);
     const [showCategoryImage, setShowCategoryImage] = useState(false);
     const [activeCategory, setActiveCategory] = useState({});
+    // const [TabOne, setTabOne] = useState([]);
+
+    let TabOne = [];
+
 
     const handleClick = (item, index) => {
         setCurrentIndex(index);
-        setClickedImg(item.bigImage);
+        setClickedImg(item);
     };
 
     const handelRotationRight = () => {
+
+        TabOne = activeCategory.images;
         const totalLength = TabOne.length;
+       
         if (currentIndex + 1 >= totalLength) {
             setCurrentIndex(0);
-            const newUrl = TabOne[0].bigImage;
+            const newUrl = TabOne[0];
             setClickedImg(newUrl);
             return;
         }
         const newIndex = currentIndex + 1;
+        // alert("new Index"+ newIndex)
         const newUrl = TabOne.filter((item) => {
             return TabOne.indexOf(item) === newIndex;
         });
-        const newItem = newUrl[0].bigImage;
+        // alert("new Url"+newUrl)
+        const newItem = newUrl;
         setClickedImg(newItem);
         setCurrentIndex(newIndex);
     };
 
     const handelRotationLeft = () => {
+        TabOne = activeCategory.images;
         const totalLength = TabOne.length;
         if (currentIndex === 0) {
             setCurrentIndex(totalLength - 1);
-            const newUrl = TabOne[totalLength - 1].bigImage;
+            const newUrl = TabOne[totalLength - 1];
             setClickedImg(newUrl);
             return;
         }
@@ -151,7 +162,7 @@ function Gallery() {
         const newUrl = TabOne.filter((item) => {
             return TabOne.indexOf(item) === newIndex;
         });
-        const newItem = newUrl[0].bigImage;
+        const newItem = newUrl;
         setClickedImg(newItem);
         setCurrentIndex(newIndex);
     };
@@ -231,6 +242,7 @@ function Gallery() {
 
         setShowCategoryImage(true);
         setActiveCategory(category);
+        TabOne = category.images;
     }
 
     return (
