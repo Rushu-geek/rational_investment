@@ -4,7 +4,7 @@ import ScrollToTop from 'react-scroll-up';
 import { FiChevronUp } from "react-icons/fi";
 import Header from "../component/header/HeaderFive";
 import Footer from "../component/footer/FooterTwo";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Modal from '../component/Modal';
 
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
