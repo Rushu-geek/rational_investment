@@ -1,4 +1,3 @@
-import React, { Component, useEffect } from 'react'
 import PageHelmet from "../component/common/Helmet";
 import Breadcrumb from "../elements/common/Breadcrumb";
 import ScrollToTop from 'react-scroll-up';
@@ -206,8 +205,6 @@ function Gallery() {
                                                             {activeCategory.images.map((item, index) => (
 
                                                                 <div key={index} className="" style={{ padding: 0, margin: 0, borderRadius: 15 }}>
-                                                                    <h2>{activeCategory.categoryName}</h2>
-
                                                                     <img
                                                                         src={item}
                                                                         alt={activeCategory.categoryName}
