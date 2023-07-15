@@ -12,137 +12,53 @@ import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { storage } from '../firebase';
 import DataService from '../dbService';
 
-
-const TabOne = [
-    {
-        image: 'https://rationalinvestments.in/assets/images/portfolio/dp-portfolio-01.jpg',
-        bigImage: 'https://rationalinvestments.in/assets/images/portfolio/dp-portfolio-01.jpg',
-        category: 'Web Design',
-        title: 'Design is a creative part'
-    },
-    {
-        image: 'https://rationalinvestments.in/assets/images/portfolio/dp-portfolio-02.jpg',
-        bigImage: 'https://rationalinvestments.in/assets/images/portfolio/dp-portfolio-02.jpg',
-        category: 'Mobile App',
-        title: 'The service provide for designer'
-    },
-    {
-        image: '/assets/images/portfolio/big/dp-big--portfolio-03.jpg',
-        bigImage: '/assets/images/portfolio/big/dp-big--portfolio-03.jpg',
-        category: 'Web Design',
-        title: 'Mobile App landing Design'
-    },
-    {
-        image: '/assets/images/portfolio/big/dp-big--portfolio-04.jpg',
-        bigImage: '/assets/images/portfolio/big/dp-big--portfolio-04.jpg',
-        category: 'Mobile App',
-        title: 'Logo Design creativity'
-    },
-    {
-        image: '/assets/images/portfolio/big/dp-big--portfolio-05.jpg',
-        bigImage: '/assets/images/portfolio/big/dp-big--portfolio-05.jpg',
-        category: 'Web Design',
-        title: 'T-shirt design is the part of design'
-    },
-    {
-        image: '/assets/images/portfolio/big/dp-big--portfolio-06.jpg',
-        bigImage: '/assets/images/portfolio/big/dp-big--portfolio-06.jpg',
-        category: 'Logo Design',
-        title: 'Getting tickets to the big show'
-    },
-    {
-        image: '/assets/images/portfolio/big/dp-big--portfolio-07.jpg',
-        bigImage: '/assets/images/portfolio/big/dp-big--portfolio-07.jpg',
-        category: 'Logo Design',
-        title: 'Getting tickets to the big show'
-    },
-    {
-        image: '/assets/images/portfolio/big/dp-big--portfolio-08.jpg',
-        bigImage: '/assets/images/portfolio/big/dp-big--portfolio-08.jpg',
-        category: 'Logo Design',
-        title: 'Getting tickets to the big show'
-    },
-    {
-        image: '/assets/images/portfolio/big/dp-big--portfolio-09.jpg',
-        bigImage: '/assets/images/portfolio/big/dp-big--portfolio-09.jpg',
-        category: 'Logo Design',
-        title: 'Getting tickets to the big show'
-    },
-    {
-        image: '/assets/images/portfolio/big/dp-big--portfolio-10.jpg',
-        bigImage: '/assets/images/portfolio/big/dp-big--portfolio-10.jpg',
-        category: 'Logo Design',
-        title: 'Getting tickets to the big show'
-    },
-    {
-        image: '/assets/images/portfolio/big/dp-big--portfolio-11.jpg',
-        bigImage: '/assets/images/portfolio/big/dp-big--portfolio-11.jpg',
-        category: 'Logo Design',
-        title: 'Getting tickets to the big show'
-    },
-    {
-        image: '/assets/images/portfolio/big/dp-big--portfolio-12.jpg',
-        bigImage: '/assets/images/portfolio/big/dp-big--portfolio-12.jpg',
-        category: 'Logo Design',
-        title: 'Getting tickets to the big show'
-    },
-    {
-        image: '/assets/images/portfolio/big/dp-big--portfolio-13.jpg',
-        bigImage: '/assets/images/portfolio/big/dp-big--portfolio-13.jpg',
-        category: 'Logo Design',
-        title: 'Getting tickets to the big show'
-    },
-    {
-        image: '/assets/images/portfolio/big/dp-big--portfolio-14.jpg',
-        bigImage: '/assets/images/portfolio/big/dp-big--portfolio-14.jpg',
-        category: 'Logo Design',
-        title: 'Getting tickets to the big show'
-    },
-
-    {
-        image: '/assets/images/portfolio/big/dp-small--portfolio-15.jpg',
-        bigImage: '/assets/images/portfolio/big/dp-big--portfolio-15.jpg',
-        category: 'Logo Design',
-        title: 'Getting tickets to the big show'
-    },
-]
-
 function Gallery() {
 
     const [clickedImg, setClickedImg] = useState(null);
     const [currentIndex, setCurrentIndex] = useState(null);
-
     const [imageUpload, setImageUpload] = useState();
-
     const [images, setImages] = useState([]);
+    const [categories, setCategories] = useState([]);
+    const [showCategoryImage, setShowCategoryImage] = useState(false);
+    const [activeCategory, setActiveCategory] = useState({});
+    // const [TabOne, setTabOne] = useState([]);
+
+    let TabOne = [];
+
 
     const handleClick = (item, index) => {
         setCurrentIndex(index);
-        setClickedImg(item.bigImage);
+        setClickedImg(item);
     };
 
     const handelRotationRight = () => {
+
+        TabOne = activeCategory.images;
         const totalLength = TabOne.length;
+
         if (currentIndex + 1 >= totalLength) {
             setCurrentIndex(0);
-            const newUrl = TabOne[0].bigImage;
+            const newUrl = TabOne[0];
             setClickedImg(newUrl);
             return;
         }
         const newIndex = currentIndex + 1;
+        // alert("new Index"+ newIndex)
         const newUrl = TabOne.filter((item) => {
             return TabOne.indexOf(item) === newIndex;
         });
-        const newItem = newUrl[0].bigImage;
+        // alert("new Url"+newUrl)
+        const newItem = newUrl;
         setClickedImg(newItem);
         setCurrentIndex(newIndex);
     };
 
     const handelRotationLeft = () => {
+        TabOne = activeCategory.images;
         const totalLength = TabOne.length;
         if (currentIndex === 0) {
             setCurrentIndex(totalLength - 1);
-            const newUrl = TabOne[totalLength - 1].bigImage;
+            const newUrl = TabOne[totalLength - 1];
             setClickedImg(newUrl);
             return;
         }
@@ -150,7 +66,7 @@ function Gallery() {
         const newUrl = TabOne.filter((item) => {
             return TabOne.indexOf(item) === newIndex;
         });
-        const newItem = newUrl[0].bigImage;
+        const newItem = newUrl;
         setClickedImg(newItem);
         setCurrentIndex(newIndex);
     };
@@ -166,7 +82,7 @@ function Gallery() {
         const imageRef = ref(storage, `/rationalImages/${imageUpload.name}`);
 
         uploadBytes(imageRef, imageUpload).then((snapshot) => {
-            getDownloadURL(snapshot.ref).then(async(url) => {
+            getDownloadURL(snapshot.ref).then(async (url) => {
                 console.log(url);
                 // store url in firebase collection
 
@@ -198,8 +114,40 @@ function Gallery() {
             imageArray.push(obj);
         })
 
-        setImages(imageArray)
+        setImages(imageArray);
+
+        showCategories();
+
     }, []);
+
+    const showCategories = async () => {
+
+        const dbService = new DataService();
+
+        const categories = await dbService.getAllImages();
+
+        console.log(categories);
+
+        let categoriesArray = [];
+
+        categories.forEach((doc) => {
+            console.log(doc.data());
+            let obj = {
+                categoryName: doc.data().categoryName,
+                images: doc.data().images,
+                categoryId: doc.id
+            }
+            categoriesArray.push(obj);
+        })
+        setCategories(categoriesArray);
+    }
+
+    const showCategoryImages = (category) => {
+
+        setShowCategoryImage(true);
+        setActiveCategory(category);
+        TabOne = category.images;
+    }
 
     return (
         <div>
@@ -216,23 +164,65 @@ function Gallery() {
 
             {/* Start Page Wrapper  */}
             <main className="page-wrapper">
-
                 {/* Start Portfolio Area  */}
                 <div className="rn-portfolio-area ptb--120 bg_color--1 line-separator">
-
                     <div className="container">
                         <div className="row">
                             <div className="wrapper" style={{ padding: 0, margin: 0, justifyContent: 'center', }}>
-                                {images.map((item, index) => (
-                                    <div key={index} className="col-lg-3" style={{ padding: 0, margin: 0, borderRadius: 15 }}>
-                                        <img
-                                            src={item.image}
-                                            alt={item.category}
-                                            height={'200px'}
-                                            onClick={() => handleClick(item, index)}
-                                        />
+                                <div className="row creative-service">
+                                    {/* Categories List */}
+                                    <div className="row">
+                                        {!showCategoryImage ? <h1>Categories</h1> : <h1>Images</h1>}
+                                        <div className="wrapper">
+                                            {!showCategoryImage && <>
+                                                <div className="row">
+                                                    <div className="wrapper" style={{ padding: 0, margin: 0, justifyContent: 'center', }}>
+                                                        {categories.map((category, index) => (
+                                                            <>
+                                                                {category.categoryName && <>
+                                                                    <div className="" key={index}>
+                                                                        <div style={{ width: '', cursor: 'pointer', backgroundColor: 'ButtonShadow', borderRadius: 20 }} onClick={() => { showCategoryImages(category) }} className="text-center">
+                                                                            <div className="service service__style--2">
+                                                                                <div className="icon">
+                                                                                    {category.categoryName}
+                                                                                </div>
+                                                                                <div className="content">
+                                                                                    <h3 className="title">{"Category"}</h3>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </>}
+                                                            </>
+                                                        ))}
+                                                    </div>
+                                                </div>
+                                            </>}
+                                            {showCategoryImage && <>
+                                                <div className="">
+                                                    <button className='btn btn-secondary' style={{ backgroundColor: 'black', borderRadius: 10 }} onClick={() => { setShowCategoryImage(false) }}> {'<'} </button>
+                                                    <div className="row">
+                                                        <div className="wrapper" style={{ padding: 0, margin: 0, justifyContent: 'center', }}>
+                                                            {activeCategory.images.map((item, index) => (
+
+                                                                <div key={index} className="" style={{ padding: 0, margin: 0, borderRadius: 15 }}>
+                                                                    <h2>{activeCategory.categoryName}</h2>
+
+                                                                    <img
+                                                                        src={item}
+                                                                        alt={activeCategory.categoryName}
+                                                                        height={'200px'}
+                                                                        onClick={() => handleClick(item, index)}
+                                                                    />
+                                                                </div>
+                                                            ))}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </>}
+                                        </div>
                                     </div>
-                                ))}
+                                </div>
                             </div>
                         </div>
                         <div>
@@ -247,7 +237,6 @@ function Gallery() {
                         </div>
                     </div>
                 </div>
-
             </main>
             {/* End Page Wrapper  */}
 

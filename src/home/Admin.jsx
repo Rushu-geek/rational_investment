@@ -17,6 +17,11 @@ function Admin() {
 
     const [imageUpload, setImageUpload] = useState();
     const [images, setImages] = useState([]);
+    const [category, setCategory] = useState("");
+    const [categories, setCategories] = useState([]);
+    const [showCategoryImage, setShowCategoryImage] = useState(false);
+    const [activeCategory, setActiveCategory] = useState({});
+    const [categoryImageUpload, setCategoryImageUpload] = useState();
 
     const showImages = async () => {
 
@@ -43,7 +48,8 @@ function Admin() {
 
     useEffect(async () => {
         showImages();
-        showForms();
+        // showForms();
+        showCategories();
     }, []);
 
     const uploadFile = () => {
@@ -71,8 +77,9 @@ function Admin() {
     }
 
     const handleClick = (item, index) => {
+        alert(item)
         setCurrentIndex(index);
-        setClickedImg(item.bigImage);
+        setClickedImg(item);
     };
 
     const handelRotationRight = () => {
@@ -118,12 +125,104 @@ function Admin() {
         const images = await dbService.deleteImage(imgId);
         console.log(images);
         showImages();
-        // alert(images)
     }
+
+    const showCategories = async () => {
+
+        const dbService = new DataService();
+
+        const categories = await dbService.getAllImages();
+
+        console.log(categories);
+
+        let categoriesArray = [];
+
+        categories.forEach((doc) => {
+            console.log(doc.data());
+            let obj = {
+                categoryName: doc.data().categoryName,
+                images: doc.data().images,
+                categoryId: doc.id
+            }
+            categoriesArray.push(obj);
+        })
+        setCategories(categoriesArray);
+    }
+
+    const addNewCategory = async () => {
+
+        if (!category) {
+            return;
+        }
+
+        const dbService = new DataService();
+        let categoryData = { categoryName: category, images: [] };
+        const pushCategory = await dbService.addImage(categoryData);
+        setCategory('')
+        showCategories();
+    }
+
+    const deleteCategory = async (categoryId) => {
+        const dbService = new DataService();
+        const cat = await dbService.deleteImage(categoryId);
+        console.log(cat);
+        showCategories();
+    }
+
+    const showCategoryImages = (category) => {
+        setShowCategoryImage(true);
+        setActiveCategory(category);
+    }
+
+
+    const addImagesinFirebase = (obj) => {
+        console.log(obj)
+        const dbService = new DataService();
+        dbService.updateImage(obj.categoryId, obj);
+        setActiveCategory(obj);
+        showCategories();
+    }
+
+    const addCategoryImage = async () => {
+        if (!categoryImageUpload) {
+            return;
+        }
+
+        const imagesArr = Object.values(categoryImageUpload);
+        console.log(Object.values(categoryImageUpload));
+
+        let obj = {
+            categoryId: activeCategory.categoryId,
+            categoryName: activeCategory.categoryName,
+            images: activeCategory.images
+        }
+
+        imagesArr.map((image) => {
+            const imageRef = ref(storage, `/rationalImages/${image.name}`);
+            uploadBytes(imageRef, image).then((snapshot) => {
+                getDownloadURL(snapshot.ref).then(async (url) => {
+                    console.log(url);
+                    obj.images.push(url);
+                    setTimeout(addImagesinFirebase(obj), 15000);
+                })
+            })
+        })
+    }
+
+    const deleteCategoryImg = async (imageIndex) => {
+        let obj = {
+            categoryId: activeCategory.categoryId,
+            categoryName: activeCategory.categoryName,
+            images: activeCategory.images
+        }
+        obj.images.splice(imageIndex, 1);
+        console.log(obj)
+        addImagesinFirebase(obj);
+    }
+
 
     return (
         <div>
-
             <PageHelmet pageTitle='Image Gallery' />
 
             {/* Start Header Area  */}
@@ -136,43 +235,91 @@ function Admin() {
                 {/* Start Portfolio Area  */}
                 <div className="rn-portfolio-area ptb--120 bg_color--1 line-separator">
 
-                    <div className="container">
-                        <input type='file' multiple onChange={(e) => setImageUpload(e.target.files)} />
-                        <button onClick={uploadFile}>Save</button>
-                    </div>
+                    {!showCategoryImage && (
+                        <>
+                            <div className="container">
+                                <h2>Add Image Category</h2>
+                                <input placeholder='Add New Category' value={category} type='text' multiple onChange={(e) => setCategory(e.target.value)} />
+                                <button className='btn btn-primary mt-3' onClick={addNewCategory}>Add Category</button>
+                                <br />
+                                <br />
+                            </div>
+                            <div className="container">
+                                <div className="row creative-service">
 
-                    <div className="container">
-                        <div className="row">
-                            <div className="wrapper" style={{ padding: 0, margin: 0, justifyContent: 'center', }}>
-                                {images.map((item, index) => (
-                                    <div key={index} className="col-lg-3" style={{ padding: 0, margin: 0, borderRadius: 15 }}>
-                                        <img
-                                            src={item.image}
-                                            alt={item.category}
-                                            height={'200px'}
-                                            onClick={() => handleClick(item, index)}
-                                        />
-                                        <button onClick={() => { deleteImg(item.imageId) }}>Delete</button>
+                                    {/* Categories List */}
+                                    <div className="row">
+                                        <h2 className='mt-3'>Categories</h2>
+                                        <div className="wrapper" style={{ padding: 0, margin: 0, justifyContent: 'center', }}>
+                                            {categories.map((category, index) => (
+
+                                                category.categoryName && <>
+
+                                                    <div className="" key={index}>
+
+                                                        <div style={{ backgroundColor: 'ButtonShadow', borderRadius: 10, cursor: 'pointer' }} onClick={() => { showCategoryImages(category) }} className="text-center">
+                                                            <div className="service service__style--2">
+                                                                <div className="icon">
+                                                                    {category.categoryName}
+                                                                </div>
+                                                                <div className="content">
+                                                                    <h3 className="title">{"Category"}</h3>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <button onClick={() => { deleteCategory(category.categoryId) }} className="btn btn-primary mt-3" key={index}>Delete Category </button>
+                                                    </div>
+                                                </>
+                                            ))}
+                                        </div>
                                     </div>
-                                ))}
+                                </div>
+                            </div>
+                        </>
+                    )}
+                    {showCategoryImage && (
+                        <div className="container">
+                            <button className='mb-3 btn btn-secondary' style={{ backgroundColor: 'black' }} onClick={() => { setShowCategoryImage(false) }}>{'<'}</button>
+                            <input type='file' accept="image/png, image/jpg, image/jpeg" multiple onChange={(e) => setCategoryImageUpload(e.target.files)} />
+                            <br />
+                            <button className='mt-3 mb-3 btn btn-primary' onClick={() => { addCategoryImage() }}>Add Image</button>
+                            <br />
+                            <h2>{activeCategory.categoryName}</h2>
+                            <div className="row creative-service">
+                                <div className="row">
+                                    <div className="wrapper" style={{ padding: 0, margin: 0, justifyContent: 'center', }}>
+                                        {activeCategory.images.map((item, index) => (
+                                            <div className="" key={index}>
+
+                                                <div key={index} className="" style={{ padding: 0, margin: 0, borderRadius: 15, justifyContent: 'center' }}>
+                                                    <img
+                                                        src={item}
+                                                        alt={activeCategory.categoryName}
+                                                        height={'200px'}
+                                                    />
+                                                </div>
+                                                <button className='btn btn-secondary mt-3' onClick={() => { deleteCategoryImg(index) }}>Delete</button>
+
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                                <div>
+                                    {clickedImg && (
+                                        <Modal
+                                            clickedImg={clickedImg}
+                                            handelRotationRight={handelRotationRight}
+                                            setClickedImg={setClickedImg}
+                                            handelRotationLeft={handelRotationLeft}
+                                        />
+                                    )}
+                                </div>
                             </div>
                         </div>
-                        <div>
-                            {clickedImg && (
-                                <Modal
-                                    clickedImg={clickedImg}
-                                    handelRotationRight={handelRotationRight}
-                                    setClickedImg={setClickedImg}
-                                    handelRotationLeft={handelRotationLeft}
-                                />
-                            )}
-                        </div>
-                    </div>
+                    )}
                 </div>
-
             </main>
             {/* End Page Wrapper  */}
-
             {/* Start Back To Top */}
             <div className="backto-top">
                 <ScrollToTop showUnder={160}>
@@ -180,7 +327,6 @@ function Admin() {
                 </ScrollToTop>
             </div>
             {/* End Back To Top */}
-
             {/* Start Footer Area  */}
             <FooterTwo />
             {/* End Footer Area  */}
@@ -189,4 +335,4 @@ function Admin() {
 
 }
 
-export default Admin
+export default Admin;
