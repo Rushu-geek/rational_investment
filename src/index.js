@@ -42,8 +42,8 @@ class Root extends Component{
 
                         {/* Element Layot */}
                         <Route exact path={`/service`} component={Service}/>
-                        <Route exact path={`/admin`} component={Admin}/>
-                        <Route exact path={`/admin/forms`} component={AdminForms}/>
+                        <Route exact path={`/admin/ygyufhjjhugwiuhefuygywbvhbehvuewbvjewnjrvgagjskhjkwbnjken`} component={Admin}/>
+                        <Route exact path={`/admin/forms/ygyufhjjhugwiuhefuygywbvhbehvuewbvjewnjrvgagjskhjkwbnjken`} component={AdminForms}/>
                         <Route exact path={`/product`} component={Product}/>
                         <Route exact path={`/service-details`} component={ServiceDetails}/>
                         <Route exact path={`/product-details`} component={ProductDetails}/>

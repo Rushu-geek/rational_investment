@@ -22,12 +22,10 @@ const Downloads = () => {
         let formArray = [];
 
         forms.forEach((doc) => {
-
-            console.log(doc.data());
-
             formArray.push(doc.data())
-
         })
+        formArray.sort((a, b) => a.companyName.localeCompare(b.companyName))
+
         setForms(formArray);
     }, []);
 
@@ -323,31 +321,6 @@ const Downloads = () => {
                                         )
                                     })
                                 }
-                                {/* <li data-toggle="modal" data-target="#axisModal">
-                                    <img src="/assets/images/brand/axis_logo.jpg" alt="Logo Images" />
-                                </li>
-                                <li data-toggle="modal" data-target="#edelweissModal">
-                                    <img src="/assets/images/brand/edel.jpg" alt="Logo Images" />
-                                </li>
-                                <li data-toggle="modal" data-target="#frankModal">
-                                    <img src="/assets/images/brand/fti.svg" alt="Logo Images" />
-                                </li>
-                                <li data-toggle="modal" data-target="#hdfcModal">
-                                    <img src="/assets/images/brand/HDFC-AMC.jpg" alt="Logo Images" />
-                                </li>
-                                <br />
-                                <li data-toggle="modal" data-target="#iciciModal">
-                                    <img src="/assets/images/brand/icici.png" alt="Logo Images" />
-                                </li>
-                                <li data-toggle="modal" data-target="#nipponModal">
-                                    <img src="/assets/images/brand/nippon.png" alt="Logo Images" />
-                                </li>
-                                <li data-toggle="modal" data-target="#sbiModal">
-                                    <img src="/assets/images/brand/sbi.png" alt="Logo Images" />
-                                </li>
-                                <li data-toggle="modal" data-target="#tataModal">
-                                    <img src="/assets/images/brand/tata.png" alt="Logo Images" />
-                                </li> */}
                             </ul>
                             <h3 className="title" style={{ textAlign: 'center' }}>Fixed Deposit</h3>
                             <ul className="brand-style-2">

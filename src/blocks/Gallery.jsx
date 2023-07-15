@@ -12,102 +12,6 @@ import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { storage } from '../firebase';
 import DataService from '../dbService';
 
-
-
-// const TabOne = [
-//     {
-//         image: 'https://rationalinvestments.in/assets/images/portfolio/dp-portfolio-01.jpg',
-//         bigImage: 'https://rationalinvestments.in/assets/images/portfolio/dp-portfolio-01.jpg',
-//         category: 'Web Design',
-//         title: 'Design is a creative part'
-//     },
-//     {
-//         image: 'https://rationalinvestments.in/assets/images/portfolio/dp-portfolio-02.jpg',
-//         bigImage: 'https://rationalinvestments.in/assets/images/portfolio/dp-portfolio-02.jpg',
-//         category: 'Mobile App',
-//         title: 'The service provide for designer'
-//     },
-//     {
-//         image: '/assets/images/portfolio/big/dp-big--portfolio-03.jpg',
-//         bigImage: '/assets/images/portfolio/big/dp-big--portfolio-03.jpg',
-//         category: 'Web Design',
-//         title: 'Mobile App landing Design'
-//     },
-//     {
-//         image: '/assets/images/portfolio/big/dp-big--portfolio-04.jpg',
-//         bigImage: '/assets/images/portfolio/big/dp-big--portfolio-04.jpg',
-//         category: 'Mobile App',
-//         title: 'Logo Design creativity'
-//     },
-//     {
-//         image: '/assets/images/portfolio/big/dp-big--portfolio-05.jpg',
-//         bigImage: '/assets/images/portfolio/big/dp-big--portfolio-05.jpg',
-//         category: 'Web Design',
-//         title: 'T-shirt design is the part of design'
-//     },
-//     {
-//         image: '/assets/images/portfolio/big/dp-big--portfolio-06.jpg',
-//         bigImage: '/assets/images/portfolio/big/dp-big--portfolio-06.jpg',
-//         category: 'Logo Design',
-//         title: 'Getting tickets to the big show'
-//     },
-//     {
-//         image: '/assets/images/portfolio/big/dp-big--portfolio-07.jpg',
-//         bigImage: '/assets/images/portfolio/big/dp-big--portfolio-07.jpg',
-//         category: 'Logo Design',
-//         title: 'Getting tickets to the big show'
-//     },
-//     {
-//         image: '/assets/images/portfolio/big/dp-big--portfolio-08.jpg',
-//         bigImage: '/assets/images/portfolio/big/dp-big--portfolio-08.jpg',
-//         category: 'Logo Design',
-//         title: 'Getting tickets to the big show'
-//     },
-//     {
-//         image: '/assets/images/portfolio/big/dp-big--portfolio-09.jpg',
-//         bigImage: '/assets/images/portfolio/big/dp-big--portfolio-09.jpg',
-//         category: 'Logo Design',
-//         title: 'Getting tickets to the big show'
-//     },
-//     {
-//         image: '/assets/images/portfolio/big/dp-big--portfolio-10.jpg',
-//         bigImage: '/assets/images/portfolio/big/dp-big--portfolio-10.jpg',
-//         category: 'Logo Design',
-//         title: 'Getting tickets to the big show'
-//     },
-//     {
-//         image: '/assets/images/portfolio/big/dp-big--portfolio-11.jpg',
-//         bigImage: '/assets/images/portfolio/big/dp-big--portfolio-11.jpg',
-//         category: 'Logo Design',
-//         title: 'Getting tickets to the big show'
-//     },
-//     {
-//         image: '/assets/images/portfolio/big/dp-big--portfolio-12.jpg',
-//         bigImage: '/assets/images/portfolio/big/dp-big--portfolio-12.jpg',
-//         category: 'Logo Design',
-//         title: 'Getting tickets to the big show'
-//     },
-//     {
-//         image: '/assets/images/portfolio/big/dp-big--portfolio-13.jpg',
-//         bigImage: '/assets/images/portfolio/big/dp-big--portfolio-13.jpg',
-//         category: 'Logo Design',
-//         title: 'Getting tickets to the big show'
-//     },
-//     {
-//         image: '/assets/images/portfolio/big/dp-big--portfolio-14.jpg',
-//         bigImage: '/assets/images/portfolio/big/dp-big--portfolio-14.jpg',
-//         category: 'Logo Design',
-//         title: 'Getting tickets to the big show'
-//     },
-
-//     {
-//         image: '/assets/images/portfolio/big/dp-small--portfolio-15.jpg',
-//         bigImage: '/assets/images/portfolio/big/dp-big--portfolio-15.jpg',
-//         category: 'Logo Design',
-//         title: 'Getting tickets to the big show'
-//     },
-// ]
-
 function Gallery() {
 
     const [clickedImg, setClickedImg] = useState(null);
@@ -131,7 +35,7 @@ function Gallery() {
 
         TabOne = activeCategory.images;
         const totalLength = TabOne.length;
-       
+
         if (currentIndex + 1 >= totalLength) {
             setCurrentIndex(0);
             const newUrl = TabOne[0];
@@ -260,51 +164,50 @@ function Gallery() {
 
             {/* Start Page Wrapper  */}
             <main className="page-wrapper">
-
                 {/* Start Portfolio Area  */}
                 <div className="rn-portfolio-area ptb--120 bg_color--1 line-separator">
-
                     <div className="container">
                         <div className="row">
                             <div className="wrapper" style={{ padding: 0, margin: 0, justifyContent: 'center', }}>
-
                                 <div className="row creative-service">
-
                                     {/* Categories List */}
                                     <div className="row">
-                                        <div className="wrapper" style={{ padding: 0, margin: 0, justifyContent: 'center', }}>
+                                        {!showCategoryImage ? <h1>Categories</h1> : <h1>Images</h1>}
+                                        <div className="wrapper">
                                             {!showCategoryImage && <>
-                                                {categories.map((category, index) => (
-                                                    <>
-
-                                                        {category.categoryName && <>
-                                                            <div className="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12" key={index}>
-
-                                                                <div onClick={() => { showCategoryImages(category) }} className="text-center">
-                                                                    <div className="service service__style--2">
-                                                                        <div className="icon">
-                                                                            {category.categoryName}
-                                                                        </div>
-                                                                        <div className="content">
-                                                                            <h3 className="title">{"Category"}</h3>
+                                                <div className="row">
+                                                    <div className="wrapper" style={{ padding: 0, margin: 0, justifyContent: 'center', }}>
+                                                        {categories.map((category, index) => (
+                                                            <>
+                                                                {category.categoryName && <>
+                                                                    <div className="" key={index}>
+                                                                        <div style={{ width: '', cursor: 'pointer', backgroundColor: 'ButtonShadow', borderRadius: 20 }} onClick={() => { showCategoryImages(category) }} className="text-center">
+                                                                            <div className="service service__style--2">
+                                                                                <div className="icon">
+                                                                                    {category.categoryName}
+                                                                                </div>
+                                                                                <div className="content">
+                                                                                    <h3 className="title">{"Category"}</h3>
+                                                                                </div>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
-                                                                </div>
-                                                            </div>
-                                                        </>}
-
-                                                    </>
-                                                ))}
+                                                                </>}
+                                                            </>
+                                                        ))}
+                                                    </div>
+                                                </div>
                                             </>}
-
                                             {showCategoryImage && <>
-                                                <div className="container">
-                                                    <button className='m-5' onClick={() => { setShowCategoryImage(false) }}>Back</button>
-
+                                                <div className="">
+                                                    <button className='btn btn-secondary' style={{ backgroundColor: 'black', borderRadius: 10 }} onClick={() => { setShowCategoryImage(false) }}> {'<'} </button>
                                                     <div className="row">
                                                         <div className="wrapper" style={{ padding: 0, margin: 0, justifyContent: 'center', }}>
                                                             {activeCategory.images.map((item, index) => (
-                                                                <div key={index} className="col-lg-4" style={{ padding: 0, margin: 0, borderRadius: 15 }}>
+
+                                                                <div key={index} className="" style={{ padding: 0, margin: 0, borderRadius: 15 }}>
+                                                                    <h2>{activeCategory.categoryName}</h2>
+
                                                                     <img
                                                                         src={item}
                                                                         alt={activeCategory.categoryName}
@@ -316,14 +219,10 @@ function Gallery() {
                                                         </div>
                                                     </div>
                                                 </div>
-
                                             </>}
                                         </div>
                                     </div>
                                 </div>
-
-
-
                             </div>
                         </div>
                         <div>
@@ -338,7 +237,6 @@ function Gallery() {
                         </div>
                     </div>
                 </div>
-
             </main>
             {/* End Page Wrapper  */}
 

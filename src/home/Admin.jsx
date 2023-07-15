@@ -238,29 +238,26 @@ function Admin() {
                     {!showCategoryImage && (
                         <>
                             <div className="container">
-
+                                <h2>Add Image Category</h2>
                                 <input placeholder='Add New Category' value={category} type='text' multiple onChange={(e) => setCategory(e.target.value)} />
-                                <button onClick={addNewCategory}>Add Category</button>
+                                <button className='btn btn-primary mt-3' onClick={addNewCategory}>Add Category</button>
                                 <br />
                                 <br />
-
-                                <input type='file' multiple onChange={(e) => setImageUpload(e.target.files)} />
-                                <button onClick={uploadFile}>Save</button>
                             </div>
-
                             <div className="container">
                                 <div className="row creative-service">
 
                                     {/* Categories List */}
                                     <div className="row">
+                                        <h2 className='mt-3'>Categories</h2>
                                         <div className="wrapper" style={{ padding: 0, margin: 0, justifyContent: 'center', }}>
                                             {categories.map((category, index) => (
 
                                                 category.categoryName && <>
 
-                                                    <div className="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12" key={index}>
+                                                    <div className="" key={index}>
 
-                                                        <div onClick={() => { showCategoryImages(category) }} className="text-center">
+                                                        <div style={{ backgroundColor: 'ButtonShadow', borderRadius: 10, cursor: 'pointer' }} onClick={() => { showCategoryImages(category) }} className="text-center">
                                                             <div className="service service__style--2">
                                                                 <div className="icon">
                                                                     {category.categoryName}
@@ -270,71 +267,39 @@ function Admin() {
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <button onClick={() => { deleteCategory(category.categoryId) }} className="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12" key={index}>Delete Category </button>
+                                                        <button onClick={() => { deleteCategory(category.categoryId) }} className="btn btn-primary mt-3" key={index}>Delete Category </button>
                                                     </div>
                                                 </>
                                             ))}
                                         </div>
                                     </div>
                                 </div>
-
-                                {/* <div className="row">
-                                    <div className="wrapper" style={{ padding: 0, margin: 0, justifyContent: 'center', }}>
-                                        {images.map((item, index) => (
-                                            <div key={index} className="col-lg-3" style={{ padding: 0, margin: 0, borderRadius: 15 }}>
-                                                <img
-                                                    src={item.image}
-                                                    alt={item.category}
-                                                    height={'200px'}
-                                                    onClick={() => handleClick(item, index)}
-                                                />
-                                                <button onClick={() => { deleteImg(item.imageId) }}>Delete</button>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div> */}
-                                {/* <div>
-                                    {clickedImg && (
-                                        <Modal
-                                            clickedImg={clickedImg}
-                                            handelRotationRight={handelRotationRight}
-                                            setClickedImg={setClickedImg}
-                                            handelRotationLeft={handelRotationLeft}
-                                        />
-                                    )}
-                                </div> */}
                             </div>
                         </>
                     )}
-
                     {showCategoryImage && (
                         <div className="container">
-                            <button className='m-5' onClick={() => { setShowCategoryImage(false) }}>Back</button>
-
-                            {/* <input type='file' multiple onChange={(e) => setImageUpload(e.target.files)} /> */}
-
-                            {/* <label  htmlFor="Add Image">Add Image</label> */}
+                            <button className='mb-3 btn btn-secondary' style={{ backgroundColor: 'black' }} onClick={() => { setShowCategoryImage(false) }}>{'<'}</button>
                             <input type='file' accept="image/png, image/jpg, image/jpeg" multiple onChange={(e) => setCategoryImageUpload(e.target.files)} />
-
                             <br />
-
-                            <button className='m-5' onClick={() => { addCategoryImage() }}>Add Image</button>
+                            <button className='mt-3 mb-3 btn btn-primary' onClick={() => { addCategoryImage() }}>Add Image</button>
                             <br />
-                            <h4>{activeCategory.categoryName}</h4>
-
+                            <h2>{activeCategory.categoryName}</h2>
                             <div className="row creative-service">
-
                                 <div className="row">
                                     <div className="wrapper" style={{ padding: 0, margin: 0, justifyContent: 'center', }}>
                                         {activeCategory.images.map((item, index) => (
-                                            <div key={index} className="col-lg-3" style={{ padding: 0, margin: 0, borderRadius: 15 }}>
-                                                <img
-                                                    src={item}
-                                                    alt={activeCategory.categoryName}
-                                                    height={'200px'}
-                                                    // onClick={() => handleClick(item, index)}
-                                                />
-                                                <button onClick={() => { deleteCategoryImg(index) }}>Delete</button>
+                                            <div className="" key={index}>
+
+                                                <div key={index} className="" style={{ padding: 0, margin: 0, borderRadius: 15, justifyContent: 'center' }}>
+                                                    <img
+                                                        src={item}
+                                                        alt={activeCategory.categoryName}
+                                                        height={'200px'}
+                                                    />
+                                                </div>
+                                                <button className='btn btn-secondary mt-3' onClick={() => { deleteCategoryImg(index) }}>Delete</button>
+
                                             </div>
                                         ))}
                                     </div>
@@ -353,10 +318,8 @@ function Admin() {
                         </div>
                     )}
                 </div>
-
             </main>
             {/* End Page Wrapper  */}
-
             {/* Start Back To Top */}
             <div className="backto-top">
                 <ScrollToTop showUnder={160}>
@@ -364,7 +327,6 @@ function Admin() {
                 </ScrollToTop>
             </div>
             {/* End Back To Top */}
-
             {/* Start Footer Area  */}
             <FooterTwo />
             {/* End Footer Area  */}
