@@ -31,6 +31,8 @@ import ProductDetails from './elements/ProductDetails';
 import Downloads from './elements/Downloads';
 import Admin from './home/Admin';
 import AdminForms from './home/AdminForms';
+import Career from './home/Career';
+import CareerDetails from './home/CareerDetails';
 
 class Root extends Component{
     render(){
@@ -50,6 +52,8 @@ class Root extends Component{
                         <Route exact path={`/contact`} component={Contact}/>
                         <Route exact path={`/calculators`} component={Calculators}/>
                         <Route exact path={`/downloads`} component={Downloads}/>
+                        <Route exact path={`/careers`} component={Career}/>
+                        <Route exact path={`/careers-details`} component={CareerDetails}/>
                         <Route exact path={`/about`} component={About}/>
                         <Route exact path={`/blog`} component={Blog}/>
                         <Route exact path={`/blog-details`} component={BlogDetails}/>

@@ -115,7 +115,7 @@ class HeaderFive extends Component {
                             <div className="row">
                                 <div className="col-lg-9 col-md-8 col-6">
                                     <nav className="mainmenunav d-lg-block">
-                                        <ul className="mainmenu" style={{ backgroundColor: isMobileDevice ? '#d3d7db' : '' }}>
+                                        <ul className="mainmenu" style={{ backgroundColor: isMobileDevice ? '#d3d7db' : '', width: !isMobileDevice ? 1000 : null }}>
                                             <li style={{ color: isMobileDevice ? 'black' : 'white' }}><Link style={{ color: this.state.colorFlag ? 'black' : 'white' }} to="/">Home</Link>
                                             </li>
                                             
@@ -153,7 +153,7 @@ class HeaderFive extends Component {
                                             <li><Link style={{ color: isMobileDevice ? 'black' : 'white' }} to="/contact" >Connect Us</Link></li>
                                             <li><Link style={{ color: isMobileDevice ? 'black' : 'white' }} to="/calculators" >Calculators</Link></li>
                                             <li><Link style={{ color: isMobileDevice ? 'black' : 'white' }} to="/downloads" >Downloads</Link></li>
-                                            {/* <li><Link style={{ color: isMobileDevice ? 'black' : 'white' }} to="/downloads" >Career</Link></li> */}
+                                            <li><Link style={{ color: isMobileDevice ? 'black' : 'white' }} to="/careers" >Career</Link></li>
 
                                             {isMobileDevice && <div style={{ alignItems: 'center', justifyContent: 'center' }} className="row">
                                                 {SocialShare.map((val, i) => (
