@@ -40,6 +40,10 @@ const CareerDetails = () => {
 
                                     <div className="col-lg-12 d-flex flex-wrap mt-5">
 
+                                        {career == "rm" && <h2>Relationship Manager</h2>}
+                                        {career == "tc" && <h2>Telecaller</h2>}
+
+
                                         {career == "rm" && <div className="content">
                                             <h3 className="title">What are we looking for?</h3>
                                             {/* <p>Investors are alarmed by volatility and the economic downturn. The stock market is known
