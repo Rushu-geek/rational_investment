@@ -17,15 +17,19 @@ class CounterOne extends Component{
     render(){
         let Data = [
             {
-                countNum : 12,
+                countNum : 14,
                 countTitle: 'Years In Business.',
             },
             {
-                countNum : 500,
+                countNum : 1000,
                 countTitle: 'Happy Clients.',
             },
             {
-                countNum : 80,
+                countNum : 125,
+                countTitle: 'AUM',
+            },
+            {
+                countNum : 100,
                 countTitle: 'Wealth Accounts.',
             },
         ];
@@ -34,7 +38,7 @@ class CounterOne extends Component{
             <Fragment>
                 <div className="row">
                     {Data.map( (value, index) => (
-                        <div className="counterup_style--1 col-lg-4 col-md-4 col-sm-6 col-12" key={index}>
+                        <div className="counterup_style--1 col-lg-6 col-md-4 col-sm-6 col-12" key={index}>
                             <h5 className="counter">
                                 <VisibilitySensor onChange={this.onVisibilityChange} offset={{top:10}} delayedCall>
                                     <CountUp end={this.state.didViewCountUp ? value.countNum : 0} />

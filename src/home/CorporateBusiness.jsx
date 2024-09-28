@@ -19,8 +19,17 @@ const SlideList = [
         textPosition: 'text-right',
         bgImage: 'bg_image--32',
         category: '',
-        title: 'Investment',
-        description: 'Successful investing is about managing risk, not avoiding it.',
+        title: '',
+        description: '',
+        buttonText: 'Contact Us',
+        buttonLink: '/contact'
+    },
+    {
+        textPosition: 'text-left',
+        bgImage: 'bg_image--30',
+        category: '',
+        title: '',
+        description: '',
         buttonText: 'Contact Us',
         buttonLink: '/contact'
     },
@@ -28,12 +37,20 @@ const SlideList = [
         textPosition: 'text-left',
         bgImage: 'bg_image--31',
         category: '',
-        title: 'Investment',
-        description: 'Never depend on a single income. Make an investment to create a second income.',
+        title: '',
+        description: '',
         buttonText: 'Contact Us',
         buttonLink: '/contact'
     },
-
+    {
+        textPosition: 'text-left',
+        bgImage: 'bg_image--33',
+        category: '',
+        title: '',
+        description: '',
+        buttonText: 'Contact Us',
+        buttonLink: '/contact'
+    },
 ]
 
 const starndardService = [
@@ -134,19 +151,18 @@ class CorporateBusiness extends Component {
                 {/* Start Slider Area   */}
                 <div className="slider-wrapper">
                     <div className="slider-activation">
-                        <Slider className="rn-slick-dot dot-dark" {...slideSlick}>
+                        <Slider {...slideSlick}>
                             {SlideList.map((value, index) => (
-                                <div className={`slide slide-style-2 slider-box-content without-overlay d-flex align-items-center justify-content-center bg_image ${value.bgImage}`} key={index}>
-                                    {/* <img src={`/assets/images/home/Home-Page-2.jpg`} alt="Creative Agency Images"/> */}
+                                <div className={`slide slide-style-2 slider-box-content without-overlay align-items-center bg_image ${value.bgImage}`} key={index}>
                                     <div className="container">
                                         <div className="row">
                                             <div className="col-lg-12">
-                                                <div style={{ cursor: 'pointer' }} onClick={() => scroll()} className={`inner ${value.textPosition}`}>
+                                                {/* <div style={{ cursor: 'pointer' }} onClick={() => scroll()} className={`inner ${value.textPosition}`}>
                                                     {value.category ? <span>{value.category}</span> : ''}
                                                     {value.title ? <h1 style={{ color: 'white' }} className="title">{value.title}</h1> : ''}
                                                     {value.description ? <p style={{ color: 'white' }} className="description">{value.description}</p> : ''}
                                                     {value.buttonText ? <div className="slide-btn"><a className="rn-button-style--2 btn-solid" href={`${value.buttonLink}`}>{value.buttonText}</a></div> : ''}
-                                                </div>
+                                                </div> */}
                                             </div>
                                         </div>
                                     </div>

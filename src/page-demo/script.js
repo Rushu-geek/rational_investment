@@ -98,8 +98,11 @@ export const slideSlick = {
     slidesToScroll: 1,
     dots: true,
     arrows: true,
+    autoplay: true,
+    speed: 2000,
     fade: true,
-    easing: "fade",
-    adaptiveHeight: true
+    easing: "linear",
+    adaptiveHeight: true,
+    autoplaySpeed: 4000,
 };
 
