@@ -4,9 +4,9 @@ import {FaTwitter ,FaInstagram ,FaFacebookF , FaLinkedinIn } from "react-icons/f
 import { FiX , FiMenu} from "react-icons/fi";
 
 const SocialShare = [
-    {Social: <FaFacebookF /> , link: 'https://www.facebook.com/'},
-    {Social: <FaLinkedinIn /> , link: 'https://www.linkedin.com/'},
-    {Social: <FaInstagram /> , link: 'https://www.instagram.com/'},
+    {Social: <FaFacebookF /> , link: 'https://www.facebook.com/Investment.rational'},
+    {Social: <FaLinkedinIn /> , link: 'https://www.linkedin.com/company/rational-investment/'},
+    {Social: <FaInstagram /> , link: 'https://www.instagram.com/rationalinvestments/?utm_source=qr&igsh=MXZrcHJmYWZ3bmFnNA%3D%3D#'},
     {Social: <FaTwitter /> , link: 'https://twitter.com/'},
 ]
 

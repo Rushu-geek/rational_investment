@@ -4,9 +4,8 @@ import { FaTwitter, FaInstagram, FaFacebookF, FaLinkedinIn, FaYoutube, FaWhatsap
 const SocialShare = [
     { Social: <FaFacebookF />, link: 'https://www.facebook.com/Investment.rational' },
     { Social: <FaLinkedinIn />, link: 'https://www.linkedin.com/company/rational-investment/' },
-    { Social: <FaInstagram />, link: 'https://www.instagram.com/' },
-    { Social: <FaTwitter />, link: 'https://twitter.com/' },
-    { Social: <FaYoutube />, link: 'https://youtube.com/channel/UCQ8M6uzgAZa2FqoAlCwW-Ng' },
+    { Social: <FaInstagram />, link: 'https://www.instagram.com/rationalinvestments/?utm_source=qr&igsh=MXZrcHJmYWZ3bmFnNA%3D%3D#' },
+    { Social: <FaYoutube />, link: 'https://www.youtube.com/channel/UCQ8M6uzgAZa2FqoAlCwW-Ng' },
     { Social: <FaWhatsapp />, link: 'https://api.whatsapp.com/send?phone=+919925853065&text=Hello%2C%20I%20am%20Intrested%20in%20some%20Goal%20Planning%20and%20Wealth%20Creation%2C%20Guide%20me%20for%20the%20same.' },
 ]
 

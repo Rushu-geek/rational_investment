@@ -13,6 +13,8 @@ import { FiChevronUp, FiCheck } from "react-icons/fi";
 import CounterOne from "../elements/counters/CounterOne";
 import BrandOne from "../elements/BrandTwo";
 import Testimonial from "../elements/Testimonial";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const SlideList = [
     {
@@ -78,8 +80,36 @@ const starndardService = [
         description: 'Wealth Management Description',
         name: 'wm'
     }
-
 ]
+
+// Settings for the service slider
+const serviceSliderSettings = {
+    dots: true,
+    infinite: true,
+    arrows: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 1200,
+    responsive: [
+        {
+            breakpoint: 992,
+            settings: {
+                slidesToShow: 2,
+                slidesToScroll: 1
+            }
+        },
+        {
+            breakpoint: 768,
+            settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1
+            }
+        }
+    ]
+};
+
 class CorporateBusiness extends Component {
     constructor() {
         super()
@@ -94,10 +124,31 @@ class CorporateBusiness extends Component {
 
     componentDidMount() {
         $("#myModal").modal('show');
+        // Initialize AOS animation library with delayed trigger
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true,
+            disable: window.innerWidth < 768,
+            mirror: false,
+            offset: 200,  // Triggers when element is 200px from viewport bottom
+            delay: 0,     // Default delay for all elements
+            anchorPlacement: 'top-bottom' // Animates when top of element hits bottom of viewport
+        });
+
+        window.addEventListener('resize', this.handleResize);
+    }
+
+    componentWillUnmount() {
+        // Clean up the event listener when component unmounts
+        window.removeEventListener('resize', this.handleResize);
+    }
+    
+    handleResize = () => {
+        AOS.refresh();
     }
 
     render() {
-
         var namesItemOne = [
             'To give customers the best value for their money through customized service, innovative products, and the best trading and investment modern techniques.',
             'Helping individuals with achieving financial success Which will help them secure their future goals and lifestyle.',
@@ -113,18 +164,11 @@ class CorporateBusiness extends Component {
         const PostList = BlogContent.slice(0, 1);
 
         const scroll = () => {
-            window.scrollTo(0, 700)
+            window.scrollTo(0, 1000)
         }
 
         let details = navigator.userAgent;
-
-        /* Creating a regular expression 
-        containing some mobile devices keywords 
-        to search it in details string*/
         let regexp = /android|iphone|kindle|ipad/i;
-
-        /* Using test() method to search regexp in details
-        it returns boolean value*/
         let isMobileDevice = regexp.test(details);
 
         return (
@@ -135,20 +179,7 @@ class CorporateBusiness extends Component {
                 <Header headerPosition="header--static logoresize" logo="all-dark" color="color-black" />
                 {/* End Header Area  */}
 
-                {/* <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Popup image</button> */}
-
-                {/* <div id="myModal" style={{ maxWidth: !isMobileDevice ? '150%' : '', top: 150 }} class="modal fade" tabindex="-1" role="dialog">
-                    <div style={{ maxWidth: !isMobileDevice ? '40%' : '' }} class="modal-dialog vertical-align-center">
-                        <div class="modal-content">
-                            <div class="modal-body" style={{textAlign: 'center'}}>
-                                <img src="/assets/images/popupp.jpeg" class="img-responsive" />
-                                <a type="button" href="https://mfs.kfintech.com/nfodit/investorservices/onlinepurchase/mobilepurchaseconfirmation1.aspx?Mob=TkZP&qparam=MjUwNDE5&InvDistflag=VwAA" target="_blank" class="btn btn-primary mt-2">Invest Now</a>
-                            </div>
-                        </div>
-                    </div>
-                </div> */}
-
-                {/* Start Slider Area   */}
+                {/* Start Slider Area - No animation needed here */}
                 <div className="slider-wrapper">
                     <div className="slider-activation">
                         <Slider {...slideSlick}>
@@ -157,12 +188,7 @@ class CorporateBusiness extends Component {
                                     <div className="container">
                                         <div className="row">
                                             <div className="col-lg-12">
-                                                {/* <div style={{ cursor: 'pointer' }} onClick={() => scroll()} className={`inner ${value.textPosition}`}>
-                                                    {value.category ? <span>{value.category}</span> : ''}
-                                                    {value.title ? <h1 style={{ color: 'white' }} className="title">{value.title}</h1> : ''}
-                                                    {value.description ? <p style={{ color: 'white' }} className="description">{value.description}</p> : ''}
-                                                    {value.buttonText ? <div className="slide-btn"><a className="rn-button-style--2 btn-solid" href={`${value.buttonLink}`}>{value.buttonText}</a></div> : ''}
-                                                </div> */}
+                                                {/* Slider content */}
                                             </div>
                                         </div>
                                     </div>
@@ -173,32 +199,10 @@ class CorporateBusiness extends Component {
                 </div>
                 {/* End Slider Area   */}
 
-                {/* Start Service Area */}
-                {/* <div className="service-area ptb--30 bg_color--1">
-                    <div className="container">
-                        <div className="row service-one-wrapper">
-                            {ServiceListOne.map( (val , i) => (
-                                <div className="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12" key={i}>
-                                    <a className="text-center" href="/service-details">
-                                        <div className="service service__style--2">
-                                            <div className="icon">
-                                                {val.icon}
-                                            </div>
-                                            <div className="content">
-                                                <h3 className="title">{val.title}</h3>
-                                                <p>{val.description}</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </div> */}
-                {/* End Service Area */}
-
-                {/* Start About Area  */}
-                <div className="rn-about-area ptb--120 bg_color--5">
+                {/* Start About Area - Delayed animation */}
+                <div className="rn-about-area ptb--120 bg_color--5" 
+                     data-aos="fade-up"
+                     data-aos-offset="200">
                     <div className="container">
                         <div className="row row--35 align-items-center">
                             <div className="col-lg-6 order-2 order-lg-1">
@@ -210,11 +214,14 @@ class CorporateBusiness extends Component {
                                             passion. We are certified Mutual Fund Distributor recognized by AMFI -
                                             Association of Mutual Fund in India. Insurance consultants (Life & Health).</p>
                                         <p>
-                                            Established in the year 2014 by Mr Nimit H Shah & now Rational Investment is
+                                            Established in the year 2014 by Mr Nimit H Shah & now Rational Investment is
                                             one of the leading financial service providers & distributors.
                                         </p>
                                     </div>
-                                    <div className="mt--30">
+                                    <div className="mt--30" 
+                                         data-aos="fade-up" 
+                                         data-aos-delay="100"
+                                         data-aos-offset="150">
                                         <h4>Our Mission</h4>
                                         <ul className="list-style--1">
                                             {namesItemOne.map((name, index) => {
@@ -222,7 +229,10 @@ class CorporateBusiness extends Component {
                                             })}
                                         </ul>
                                     </div>
-                                    <div className="mt--30">
+                                    <div className="mt--30" 
+                                         data-aos="fade-up" 
+                                         data-aos-delay="150"
+                                         data-aos-offset="150">
                                         <h4>Why Rational Investments</h4>
                                         <ul className="list-style--1">
                                             {namesItemTwo.map((name, index) => {
@@ -232,11 +242,12 @@ class CorporateBusiness extends Component {
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-lg-6 order-1 order-lg-2">
+                            <div className="col-lg-6 order-1 order-lg-2" 
+                                 data-aos="fade-left"
+                                 data-aos-offset="200">
                                 <div className="thumbnail position-relative">
                                     <img className="w-100" src="/assets/images/about/about-3.png" alt="About Images" />
                                     <ModalVideo channel='youtube' isOpen={this.state.isOpen} videoId='N3OB9QXcjIE' onClose={() => this.setState({ isOpen: false })} />
-                                    {/* <button className="video-popup position-top-center theme-color" onClick={this.openModal}><span className="play-icon"></span></button> */}
                                 </div>
                             </div>
                         </div>
@@ -244,22 +255,27 @@ class CorporateBusiness extends Component {
                 </div>
                 {/* End About Area  */}
 
-                {/* Start Counterup Area */}
-                <div className="counterup-area pb--80 pt--40 bg_image bg_image--17 theme-text-white" data-black-overlay="7">
+                {/* Start Counterup Area - More delayed trigger */}
+                <div className="counterup-area pb--80 pt--40 bg_image bg_image--17 theme-text-white" 
+                     data-black-overlay="7" 
+                     data-aos="zoom-in"
+                     data-aos-offset="250">
                     <div className="container">
                         <CounterOne />
                     </div>
                 </div>
                 {/* End Counterup Area */}
 
-
-                {/* Start Featured Service Area  */}
-                <div className="rn-featured-service-area pt--90 pb--120 bg_color--1">
+                {/* Start Featured Service Area - Delayed animation */}
+                <div className="rn-featured-service-area pt--90 pb--120 bg_color--1" 
+                     data-aos="fade-up"
+                     data-aos-offset="200">
                     <div className="container">
                         <div className="row">
-
-                            {/* Start Single Service  */}
-                            <div className="col-lg-2 col-md-6 col-12 mt--30">
+                            {/* Start Single Service - Earlier trigger for title */}
+                            <div className="col-lg-2 col-md-6 col-12 mt--30" 
+                                 data-aos="fade-right"
+                                 data-aos-offset="150">
                                 <div className="section-title mt-5">
                                     <h3 className="title">Services</h3>
                                     <p>We provide various services related to investment.</p>
@@ -270,12 +286,14 @@ class CorporateBusiness extends Component {
                             </div>
                             {/* End Single Service  */}
 
-                            {/* Start Single Service  */}
-                            <div className="col-lg-10">
-                                <div className="row">
+                            {/* Start Services Slider - Later trigger for content */}
+                            <div className="col-lg-10" 
+                                 data-aos="fade-left"
+                                 data-aos-offset="200">
+                                <Slider {...serviceSliderSettings}>
                                     {starndardService.map((value, index) => (
-                                        <div className="col-lg-3 col-md-4 mt--30" key={index}>
-                                            <div className="standard-service">
+                                        <div key={index}>
+                                            <div className="standard-service" style={{ margin: '0 15px' }}>
                                                 <div className="thumbnai">
                                                     <img src={`/assets/images/featured/corporate-${value.image}.png`} alt="Corporate Images" />
                                                 </div>
@@ -287,30 +305,33 @@ class CorporateBusiness extends Component {
                                             </div>
                                         </div>
                                     ))}
-                                </div>
-
+                                </Slider>
                             </div>
-                            {/* End Single Service  */}
-
+                            {/* End Services Slider  */}
                         </div>
                     </div>
                 </div>
                 {/* End Featured Service Area  */}
 
-                {/* Start About Area  */}
-                <div className="rn-about-area ptb--120 bg_color--5">
+                {/* Start About Area - Delayed animation */}
+                <div className="rn-about-area ptb--120 bg_color--5" 
+                     data-aos="fade-up"
+                     data-aos-offset="200">
                     <div className="container">
                         <div className="row row--35 align-items-center">
-                            <div className="col-lg-6">
+                            <div className="col-lg-6" 
+                                 data-aos="fade-right"
+                                 data-aos-offset="200">
                                 <div className="thumbnail">
                                     <img className="w-100" src="/assets/images/about/wp.png" alt="About Images" />
                                 </div>
                             </div>
-                            <div className="col-lg-6">
+                            <div className="col-lg-6" 
+                                 data-aos="fade-left"
+                                 data-aos-offset="200">
                                 <div className="about-inner inner">
                                     <div className="section-title">
                                         <h2 className="title">Working Process</h2>
-                                        {/* <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim exercitationem impedit iure quia quo recusandae?</p> */}
                                     </div>
                                     <div className="accordion-wrapper mt--30">
                                         <Accordion01 />
@@ -325,31 +346,15 @@ class CorporateBusiness extends Component {
                 </div>
                 {/* End About Area  */}
 
-                {/* Start Team Area  */}
-                {/* <div className="rn-team-area ptb--120 bg_color--1">
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-lg-12">
-                                <div className="section-title service-style--3 text-center mb--25 mb_sm--0">
-                                    <h2 className="title">Managing Team</h2>
-                                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="row">
-                            <Team column="col-lg-3 col-md-6 col-sm-6 col-12 mt--30" teamStyle="" item="4" />
-                        </div>
-                    </div>
-                </div> */}
-                {/* End Team Area  */}
-
-                <div className="rn-testimonial-area bg_color--1 ptb--90">
+                {/* Testimonial Area - Delayed animation */}
+                <div className="rn-testimonial-area bg_color--1 ptb--90" 
+                     data-aos="fade-up"
+                     data-aos-offset="200">
                     <div className="container">
                         <div className="row">
                             <div className="col-lg-12">
                                 <div className="section-title service-style--3 text-center mb--100">
                                     <h2 className="title">Testimonials</h2>
-                                    {/* <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration.</p> */}
                                 </div>
                             </div>
                         </div>
@@ -357,8 +362,10 @@ class CorporateBusiness extends Component {
                     </div>
                 </div>
 
-                {/* Start Brand Area  */}
-                <div className="rn-brand-area ptb--120 bg_color--5">
+                {/* Start Brand Area - More delayed trigger */}
+                <div className="rn-brand-area ptb--120 bg_color--5" 
+                     data-aos="zoom-in"
+                     data-aos-offset="250">
                     <div className="container">
                         <div className="row">
                             <div className="col-lg-12">
@@ -369,8 +376,10 @@ class CorporateBusiness extends Component {
                 </div>
                 {/* End Brand Area  */}
 
-                {/* Start Blog Area */}
-                <div className="rn-blog-area pt--120 pb--80 bg_color--1">
+                {/* Start Blog Area - Delayed animation */}
+                <div className="rn-blog-area pt--120 pb--80 bg_color--1" 
+                     data-aos="fade-up"
+                     data-aos-offset="200">
                     <div className="container">
                         <div className="row align-items-end">
                             <div className="col-lg-12">
@@ -382,7 +391,11 @@ class CorporateBusiness extends Component {
                         </div>
                         <div className="row mt--60">
                             {PostList.map((value, i) => (
-                                <div className="col-lg-4 col-md-6 col-sm-6 col-12" key={i}>
+                                <div className="col-lg-4 col-md-6 col-sm-6 col-12" 
+                                     key={i} 
+                                     data-aos="fade-up" 
+                                     data-aos-delay={i * 100}
+                                     data-aos-offset="150">
                                     <div className="blog blog-style--1">
                                         <div className="thumbnail">
                                             <a href="/blog-details">
@@ -404,8 +417,8 @@ class CorporateBusiness extends Component {
                 </div>
                 {/* End Blog Area */}
 
-                {/* Start call To Action  */}
-                <CallAction />
+                {/* Start call To Action - Delayed animation */}
+                <CallAction data-aos="fade-up" data-aos-offset="200" />
                 {/* End call To Action  */}
 
                 {/* Start Footer Style  */}

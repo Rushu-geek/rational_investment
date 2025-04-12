@@ -132,8 +132,8 @@ class About extends Component {
                                         <p className="designation">Founder</p>
                                     </div>
                                     <ul className="social-icon" >
-                                        <li><a href="https://www.facebook.com/"><FaFacebookF /></a></li>
-                                        <li><a href="http://linkedin.com/"><FaLinkedinIn /></a></li>
+                                        <li><a href="https://www.facebook.com/Investment.rational"><FaFacebookF /></a></li>
+                                        <li><a href="http://linkedin.com/company/rational-investment/"><FaLinkedinIn /></a></li>
                                         <li><a href="https://twitter.com/"><FaTwitter /></a></li>
                                     </ul>
                                 </div>

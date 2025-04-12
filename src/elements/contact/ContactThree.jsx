@@ -1,157 +1,447 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import { PieChart, Pie, Cell, ResponsiveContainer, Legend } from "recharts";
+import "../../assets/css/wealthCalculator.css";
 
-const ContactThree = () => {
+const WealthCalculator = () => {
+  // Asset class options
+  const assetClasses = ["Equity", "Hybrid", "Debt", "Commodity", "Others"];
 
-    const [monthlySipAmount, setMonthlySipAmount] = useState('');
-    const [expectedReturn, setExpectedReturn] = useState('');
-    const [sipDurationMonths, setSipDurationMonths] = useState('');
-    const [sipCalcAmount, setSipCalcAmount] = useState('');
-    const [investedAmount, setInvestedAmount] = useState('');
+  // Lumpsum calculator state
+  const [lumpSumAmount, setLumpSumAmount] = useState(300000);
+  const [lumpSumYears, setLumpSumYears] = useState(5);
+  const [lumpSumReturn, setLumpSumReturn] = useState(10);
+  const [lumpSumAssetClass, setLumpSumAssetClass] = useState("Equity");
 
-    const [activeCalc, setActiveCalc] = useState('sip');
+  // SIP calculator state
+  const [sipAmount, setSipAmount] = useState(5000);
+  const [sipYears, setSipYears] = useState(5);
+  const [sipReturn, setSipReturn] = useState(10);
+  const [sipFrequency, setSipFrequency] = useState("Monthly");
+  const [sipAssetClass, setSipAssetClass] = useState("Equity");
 
+  // Calculate fill percentage for sliders
+  const calculateFillPercent = (value, min, max) => {
+    return ((value - min) / (max - min)) * 100;
+  };
 
-    const [lumpsomAmount, setLumpsomAmount] = useState("");
-    const [lumpsomYears, setLumpsomYears] = useState("");
+  // Calculate lumpsum returns
+  const calculateLumpSum = () => {
+    const principal = lumpSumAmount;
+    const rate = lumpSumReturn / 100;
+    const years = lumpSumYears;
 
-    const [futureLumpsum, setFutureLumpsum] = useState("");
+    const futureValue = principal * Math.pow(1 + rate, years);
+    const returns = futureValue - principal;
 
+    return {
+      investment: principal,
+      returns: returns,
+      futureValue: futureValue,
+      pieData: [
+        { name: "Invested", value: principal, color: "#14579e" },
+        { name: "Returns", value: returns, color: "#FFA500" },
+      ],
+    };
+  };
 
-    useEffect(() => {
-        let amount = 1500000 * (Math.pow(1.15, 5));
+  // Calculate SIP returns
+  const calculateSIP = () => {
+    const monthlyInvestment = sipAmount;
+    const annualRate = sipReturn / 100;
+    const monthlyRate = annualRate / 12;
+    const months = sipYears * 12;
 
-        console.log(amount);
+    const futureValue =
+      monthlyInvestment *
+      (((Math.pow(1 + monthlyRate, months) - 1) / monthlyRate) *
+        (1 + monthlyRate));
 
-    }, []);
+    const totalInvestment = monthlyInvestment * months;
+    const returns = futureValue - totalInvestment;
 
-    const calculateSip = (e) => {
-        e.preventDefault();
+    return {
+      investment: totalInvestment,
+      returns: returns,
+      futureValue: futureValue,
+      pieData: [
+        { name: "Invested", value: totalInvestment, color: "#14579e" },
+        { name: "Returns", value: returns, color: "#FFA500" },
+      ],
+    };
+  };
 
-        var investment = monthlySipAmount; //principal amount
-        var annualRate = expectedReturn;
-        var monthlyRate = annualRate / 12 / 100;  //Rate of interest
-        // var years = 2; 
-        var months = sipDurationMonths;  //Time period 
-        var futureValue = 0; //Final Value
+  const lumpSumResult = calculateLumpSum();
+  const sipResult = calculateSIP();
 
-        futureValue = investment * ((Math.pow(1 + monthlyRate, months) - 1) / monthlyRate) * (1 + monthlyRate);
+  const formatCurrency = (amount) => {
+    return new Intl.NumberFormat("en-IN").format(amount.toFixed(0));
+  };
 
-        console.log("future value >>> ", futureValue);
-        setSipCalcAmount(futureValue);
-        setInvestedAmount(investment * months);
+  return (
+    <div className="wealth-calculator">
+      <h1>Smart Wealth</h1>
+      <p className="subtitle">Your first step towards a wealthier tomorrow</p>
 
-    }
-
-    const calculateLumpsom = (e) => {
-        e.preventDefault();
-
-        let amount = lumpsomAmount * (Math.pow(1 + (expectedReturn / 100), lumpsomYears));
-
-        console.log(amount);
-
-        setFutureLumpsum(amount);
-    }
-
-    return (
-        <div className="contact-form--1">
-            <div className="container">
-                <div className="row row--35 align-items-start">
-                    <div className="col-lg-6 order-2 order-lg-1">
-                        <div className="section-title text-left mb--50">
-                            {(activeCalc == 'sip') && <h3 className="title">SIP Calculator</h3>}
-                            {(activeCalc == 'lumpsum') && <h3 className="title">Lumpsum Calculator</h3>}
-
-                        </div>
-                        <div className="form-wrapper">
-                            {(activeCalc == 'sip') && <form>
-                                <label htmlFor="item01">
-                                    <input
-                                        type="text"
-                                        name="name"
-                                        id="item01"
-                                        value={monthlySipAmount}
-                                        onChange={(e) => { setMonthlySipAmount(e.target.value) }}
-                                        placeholder="Monthly SIP Amount"
-                                    />
-                                </label>
-
-                                <label htmlFor="item02">
-                                    <input
-                                        type="text"
-                                        name="email"
-                                        id="item02"
-                                        value={sipDurationMonths}
-                                        onChange={(e) => { setSipDurationMonths(e.target.value) }}
-                                        placeholder="SIP Duration (In Months)"
-                                    />
-                                </label>
-
-                                <label htmlFor="item03">
-                                    <input
-                                        type="text"
-                                        name="subject"
-                                        id="item03"
-                                        value={expectedReturn}
-                                        onChange={(e) => { setExpectedReturn(e.target.value) }}
-                                        placeholder="Expected Return (%)"
-                                    />
-                                </label>
-                                <button className="rn-button-style--2 btn-solid" onClick={(e) => calculateSip(e)}>Calculate</button>
-
-                                <h5 className="title mt-3">Total Invested Amount: {Number(investedAmount).toFixed(0)} </h5>
-                                <h5 className="title mt-3">Future Value: {Number(sipCalcAmount).toFixed(0)} </h5>
-                            </form>}
-
-                            {(activeCalc == 'lumpsum') && <form>
-                                <label htmlFor="item01">
-                                    <input
-                                        type="text"
-                                        name="name"
-                                        id="item01"
-                                        value={lumpsomAmount}
-                                        onChange={(e) => { setLumpsomAmount(e.target.value) }}
-                                        placeholder="Lumpsum Amount"
-                                    />
-                                </label>
-
-                                <label htmlFor="item02">
-                                    <input
-                                        type="text"
-                                        name="email"
-                                        id="item02"
-                                        value={lumpsomYears}
-                                        onChange={(e) => { setLumpsomYears(e.target.value) }}
-                                        placeholder="Investment Duration (In Years)"
-                                    />
-                                </label>
-
-                                <label htmlFor="item03">
-                                    <input
-                                        type="text"
-                                        name="subject"
-                                        id="item03"
-                                        value={expectedReturn}
-                                        onChange={(e) => { setExpectedReturn(e.target.value) }}
-                                        placeholder="Expected Return (%)"
-                                    />
-                                </label>
-                                <button className="rn-button-style--2 btn-solid" onClick={(e) => calculateLumpsom(e)}>Calculate</button>
-                                <h5 className="title mt-3">Total Invested Amount: {Number(lumpsomAmount).toFixed(0)} </h5>
-                                <h5 className="title mt-3">Future Value: {Number(futureLumpsum).toFixed(0)} </h5>
-                            </form>}
-
-
-                        </div>
-                    </div>
-                    <div className="col-lg-6 order-1 order-lg-2">
-                        <div className="thumbnail mb_md--30 mb_sm--30">
-                            <button onClick={() => setActiveCalc('sip')} className="col-lg-12 rn-button-style--2 btn-solid mb-3" type="submit" id="mc-embedded-subscribe">SIP Calculator</button>
-                            <button onClick={() => setActiveCalc('lumpsum')} className="col-lg-12 rn-button-style--2 btn-solid mb-3" type="submit" id="mc-embedded-subscribe">Lumpsum Calculator</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      {/* Lumpsum Calculator */}
+      <div className="calculator-section">
+        <div className="calculator-header">
+          <span>Lumpsum Calculator</span>
         </div>
-    )
-}
-export default ContactThree;
+
+        <div className="calculator-content">
+          <div className="calculator-controls">
+            <div className="form-group">
+              <div className="form-row">
+                <label>Assets Class</label>
+                <select
+                  value={lumpSumAssetClass}
+                  onChange={(e) => setLumpSumAssetClass(e.target.value)}
+                >
+                  {assetClasses.map((asset) => (
+                    <option key={asset} value={asset}>
+                      {asset}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </div>
+
+            <div className="form-group">
+              <div className="form-row">
+                <label>
+                  Investment Amount: ₹{formatCurrency(lumpSumAmount)}
+                </label>
+                <input
+                  type="number"
+                  value={lumpSumAmount}
+                  onChange={(e) =>
+                    setLumpSumAmount(parseInt(e.target.value) || 0)
+                  }
+                />
+              </div>
+              <div className="slider-container">
+                <input
+                  type="range"
+                  min="500"
+                  max="1000000"
+                  step="500"
+                  value={lumpSumAmount}
+                  onChange={(e) => setLumpSumAmount(parseInt(e.target.value))}
+                  style={{
+                    background: `linear-gradient(to right, #4285F4 0%, #4285F4 ${calculateFillPercent(
+                      lumpSumAmount,
+                      500, // should match min attribute
+                      1000000 // should match max attribute
+                    )}%, #e0e0e0 ${calculateFillPercent(
+                      lumpSumAmount,
+                      500,
+                      1000000
+                    )}%, #e0e0e0 100%)`,
+                  }}
+                />
+              </div>
+            </div>
+
+            <div className="form-group">
+              <div className="form-row">
+                <label>Investment Period: {lumpSumYears} Years</label>
+                <input
+                  type="number"
+                  value={lumpSumYears}
+                  onChange={(e) =>
+                    setLumpSumYears(parseInt(e.target.value) || 0)
+                  }
+                />
+              </div>
+              <div className="slider-container">
+                <input
+                  type="range"
+                  min="1"
+                  max="30"
+                  value={lumpSumYears}
+                  onChange={(e) => setLumpSumYears(parseInt(e.target.value))}
+                  style={{
+                    background: `linear-gradient(to right, #4285F4 0%, #4285F4 ${calculateFillPercent(
+                      lumpSumYears,
+                      1,
+                      30
+                    )}%, #e0e0e0 ${calculateFillPercent(
+                      lumpSumYears,
+                      1,
+                      30
+                    )}%, #e0e0e0 100%)`,
+                  }}
+                />
+              </div>
+            </div>
+
+            <div className="form-group">
+              <div className="form-row">
+                <label>Assured Rate of Return: {lumpSumReturn}%</label>
+                <input
+                  type="number"
+                  value={lumpSumReturn}
+                  onChange={(e) =>
+                    setLumpSumReturn(parseInt(e.target.value) || 0)
+                  }
+                />
+              </div>
+              <div className="slider-container">
+                <input
+                  type="range"
+                  min="1"
+                  max="20"
+                  value={lumpSumReturn}
+                  onChange={(e) => setLumpSumReturn(parseInt(e.target.value))}
+                  style={{
+                    background: `linear-gradient(to right, #4285F4 0%, #4285F4 ${calculateFillPercent(
+                      lumpSumReturn,
+                      1,
+                      20
+                    )}%, #e0e0e0 ${calculateFillPercent(
+                      lumpSumReturn,
+                      1,
+                      20
+                    )}%, #e0e0e0 100%)`,
+                  }}
+                />
+              </div>
+            </div>
+          </div>
+
+          <div className="calculator-results">
+            <div className="pie-chart-container">
+              <div className="result-pie-div">
+                <div
+                  className="result-card-left"
+                  style={{ borderLeft: "10px solid #14579e" }}
+                >
+                  <div className="result-value">
+                    ₹{formatCurrency(lumpSumResult.investment)}
+                  </div>
+                  <div className="result-label">Investment Amount</div>
+                </div>
+
+                <div
+                  className="result-card-left"
+                  style={{ borderLeft: "10px solid rgb(255, 165, 0)" }}
+                >
+                  <div className="result-value">
+                    ₹{formatCurrency(lumpSumResult.returns)}
+                  </div>
+                  <div className="result-label">Estimated Returns</div>
+                </div>
+              </div>
+              <ResponsiveContainer width="100%" height={300}>
+                <PieChart>
+                  <Pie
+                    data={lumpSumResult.pieData}
+                    cx="50%"
+                    cy="50%"
+                    labelLine={false}
+                    outerRadius={150}
+                    innerRadius={80}
+                    fill="#8884d8"
+                    dataKey="value"
+                  >
+                    {lumpSumResult.pieData.map((entry, index) => (
+                      <Cell key={`cell-${index}`} fill={entry.color} />
+                    ))}
+                  </Pie>
+                </PieChart>
+              </ResponsiveContainer>
+            </div>
+            <div className="result-card">
+              <div className="result-value">
+                ₹{formatCurrency(lumpSumResult.futureValue)}
+              </div>
+              <div className="result-label">Expected Future Value</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* SIP Calculator */}
+      <div className="calculator-section">
+        <div className="calculator-header">
+          <span>SIP Calculator</span>
+        </div>
+
+        <div className="calculator-content">
+          <div className="calculator-controls">
+            <div className="form-group">
+              <div className="form-row">
+                <label>Assets Class</label>
+                <select
+                  value={sipAssetClass}
+                  onChange={(e) => setSipAssetClass(e.target.value)}
+                >
+                  {assetClasses.map((asset) => (
+                    <option key={asset} value={asset}>
+                      {asset}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </div>
+
+            <div className="form-group">
+              <div className="form-row">
+                <label>SIP Amount: ₹{formatCurrency(sipAmount)}</label>
+                <input
+                  type="number"
+                  value={sipAmount}
+                  onChange={(e) => setSipAmount(parseInt(e.target.value) || 0)}
+                />
+              </div>
+              <div className="slider-container">
+                <input
+                  type="range"
+                  min="500"
+                  max="50000"
+                  step="500"
+                  value={sipAmount}
+                  onChange={(e) => setSipAmount(parseInt(e.target.value))}
+                  style={{
+                    background: `linear-gradient(to right, #4285F4 0%, #4285F4 ${calculateFillPercent(
+                      sipAmount,
+                      500,
+                      50000
+                    )}%, #e0e0e0 ${calculateFillPercent(
+                      sipAmount,
+                      500,
+                      50000
+                    )}%, #e0e0e0 100%)`,
+                  }}
+                />
+              </div>
+            </div>
+
+            <div className="form-group">
+            <div className="form-row" style={{marginBottom: "10px"}}>
+                <label>Frequency</label>
+                <select
+                  value={sipFrequency}
+                  disabled
+                  onChange={(e) => setSipFrequency(e.target.value)}
+                >
+                  <option>Monthly</option>
+                </select>
+              </div>
+              <div className="form-row">
+                <label>Assured Rate of Return: {sipReturn}%</label>
+                <input
+                  type="number"
+                  value={sipReturn}
+                  onChange={(e) => setSipReturn(parseInt(e.target.value) || 0)}
+                />
+              </div>
+              <div className="slider-container">
+                <input
+                  type="range"
+                  min="1"
+                  max="20"
+                  value={sipReturn}
+                  onChange={(e) => setSipReturn(parseInt(e.target.value))}
+                  style={{
+                    background: `linear-gradient(to right, #4285F4 0%, #4285F4 ${calculateFillPercent(
+                      sipReturn,
+                      1,
+                      20
+                    )}%, #e0e0e0 ${calculateFillPercent(
+                      sipReturn,
+                      1,
+                      20
+                    )}%, #e0e0e0 100%)`,
+                  }}
+                />
+              </div>
+            </div>
+
+            <div className="form-group">
+              <div className="form-row">
+                <label>SIP Period: {sipYears} Years</label>
+                <input
+                  type="number"
+                  value={sipYears}
+                  onChange={(e) => setSipYears(parseInt(e.target.value) || 0)}
+                />
+              </div>
+              <div className="slider-container">
+                <input
+                  type="range"
+                  min="1"
+                  max="30"
+                  value={sipYears}
+                  onChange={(e) => setSipYears(parseInt(e.target.value))}
+                  style={{
+                    background: `linear-gradient(to right, #4285F4 0%, #4285F4 ${calculateFillPercent(
+                      sipYears,
+                      1,
+                      30
+                    )}%, #e0e0e0 ${calculateFillPercent(
+                      sipYears,
+                      1,
+                      30
+                    )}%, #e0e0e0 100%)`,
+                  }}
+                />
+              </div>
+            </div>
+          </div>
+
+          <div className="calculator-results">
+            <div className="pie-chart-container">
+              <div className="result-pie-div">
+                <div
+                  className="result-card-left"
+                  style={{ borderLeft: "10px solid #14579e" }}
+                >
+                  <div className="result-value">
+                    ₹{formatCurrency(sipResult.investment)}
+                  </div>
+                  <div className="result-label">Investment Amount</div>
+                </div>
+                <div
+                  className="result-card-left"
+                  style={{ borderLeft: "10px solid rgb(255, 165, 0)" }}
+                >
+                  <div className="result-value">
+                    ₹{formatCurrency(sipResult.returns)}
+                  </div>
+                  <div className="result-label">Estimated Returns</div>
+                </div>
+              </div>
+              <ResponsiveContainer width="100%" height={300}>
+                <PieChart>
+                  <Pie
+                    data={sipResult.pieData}
+                    cx="50%"
+                    cy="50%"
+                    labelLine={false}
+                    outerRadius={150}
+                    innerRadius={80}
+                    fill="#8884d8"
+                    dataKey="value"
+                  >
+                    {sipResult.pieData.map((entry, index) => (
+                      <Cell key={`cell-${index}`} fill={entry.color} />
+                    ))}
+                  </Pie>
+                </PieChart>
+              </ResponsiveContainer>
+            </div>
+            <div className="result-card">
+              <div className="result-value">
+                ₹{formatCurrency(sipResult.futureValue)}
+              </div>
+              <div className="result-label">Expected Future Value</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default WealthCalculator;
